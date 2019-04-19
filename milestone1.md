@@ -1,16 +1,30 @@
 # Milestone 1
 #### Table of Contents
 1. [Logistics](#Logistics)
-2. [Proposal1: Next Page](#Proposal1)
-  a. 
-3. [Proposal2: *name here*](#Proposal_2)
+2. [Proposal 1: Next Page](#Proposal1)
+3. [Proposal 2: *name here*](#Proposal_2)
+<br><br><br>
 
 <a name="Logistics"/>
+
 ## Logistics
 **Team Name**: Panda Express.js<br>
-**Members**:  Kai-ling Peng, Martin Magsombol, Ryan Keng, Yidong Luo<br>
+
+**Members**:
+1. Kai-ling Peng 
+2. Martin Magsombol
+3. Ryan Keng
+4. Yidong Luo
+
+**(Tentative) Tech**:<br>
+* Node.js (backend runtime environment)
+* Express (backend framework)
+* SQLite (database)
+* jQuery or React (frontend framework)
+
 
 <a name="Proposal1"/>
+
 ## Proposal 1
 *Next Page*<br>
 **Inspiration**:  Saw at church that the pianist would occasionally have another musician turn the page. <br>
@@ -26,27 +40,44 @@
 **Sources (API or Datasets)**:
 
 #### Storyboard 1
-User Need:
+User Need: *TODO* <br>
 *embed images here*
 
 #### Storyboard 2
-User Need:
+User Need: *TODO* <br>
 *embed images here*
 
 #### Prototype 1
 *embed images here*
-*enough detail s.t.*
-  *a user can...*
-    *see all the interactions,*
-    *understand how they work,*
-  *a programmer can...*
-    *create a functional application with a defined flow.*
 
 #### Prototype 2
 *embed images here*
-*enough detail s.t.*
-  *a user can...*
-    *see all the interactions,*
-    *understand how they work,*
-  *a programmer can...*
-    *create a functional application with a defined flow.*
+<br>
+
+<a name="Proposal2"/>
+
+## Proposal 2
+*name*<br>
+**Inspiration**: *TODO* <br>
+>*TODO*
+**Target Audience**: *TODO* 
+> **Martin**: *TODO*
+> **Ryan**: *TODO*
+> **Kai-ling**: *TODO*
+> **Roy**: *TODO*
+**Sources (API or Datasets)**: *TODO*
+
+#### Storyboard 1
+User Need: *TODO* <br>
+*embed images here*
+
+#### Storyboard 2
+User Need: *TODO* <br>
+*embed images here*
+
+#### Prototype 1
+*embed images here*
+
+#### Prototype 2
+*embed images here*
+<br>
