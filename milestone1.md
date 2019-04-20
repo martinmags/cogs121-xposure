@@ -27,7 +27,7 @@
 <a name="Proposal1"/>
 
 ## Proposal 1
-*Next Page*<br>
+**App Name**: *Next Page*<br>
 **Inspiration**:  Saw at church that the pianist would occasionally have another musician turn the page. <br>
 **Description**
 >Web App/Mobile Web App that accesses the devices' microphone, takes a PDF of a music sheet (or multiple PDFs), creates a decider on when to flip the page, and once the user triggers the unique signal then the music sheet automatically turns the page.
@@ -63,16 +63,24 @@ User Need: *TODO* <br>
 
 <a name="Proposal2"/>
 
-## Proposal 2
-*name*<br>
-**Inspiration**: *TODO* <br>
->*TODO*
-**Target Audience**: *TODO* 
-> **Martin**: *TODO*
-> **Ryan**: *TODO*
-> **Kai-ling**: *TODO*
-> **Roy**: *TODO*
-**Sources (API or Datasets)**: *TODO*
+## Proposal 1
+**App Name**: *name here*<br>
+**Inspiration**:  <br>
+**Description**
+>
+>
+**Target Audience**: *Musicians that consistently practice and perform.*
+> 
+> 
+> **Martin**: 
+> 
+> **Ryan**: 
+>
+> **Kai-ling**: 
+>
+> **Roy**: 
+> 
+**Sources (API or Datasets)**:
 
 #### Storyboard 1
 User Need: *TODO* <br>
@@ -87,4 +95,4 @@ User Need: *TODO* <br>
 
 #### Prototype 2
 *embed images here*
-<br>
+<br><br><br>
