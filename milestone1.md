@@ -63,7 +63,7 @@ User Need: *TODO* <br>
 
 <a name="Proposal2"/>
 
-## Proposal 1
+## Proposal 2
 **App Name**: *name here*<br>
 **Inspiration**:  <br>
 **Description**
