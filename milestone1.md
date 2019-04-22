@@ -35,7 +35,7 @@
 **Target Audience**: *Musicians that consistently practice and perform.*
 > We appreciate music and some of us have an understanding of how to play an instrument, but collectively, we do not consider ourselves as musicians.
 >
-> **Martin**: Played trumpet, mainly to keep my parents happy and get some scholarships.
+> **Martin**: Played trumpet, mainly to keep my parents happy and get some scholarships; haven't played in year.
 >
 > **Ryan**: Played flute, and now, has no idea where it is.
 >
