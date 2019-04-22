@@ -51,6 +51,8 @@ API that recognizes musical sheets:
 [Overscore](https://github.com/acieroid/overscore)<br>
 API that allows you to upload files:
 [Google Drive API](https://developers.google.com/drive/api/v3/manage-uploads)<br>
+[Music Notes Embedding](https://flat.io/developers/embed/generator)<br>
+API that embeds music notes on the browser(html)
 
 
 #### Storyboard 1
