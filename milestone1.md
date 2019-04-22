@@ -45,6 +45,12 @@
 >
 **Sources (API or Datasets)**:
 
+API that detects pitches:
+![Pitch Detection API](https://github.com/cwilso/pitchdetect?fbclid=IwAR0N7MI8QKc3qZUyRXYhVFUjvFprRBH4w4GODq_7Rs2JzL2nEEwvTcPmJSc)<br>
+API that allows you to upload files:
+![Google Drive API](https://developers.google.com/drive/api/v3/manage-uploads)<br>
+
+
 #### Storyboard 1
 ![Next Page Storyboard](/assets/next_page/next_page_sb.png)<br>
 
