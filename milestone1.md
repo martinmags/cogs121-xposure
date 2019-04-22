@@ -5,7 +5,7 @@
 3. [Proposal 2: *name here*](#Proposal2)
 <br><br><br>
 
-<a name="Logistics"/>
+<a name="Logistics"/><br>
 
 ## Logistics
 **Team Name**: Panda Express.js<br>
@@ -24,7 +24,7 @@
 <br><br><br>
 
 
-<a name="Proposal1"/>
+<a name="Proposal1"/><br>
 
 ## Proposal 1
 **App Name**: *Next Page*<br>
@@ -47,21 +47,13 @@
 
 #### Storyboard 1
 User Need: *TODO* <br>
-*embed images here*
-
-#### Storyboard 2
-User Need: *TODO* <br>
-*embed images here*
 
 #### Prototype 1
 *embed images here*
-
-#### Prototype 2
-*embed images here*
 <br><br><br>
 
-
-<a name="Proposal2"/>
+<a name="Proposal2"/><br>
+[sb2]: assets/music_visualizer_sb.png "StoryBoard Music Visualizer"
 
 ## Proposal 2
 **App Name**: *name here*<br>
@@ -84,15 +76,7 @@ User Need: *TODO* <br>
 
 #### Storyboard 1
 User Need: *TODO* <br>
-*embed images here*
-
-#### Storyboard 2
-User Need: *TODO* <br>
-*embed images here*
+![alt text][sb2]
 
 #### Prototype 1
 *embed images here*
-
-#### Prototype 2
-*embed images here*
-<br><br><br>
