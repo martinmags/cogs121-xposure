@@ -52,13 +52,13 @@
 ![Next Page Prototype v.1.0](/assets/next_page/next_page_prototype_v.1.0.png)<br><br>
 User is able to sign-in or create an account if they don't have one yet.<br>
 ![Initial Screen](/assets/next_page/InitialScreen.png)<br>
-User is able to create an account.
+User is able to create an account.<br>
 ![Create an Account Screen](/assets/next_page/CreateAccountScreen.png)<br>
-User is able to sign-in if they have an account already.
+User is able to sign-in if they have an account already.<br>
 ![Sign in Screen](/assets/next_page/SignInScreen.png)<br>
-User is able to upload/search pdfs of music sheets as well as choose music sheets to start practicing/performing.
+User is able to upload/search pdfs of music sheets as well as choose music sheets to start practicing/performing.<br>
 ![Home Screen](/assets/next_page/HomeScreen.png)<br>
-User is able to practice/perform handsfree using the app's automatic page turner.
+User is able to practice/perform handsfree using the app's automatic page turner.<br>
 ![Sheet Screen](/assets/next_page/SheetScreen.png)
 
 
@@ -78,7 +78,7 @@ User is able to practice/perform handsfree using the app's automatic page turner
 **Sources (API or Datasets)**:
 
 #### Storyboard 1
-![Music Visualizer Storyboard](/assets/music_visualizer_sb.png)<br>
+![Music Visualizer Storyboard](/assets//music_visualizer/music_visualizer_sb.png)<br>
 
 #### Prototype 1
 ![Music Visualizer Prototype v.1.0](/assets/music_visualizer/music_visualizer_prototype_v.1.0.png)<br><br>
