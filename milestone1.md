@@ -53,7 +53,6 @@ User Need: *TODO* <br>
 <br><br><br>
 
 <a name="Proposal2"/><br>
-[sb2]: assets/music_visualizer_sb.png "StoryBoard Music Visualizer"
 
 ## Proposal 2
 **App Name**: *name here*<br>
@@ -76,7 +75,7 @@ User Need: *TODO* <br>
 
 #### Storyboard 1
 User Need: *TODO* <br>
-![alt text][sb2]
+![StoryBoard Music Visualizer](/assets/music_visualizer_sb.png)
 
 #### Prototype 1
 *embed images here*
