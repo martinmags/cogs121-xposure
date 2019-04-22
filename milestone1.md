@@ -47,6 +47,8 @@
 
 API that detects pitches:
 [Pitch Detection API](https://github.com/cwilso/pitchdetect?fbclid=IwAR0N7MI8QKc3qZUyRXYhVFUjvFprRBH4w4GODq_7Rs2JzL2nEEwvTcPmJSc)<br>
+API that recognizes musical sheets:
+[Overscore](https://github.com/acieroid/overscore)<br>
 API that allows you to upload files:
 [Google Drive API](https://developers.google.com/drive/api/v3/manage-uploads)<br>
 
@@ -82,6 +84,11 @@ User is able to practice/perform handsfree using the app's automatic page turner
 > We are all lucky enough to be able to hear, and we empathize with the deaf community.
 >
 **Sources (API or Datasets)**:
+
+List of audio visualization APIs:
+[awesome-audio-visualization](https://github.com/willianjusten/awesome-audio-visualization)<br>
+API that provdies physical feedback to the user by causing the device to shake:
+[Vibration API](https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API)<br>
 
 #### Storyboard 1
 ![Music Visualizer Storyboard](/assets//music_visualizer/music_visualizer_sb.png)<br>
