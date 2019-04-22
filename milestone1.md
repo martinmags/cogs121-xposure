@@ -70,11 +70,11 @@ User Need: As a  <br>
 ![Music Visualizer Storyboard](/assets/music_visualizer_sb.png)
 
 #### Prototype 1
-User is able to sign-in or create an account if they don't have one yet.
-![Initial Screen](/assets/InitialScreen.png)
-User is able to input their account information to access/create an account.
-![Login Screen](/assets/LoginSignIn.png)
-User is able to search/discover songs.
-![Home Screen](/assets/HomeScreen.png)
-User is able to experience the visuals and vibrations.
-![Song Screen](/assets/SongScreen.png)
+User is able to sign-in or create an account if they don't have one yet.<br>
+![Initial Screen](/assets/music_visualizer/InitialScreen.png)
+User is able to input their account information to access/create an account.<br>
+![Login Screen](/assets/music_visualizer/LoginSignInScreen.png)
+User is able to search/discover songs.<br>
+![Home Screen](/assets/music_visualizer/HomeScreen.png)
+User is able to experience the visuals and vibrations.<br>
+![Song Screen](/assets/music_visualizer/SongScreen.png)
