@@ -46,10 +46,22 @@
 **Sources (API or Datasets)**:
 
 #### Storyboard 1
-User Need: *TODO* <br>
+![Next Page Storyboard](/assets/next_page/next_page_sb.png)<br>
 
 #### Prototype 1
-*embed images here*
+![Next Page Prototype v.1.0](/assets/next_page/next_page_prototype_v.1.0.png)<br><br>
+User is able to sign-in or create an account if they don't have one yet.<br>
+![Initial Screen](/assets/next_page/InitialScreen.png)<br>
+User is able to create an account.
+![Create an Account Screen](/assets/next_page/CreateAccountScreen.png)<br>
+User is able to sign-in if they have an account already.
+![Sign in Screen](/assets/next_page/SignInScreen.png)<br>
+User is able to upload/search pdfs of music sheets as well as choose music sheets to start practicing/performing.
+![Home Screen](/assets/next_page/HomeScreen.png)<br>
+User is able to practice/perform handsfree using the app's automatic page turner.
+![Sheet Screen](/assets/next_page/SheetScreen.png)
+
+
 <br><br><br>
 
 <a name="Proposal2"/><br>
@@ -66,11 +78,10 @@ User Need: *TODO* <br>
 **Sources (API or Datasets)**:
 
 #### Storyboard 1
-User Need: As a  <br>
-![Music Visualizer Storyboard](/assets/music_visualizer_sb.png)
+![Music Visualizer Storyboard](/assets/music_visualizer_sb.png)<br>
 
 #### Prototype 1
-![Music Visualizer Prototype v.1.0](/assets/music_visualizer/music_visualizer_prototype_v.1.0)<br><br>
+![Music Visualizer Prototype v.1.0](/assets/music_visualizer/music_visualizer_prototype_v.1.0.png)<br><br>
 User is able to sign-in or create an account if they don't have one yet.<br>
 ![Initial Screen](/assets/music_visualizer/InitialScreen.png)<br>
 User is able to input their account information to access/create an account.<br>
