@@ -5,7 +5,7 @@
 3. [Proposal 2: *name here*](#Proposal2)
 <br><br><br>
 
-<a name="Logistics"/><br>
+<a name="Logistics"/>
 
 ## Logistics
 **Team Name**: Panda Express.js<br>
@@ -24,7 +24,7 @@
 <br><br><br>
 
 
-<a name="Proposal1"/><br>
+<a name="Proposal1"/>
 
 ## Proposal 1
 **App Name**: *Next Page*<br>
@@ -55,27 +55,26 @@ User Need: *TODO* <br>
 <a name="Proposal2"/><br>
 
 ## Proposal 2
-**App Name**: *name here*<br>
-**Inspiration**:  <br>
+**App Name**: *Music Visualizer*<br>
+**Inspiration**: Wondered what it would be like to be at a rave without hearing anything. Would the experience be that different?<br>
 **Description**
->
+>>Web App/Mobile Web App that is almost like a Spotify for the deaf or hard of hearing. It visualizes music tracks and syncs vibrations to the beat of the music to transform the act of hearing into a visual and somatosensory experience.
 >
 **Target Audience**: *Musicians that consistently practice and perform.*
-> 
-> 
-> **Martin**: 
-> 
-> **Ryan**: 
+> We are all lucky enough to be able to hear, and we empathize with the deaf community.
 >
-> **Kai-ling**: 
->
-> **Roy**: 
-> 
 **Sources (API or Datasets)**:
 
 #### Storyboard 1
-User Need: *TODO* <br>
-![StoryBoard Music Visualizer](/assets/music_visualizer_sb.png)
+User Need: As a  <br>
+![Music Visualizer Storyboard](/assets/music_visualizer_sb.png)
 
 #### Prototype 1
-*embed images here*
+User is able to sign-in or create an account if they don't have one yet.
+![Initial Screen](/assets/InitialScreen.png)
+User is able to input their account information to access/create an account.
+![Login Screen](/assets/LoginSignIn.png)
+User is able to search/discover songs.
+![Home Screen](/assets/HomeScreen.png)
+User is able to experience the visuals and vibrations.
+![Song Screen](/assets/SongScreen.png)
