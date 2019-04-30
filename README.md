@@ -12,6 +12,27 @@
 **(Tentative) Tech**:<br>
 * Node.js (backend runtime environment)
 * Express (backend framework)
-* SQLite (database)
-* jQuery or React (frontend framework)
-<br><br><br>
+* Firebase (database)
+
+## Local Development
+
+After cloning this repository, in the `functions` directory, install dependencies.
+```
+cd functions
+npm install
+```
+
+Make sure you have installed the Firebase CLI:
+```
+npm install -g firebase-tools
+```
+
+Authenticate to your Firebase account:
+```
+firebase login
+```
+
+Start a local web server:
+```
+firebase serve
+```
