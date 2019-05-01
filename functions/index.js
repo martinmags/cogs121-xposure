@@ -18,7 +18,7 @@ app.get('/users', (req, res) => {
    db.collection("users").get().then((querySnapshot) => {
       let userArray = [];
       querySnapshot.forEach((doc) => {
-         userArray.push(doc.data().name);
+         userArray.push(doc.data().firstName + " " + doc.data().lastName);
       });
       res.send(userArray);
       return userArray;
@@ -49,21 +49,30 @@ app.get('/users/:userid', (req, res) => {
 // Add a user
 app.post('/users', (req, res) => {
    const { body } = req;
-   const { name, email, isTeacher } = body;
+   let { firstName, lastName, email, password, isTeacher } = body;
+   
+   if (isTeacher) {
+      isTeacher = true;
+   } else {
+      isTeacher = false
+   }
 
    db.collection("users").add({
-      name,
+      firstName,
+      lastName,
       email,
+      password,
       isTeacher,
       level: 1
    })
    .then((docRef) => {
       console.log("User added! Document ID: ", docRef.id);
-      res.redirect("/users");
+      res.redirect("/ClassKeyScreen.html");
       return docRef;
    })
    .catch((error) => {
       console.error("Error writing document: ", error);
+      res.redirect("/CreateAccountScreen.html");
    });
 })
 

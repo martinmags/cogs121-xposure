@@ -23,16 +23,16 @@
       </div>
 
       <div class="main_container">
-        <form action="ClassKeyScreen.html">
+        <form action="/users" method="POST">
           <label class="switch">
-            <input class="switch-input" type="checkbox"/>
+            <input class="switch-input" type="checkbox" name="isTeacher"/>
             <span class="switch-label" data-on="Teacher" data-off="Student"></span>
             <span class="switch-handle"></span>
           </label> 
-          <input type="text" placeholder="First Name"><br><br>
-          <input type="text" placeholder="Last Name"><br><br>          
-          <input type="text" placeholder="Email"><br><br>
-          <input type="text" placeholder="Password"><br><br>
+          <input type="text" placeholder="First Name" name="firstName"><br><br>
+          <input type="text" placeholder="Last Name" name="lastName"><br><br>          
+          <input type="text" placeholder="Email" name="email"><br><br>
+          <input type="text" placeholder="Password" name="password"><br><br>
           <input id="signin-btn" type="submit" value="Continue">
         </form>
       </div>
