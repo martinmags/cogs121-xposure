@@ -1,0 +1,60 @@
+[debug] [2019-05-01T06:33:43.239Z] ----------------------------------------------------------------------
+[debug] [2019-05-01T06:33:43.241Z] Command:       /Users/kylee/.nvm/versions/node/v9.5.0/bin/node /Users/kylee/.nvm/versions/node/v9.5.0/bin/firebase serve
+[debug] [2019-05-01T06:33:43.242Z] CLI Version:   6.7.2
+[debug] [2019-05-01T06:33:43.242Z] Platform:      darwin
+[debug] [2019-05-01T06:33:43.242Z] Node Version:  v9.5.0
+[debug] [2019-05-01T06:33:43.242Z] Time:          Tue Apr 30 2019 23:33:43 GMT-0700 (PDT)
+[debug] [2019-05-01T06:33:43.242Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-05-01T06:33:43.261Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-05-01T06:33:43.262Z] > authorizing via signed-in user
+[debug] [2019-05-01T06:33:43.262Z] [iam] checking project pandaexpressjs for permissions ["firebase.projects.get"]
+[debug] [2019-05-01T06:33:43.263Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-05-01T06:33:43.264Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-05-01T06:33:43.447Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-01T06:33:43.457Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/pandaexpressjs:testIamPermissions  
+
+[debug] [2019-05-01T06:33:44.226Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-01T06:33:44.229Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/pandaexpressjs  
+ 
+[debug] [2019-05-01T06:33:44.948Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/kylee/Desktop/COGS121GUO/cogs121'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2019-05-01T06:33:56.152Z] Fetching environment
+[debug] [2019-05-01T06:33:56.157Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/718178135759:getServerAppConfig  
+ 
+[debug] [2019-05-01T06:33:56.157Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/718178135759/clients/_:getWebAppConfig  
+ 
+[debug] [2019-05-01T06:33:56.381Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-01T06:33:56.382Z] Starting @google-cloud/functions-emulator
+[debug] [2019-05-01T06:33:56.697Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: src
+[info] ✔  hosting: Local server: http://localhost:5000
+[debug] [2019-05-01T06:34:05.143Z] Parsing function triggers
+[warn] ⚠  functions: Failed to load functions source code. Ensure that you have the latest SDK by running npm i --save firebase-functions inside the functions directory.
+[debug] [2019-05-01T06:34:08.271Z] Error during trigger parsing:  Error parsing triggers: Cannot find module './ServiceAccountKey.json'
+
+Try running "npm install" in your functions directory before deploying.
+[warn] ⚠  functions: Error from emulator. Error parsing triggers: Cannot find module './ServiceAccountKey.json'
+
+Try running "npm install" in your functions directory before deploying.
+[debug] [2019-05-01T06:34:08.273Z] 
+[info] [hosting] Rewriting /favicon.ico to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /favicon.ico to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /favicon.ico to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /favicon.ico to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /favicon.ico to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /favicon.ico to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /favicon.ico to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /favicon.ico to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /favicon.ico to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /favicon.ico to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /favicon.ico to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /favicon.ico to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /favicon.ico to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /favicon.ico to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /favicon.ico to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /favicon.ico to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app

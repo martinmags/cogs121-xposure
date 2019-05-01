@@ -34,13 +34,24 @@ In Milestone 1, our team originally came up with 2 ideas. The first was *Next Pa
 **App Name**: *One Speaker*<br>
 **Inspiration**: Minimizing noise can help establish a quality learning environment. Yet how do we encourage student participation at the same time?<br>
 **Description**:
->Web app that minimizes noise from side conversations when an instructor is speaking.
->
+One Speaker will be a web app that minimizes noise from side conversations when an instructor is speaking. It would allow teachers to visualize noise levels in any of their classes while assigning participation points for their students.
+
+This idea is different from the ones we proposed in milestone one in that the target user group is different, but it still deals with using sound to improve an experience. Our target user group shifted from musicians (Next Page) and the deaf community (Music Visualizer) to instructors of younger students (One Speaker). The app's functionality is different too, as this app facilitates noise level control and improves the experience of teaching in a noisy setting.
+
+
 **Target Audience**: *Instructors in an elementary/middle school setting.*
 
 <a name="Prototype"></a>
 
-### Prototype
+### Prototype Overview
+Creating an account or signing in: <br>
+![Initial Screen](milestones/assets/one_speaker/gettingstarted.png)<br>
+Student account flow: <br>
+![Initial Screen](milestones/assets/one_speaker/studentflow.png)<br>
+Teacher account flow: <br>
+![Initial Screen](milestones/assets/one_speaker/teacherflow.png)<br>
+
+### Getting Started
 User is able to sign-in or create an account if they don't have one yet.<br>
 ![Initial Screen](milestones/assets/one_speaker/InitialScreen.png)<br>
 User is able to input their account information to access their account.<br>
