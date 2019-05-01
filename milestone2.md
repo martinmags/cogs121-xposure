@@ -84,10 +84,12 @@ Taking away balloons in action.<br>
 
 ### UI Skeleton Webpage Screenshots
 User is able to sign-in or create an account if they don't have one yet.<br>
+<div style="height:150px">
 ![Initial Screen](milestones/assets/one_speaker/skeleton/index.png)<br>
+</div>
 User is able to input their account information to access their account.<br>
 ![Sign In Screen](milestones/assets/one_speaker/skeleton/signin.png)<br>
-User is able to create a new account. 
+User is able to create a new account.
 Currently, the sign in page leads to the student flow and the create new account page leads to the teacher flow for better visualization. This will be fixed once we are able to determine whether users are teachers or students to display different things on the same html file. <br>
 ![Create Account Screen](milestones/assets/one_speaker/skeleton/createaccount.png)<br>
 If user creates a teacher account, a class key will be generated for students to register with.<br>
