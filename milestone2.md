@@ -38,32 +38,32 @@ In Milestone 1, our team originally came up with 2 ideas. The first was *Next Pa
 
 ### Prototype
 User is able to sign-in or create an account if they don't have one yet.<br>
-![Initial Screen](assets/one_speaker/InitialScreen.png)<br>
+![Initial Screen](milestones/assets/one_speaker/InitialScreen.png)<br>
 User is able to input their account information to access their account.<br>
-![Sign In Screen](assets/one_speaker/SignIn.png)<br>
+![Sign In Screen](milestones/assets/one_speaker/SignIn.png)<br>
 User can toggle between Teacher and Student when creating account.<br>
-![Teacher Create Account Screen](assets/one_speaker/TeacherCreateAccount.png)<br>
-![Student Create Account Screen](assets/one_speaker/StudentCreateAccount.png)<br>
+![Teacher Create Account Screen](milestones/assets/one_speaker/TeacherCreateAccount.png)<br>
+![Student Create Account Screen](milestones/assets/one_speaker/StudentCreateAccount.png)<br>
 If user creates a teacher account, a class key will be generated for students to register with.<br>
-![Teacher Create Account Class Key Screen](assets/one_speaker/TeacherCreateAccountClassKey.png)<br>
+![Teacher Create Account Class Key Screen](milestones/assets/one_speaker/TeacherCreateAccountClassKey.png)<br>
 
 #### Student View
 Students have access to current and previous classes through the dashboard.<br>
-![Student Dashboard Screen](assets/one_speaker/StudentDashboard.png)<br>
+![Student Dashboard Screen](milestones/assets/one_speaker/StudentDashboard.png)<br>
 Students can view their performance in each class and see how their peers are performing in class.<br>
-![Student Classes Screen](assets/one_speaker/StudentClasses.png)<br>
+![Student Classes Screen](milestones/assets/one_speaker/StudentClasses.png)<br>
 Students can receive live feedback of their performance through the session screen.<br>
-![Student Session Screen](assets/one_speaker/StudentSession.png)<br>
+![Student Session Screen](milestones/assets/one_speaker/StudentSession.png)<br>
 
 #### Teacher View
 Students have access to classes they are teaching or have taught through the dashboard.<br>
-![Teacher Dashboard Screen](assets/one_speaker/TeacherDashboard.png)<br>
+![Teacher Dashboard Screen](milestones/assets/one_speaker/TeacherDashboard.png)<br>
 Teachers can view their classes' performance.<br>
-![Teacher Classes Screen](assets/one_speaker/TeacherClasses.png)<br>
+![Teacher Classes Screen](milestones/assets/one_speaker/TeacherClasses.png)<br>
 Teachers have access to their students' session screen.<br>
-![Teacher Session Screen](assets/one_speaker/TeacherSession.png)<br>
+![Teacher Session Screen](milestones/assets/one_speaker/TeacherSession.png)<br>
 Taking away balloons in action.<br>
-![Teacher Delete Balloon Screen](assets/one_speaker/TeacherDeleteBalloon.png)<br>
+![Teacher Delete Balloon Screen](milestones/assets/one_speaker/TeacherDeleteBalloon.png)<br>
 
 ### UI Skeleton Webpage Screenshots
 TODO
