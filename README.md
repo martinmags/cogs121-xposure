@@ -1,5 +1,5 @@
 # Cogs 121 Course Project
-**Status**: Milestone 1- Logistics and Project Proposals<br>
+**Status**: Milestone 2 - New Project Proposal and UI Skeleton<br>
 
 **Team Name**: Panda Express.js<br>
 
