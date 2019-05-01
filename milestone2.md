@@ -84,9 +84,7 @@ Taking away balloons in action.<br>
 
 ### UI Skeleton Webpage Screenshots
 User is able to sign-in or create an account if they don't have one yet.<br>
-<div style="height:150px">
 ![Initial Screen](milestones/assets/one_speaker/skeleton/index.png)<br>
-</div>
 User is able to input their account information to access their account.<br>
 ![Sign In Screen](milestones/assets/one_speaker/skeleton/signin.png)<br>
 User is able to create a new account.
