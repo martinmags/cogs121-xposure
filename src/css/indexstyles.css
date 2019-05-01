@@ -18,12 +18,12 @@ body{
   justify-content: flex-end;
   height: 50vh;
 }
-#title{ 
+#title{
   font-size: 3.0em;
   color: #0E1E71;
   align-self: center;
 }
-#oneliner{ 
+#oneliner{
   color: #4F5B6B;
   margin-bottom: 10%;
 }
@@ -42,7 +42,7 @@ body{
   background-color: #0E1E71;
   color: white;
   border: 1px;
-  border-radius: 10px;
+  border-radius: 50px;
   margin-bottom: 5%;
 }
 #createacc-btn{
@@ -51,6 +51,5 @@ body{
   background-color: #0E1E71;
   color: white;
   border: 1px;
-  border-radius: 10px;
+  border-radius: 50px;
 }
-
