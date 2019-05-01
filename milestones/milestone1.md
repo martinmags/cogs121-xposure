@@ -56,20 +56,20 @@ API that embeds music notes on the browser (html):
 
 
 #### Storyboard 1
-![Next Page Storyboard](/assets/next_page/next_page_sb.png)<br>
+![Next Page Storyboard](assets/next_page/next_page_sb.png)<br>
 
 #### Prototype 1
-![Next Page Prototype v.1.0](/assets/next_page/next_page_prototype_v.1.0.png)<br><br>
+![Next Page Prototype v.1.0](assets/next_page/next_page_prototype_v.1.0.png)<br><br>
 User is able to sign-in or create an account if they don't have one yet.<br>
-![Initial Screen](/assets/next_page/InitialScreen.png)<br>
+![Initial Screen](assets/next_page/InitialScreen.png)<br>
 User is able to create an account.<br>
-![Create an Account Screen](/assets/next_page/CreateAccountScreen.png)<br>
+![Create an Account Screen](assets/next_page/CreateAccountScreen.png)<br>
 User is able to sign-in if they have an account already.<br>
-![Sign in Screen](/assets/next_page/SignInScreen.png)<br>
+![Sign in Screen](assets/next_page/SignInScreen.png)<br>
 User is able to upload/search pdfs of music sheets as well as choose music sheets to start practicing/performing.<br>
-![Home Screen](/assets/next_page/HomeScreen.png)<br>
+![Home Screen](assets/next_page/HomeScreen.png)<br>
 User is able to practice/perform handsfree using the app's automatic page turner.<br>
-![Sheet Screen](/assets/next_page/SheetScreen.png)
+![Sheet Screen](assets/next_page/SheetScreen.png)
 
 
 <br><br><br>
@@ -93,15 +93,15 @@ API that provdies physical feedback to the user by causing the device to shake:
 [Vibration API](https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API)<br>
 
 #### Storyboard 1
-![Music Visualizer Storyboard](/assets//music_visualizer/music_visualizer_sb.png)<br>
+![Music Visualizer Storyboard](assets//music_visualizer/music_visualizer_sb.png)<br>
 
 #### Prototype 1
-![Music Visualizer Prototype v.1.0](/assets/music_visualizer/music_visualizer_prototype_v.1.0.png)<br><br>
+![Music Visualizer Prototype v.1.0](assets/music_visualizer/music_visualizer_prototype_v.1.0.png)<br><br>
 User is able to sign-in or create an account if they don't have one yet.<br>
-![Initial Screen](/assets/music_visualizer/InitialScreen.png)<br>
+![Initial Screen](assets/music_visualizer/InitialScreen.png)<br>
 User is able to input their account information to access/create an account.<br>
-![Login Screen](/assets/music_visualizer/LoginSignInScreen.png)<br>
+![Login Screen](assets/music_visualizer/LoginSignInScreen.png)<br>
 User is able to search/discover songs.<br>
-![Home Screen](/assets/music_visualizer/HomeScreen.png)<br>
+![Home Screen](assets/music_visualizer/HomeScreen.png)<br>
 User is able to experience the visuals and vibrations.<br>
-![Song Screen](/assets/music_visualizer/SongScreen.png)
+![Song Screen](assets/music_visualizer/SongScreen.png)
