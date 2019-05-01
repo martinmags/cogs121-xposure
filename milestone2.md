@@ -4,6 +4,8 @@
 1. [Logistics](#Logistics)
 2. [Idea Change in Milestone 2](#IdeaChange)
 3. [New Proposal](#NewProposal)
+   - [Prototype](#Prototype)
+   - [UI Skeleton Webpage Screenshots](#Skeleton)
 
 <a name="Logistics"></a>
 
@@ -36,6 +38,8 @@ In Milestone 1, our team originally came up with 2 ideas. The first was *Next Pa
 >
 **Target Audience**: *Instructors in an elementary/middle school setting.*
 
+<a name="Prototype"></a>
+
 ### Prototype
 User is able to sign-in or create an account if they don't have one yet.<br>
 ![Initial Screen](milestones/assets/one_speaker/InitialScreen.png)<br>
@@ -64,6 +68,8 @@ Teachers have access to their students' session screen.<br>
 ![Teacher Session Screen](milestones/assets/one_speaker/TeacherSession.png)<br>
 Taking away balloons in action.<br>
 ![Teacher Delete Balloon Screen](milestones/assets/one_speaker/TeacherDeleteBalloon.png)<br>
+
+<a name="Skeleton"></a>
 
 ### UI Skeleton Webpage Screenshots
 TODO
