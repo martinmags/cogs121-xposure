@@ -1,12 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/cssreset.css">
-  <title></title>
-</head>
-<body>
-  <text>hello world</text>
-</body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Starman - CREATE ACCOUNT</title>
+    <link rel="stylesheet" href="css/cssreset.css">
+    <link rel="stylesheet" href="css/createaccountstyles.css">
+  </head>
+
+  <body>
+    <div class="screen_container">
+      
+      <div class="header_container">
+        <!-- Add back button -->
+        <form id="formSize" action="index.html">
+          <input id="back-btn" type="submit" value="BACK"/>
+        </form>
+        <header id="title">CREATE ACCOUNT</header>
+        <div id="invisible-spacer">
+          <h1>.</h1>
+        </div>
+      </div>
+
+      <div class="main_container">
+        <form action="ClassKeyScreen.html">
+          <label class="switch">
+            <input class="switch-input" type="checkbox"/>
+            <span class="switch-label" data-on="Teacher" data-off="Student"></span>
+            <span class="switch-handle"></span>
+          </label> 
+          <input type="text" placeholder="First Name"><br><br>
+          <input type="text" placeholder="Last Name"><br><br>          
+          <input type="text" placeholder="Email"><br><br>
+          <input type="text" placeholder="Password"><br><br>
+          <input id="signin-btn" type="submit" value="Continue">
+        </form>
+      </div>
+
+    </div>
+  </body>
+</html>
 </html>
