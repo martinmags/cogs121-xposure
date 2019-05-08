@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>One Speaker</title>
+    <link rel="stylesheet" href="css/cssreset.css" />
+    <link rel="stylesheet" href="css/indexstyles.css" />
+
+    <!-- update the version number as needed -->
+    <!-- <script defer src="/__/firebase/5.10.1/firebase-app.js"></script> -->
+    <!-- include only the Firebase features as you need -->
+    <!--
+      <script defer src="/__/firebase/5.10.1/firebase-auth.js"></script>
+      <script defer src="/__/firebase/5.10.1/firebase-database.js"></script>
+      <script defer src="/__/firebase/5.10.1/firebase-messaging.js"></script>
+      <script defer src="/__/firebase/5.10.1/firebase-storage.js"></script>
+    -->
+    <!-- initialize the SDK after all desired features are loaded -->
+    <!-- <script defer src="/__/firebase/init.js"></script> -->
+  </head>
+  <body>
+    <div class="screen_container">
+      <div class="text_container">
+        <text id="title">One Speaker</text>
+        <text id="oneliner">A volume knob to a noisy classroom.</text>
+      </div>
+
+      <div class="button_container">
+        <form action="SignInScreen.html">
+          <input id="signin-btn" type="submit" value="SIGN IN" />
+        </form>
+        <form action="CreateAccountScreen.html">
+          <input id="createacc-btn" type="submit" value="CREATE ACCOUNT" />
+        </form>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <!-- <form action="StudentDashboard.html">
+          <input
+            id="createacc-btn"
+            type="submit"
+            value="STUDENT-DASHBOARD-TEST"
+          />
+        </form>
+        <form action="TeacherDashboard.html">
+          <input
+            id="createacc-btn"
+            type="submit"
+            value="TEACHER-DASHBOARD-TEST"
+          />
+        </form> -->
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // try {
+        //   let app = firebase.app();
+        //   let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+        //   document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+        // } catch (e) {
+        //   console.error(e);
+        //   document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+        // }
+      });
+    </script>
+  </body>
+</html>
