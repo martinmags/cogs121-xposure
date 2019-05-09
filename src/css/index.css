@@ -8,6 +8,7 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 
 /*Header*/
@@ -53,6 +54,24 @@ body{
   align-items: center;
 }
 
+/*Text section*/
+.text_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 50vh;
+}
+#title{
+  font-size: 3.0em;
+  color: #2C138F;
+  align-self: center;
+  letter-spacing: 0.1em;
+}
+#oneliner{
+  color: #2C138F;
+  margin-bottom: 10%;
+}
+
 /*Button section*/
 .button_container{
   display: flex;
@@ -67,40 +86,6 @@ body{
   color: white;
   border: 1px;
   border-radius: 50px;
-  margin-bottom: 5%;
-  letter-spacing: 0.1em;
-}
-
-/* Text */
-#small-title{
-  color: #2C138F;
-  margin-bottom: 10%;
-}
-
-/* Forms */
-#input-button{
-  width: 200px;
-  height: 30px;
-  border: 1px;
-  border-radius: 50px;
-  margin-bottom: 5%;
-  letter-spacing: 0.1em;
-}
-
-#input-button-square{
-  width: 200px;
-  height: 30px;
-  border: 1px;
-  border-radius: 10px;
-  margin-bottom: 5%;
-  letter-spacing: 0.1em;
-}
-
-#input-button-large{
-  width: 200px;
-  height: 80px;
-  border: 1px;
-  border-radius: 10px;
   margin-bottom: 5%;
   letter-spacing: 0.1em;
 }
