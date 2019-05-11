@@ -1,14 +1,13 @@
 body{
-  font-family: 'Heiti SC', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
-  background: #E1F2F0;
+  background: #141414;
 }
 
 .screen_container{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
 }
 
 /*Header*/
@@ -17,7 +16,7 @@ body{
   flex-direction: row;
   justify-content: space-between;
   height: 10vh;
-  background-color: #0E1E71;
+  background-color: #141414;
   padding-left: 30px;
   padding-right: 30px;
 }
@@ -27,17 +26,21 @@ body{
   height: 100%;
   margin: 0px;
   border: none;
-  background-color: #0E1E71;
+  background-color: #141414;
   color: white;
   float: left;
+  align-self: left;
+  align-items:left;
 }
+
 #header-title{
   font-weight: bolder;
   color: white;
   align-self: center;
-  font-size:2em;
+  font-size:1.3em;
   letter-spacing: 0.1em;
 }
+
 #invisible-spacer{
   width: 50px;
   height: 50px;
@@ -60,16 +63,32 @@ body{
   flex-direction: column;
   justify-content: flex-end;
   height: 50vh;
+  align-items: center;
 }
+
 #title{
   font-size: 3.0em;
-  color: #2C138F;
+  color: #FFFFFF;
   align-self: center;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.2em;
 }
+
 #oneliner{
-  color: #2C138F;
-  margin-bottom: 10%;
+  color: #808080;
+  margin-bottom: 20%;
+  align-self: center;
+}
+
+#subheader{
+  color: white;
+  margin-bottom: 20%;
+  align-self: center;
+}
+
+#bottomline{
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 0.8em;
 }
 
 /*Button section*/
@@ -78,14 +97,31 @@ body{
   flex-direction: column;
   justify-content: flex-start;
   height: 50vh;
+  align-items:center;
+
 }
+
 .button{
   width: 200px;
   height: 30px;
-  background-color: #2C138F;
+  background-color: #494949;
   color: white;
   border: 1px;
-  border-radius: 50px;
+  border-radius: 5px;
   margin-bottom: 5%;
+  letter-spacing: 0.2em;
+}
+
+#input-button{
+  width: 200px;
+  height: 30px;
+  margin: 2px 10px 2px 10px;
+  border-bottom-color: white;
+  border-top: 1px;
+  border-left: 1px;
+  border-right: 1px;
+  border-color: white;
+  background-color:#141414;
+  color: #FFFFFF;
   letter-spacing: 0.1em;
 }

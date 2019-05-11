@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Create Account</title>
-    <link rel="stylesheet" href="css/global.css">
+    <title>Create an Account</title>
+    <link rel="stylesheet" href="css/index.css">
 
   </head>
 
@@ -14,20 +14,32 @@
       <div class="header_container">
         <!-- Add back button -->
         <form id="formSize" action="Index.html">
-          <input id="header-btn" type="submit" value="BACK"/>
+          <input id="back-btn" type="submit" value="BACK"/>
         </form>
-        <header id="header-title">CREATE ACCOUNT</header>
+        <header id="header-title">CREATE AN ACCOUNT</header>
         <div id="invisible-spacer">
           <h1>.</h1>
         </div>
       </div>
 
       <div class="main_container">
-        <form action="CreateAccount2.html">
+        <!-- lead to main dashboard  -->
+        <form action="Feed.html">
+          <text id="subheader">INFO</text><br>
+          <input id="input-button" type="text" placeholder="  Alias"><br>
+          <input id="input-button" type="text" placeholder="  Name"><br>
+          <br>
+          <text id="subheader">LOGIN</text><br>
           <input id="input-button" type="text" placeholder="  Username"><br>
+          <input id="input-button" type="password" placeholder="  Password"><br>
+          <br>
+          <text id="subheader">CONTACT</text><br>
+          <input id="input-button" type="text" placeholder="  Instagram"><br>
           <input id="input-button" type="text" placeholder="  Email"><br>
-          <input id="input-button" type="text" placeholder="  Password"><br>
-          <input class="button" type="submit" value="CONTINUE">
+          <input id="input-button" type="text" placeholder="  Portfolio"><br>
+          <br>
+          <br>
+          <input class="button" type="submit" value="START SHOOTING">
         </form>
       </div>
 

@@ -10,18 +10,31 @@
 
   <body>
     <div class="screen_container">
-
+      
       <div class="text_container">
         <text id="title">Xposure</text>
-        <text id="oneliner">Insert cool catchphrase here.</text>
+        <div class="text_bar">
+          <text id="oneliner">Insert cool catchphrase here.</text>
+        </div>
       </div>
-
+      <br>
+      <br>
       <div class="button_container">
-        <form action="SignIn.html">
-          <input class="button" type="submit" value="SIGN IN" />
+        <input id="input-button" type="text" placeholder="  Username"><br>
+        <input id="input-button" type="text" placeholder="  Password"><br>
+
+        <!-- link to main dashboard page -->
+        <form action="Feed.html">
+          <input class="button" type="submit" value="LOG IN" />
         </form>
+
+        <br>
+        <br>
+        <br>
+        <br>
         <form action="CreateAccount.html">
-          <input class="button" type="submit" value="CREATE ACCOUNT" />
+          <text id="bottomline">Don't have an account?</text>
+          <a id="bottomline" href="CreateAccount.html">SIGN UP</a>
         </form>
       </div>
 
