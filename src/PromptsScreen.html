@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Xposure</title>
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="css/prompts.css"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+  </head>
+
+  <body>
+    <div class="screen_container">
+      <div class="text_container">
+        <text id="title">Prompts</text>
+        <div class="text_bar">
+          <p class="centered-details"
+            >To be qualified for the weekly showcase, you need to evaluate at
+            least one other user in the same prompt as your entry.</p
+          >
+        </div>
+
+        <text class="time" id="demo">4h 00m 00s</text>
+        <script>
+          // Set the date we're counting down to
+          var now = new Date();
+          var countDownDate = new Date(now.getTime() + (4 * 60 * 60 * 1000));
+          //countDownDate.setDate(now.getTime() + (4 * 60 * 60 * 1000));
+
+          // Update the count down every 1 second
+          var x = setInterval(function() {
+
+            // Get todays date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="demo"
+            document.getElementById("demo").innerHTML = hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+              clearInterval(x);
+              document.getElementById("demo").innerHTML = "EXPIRED";
+            }
+          }, 1000);
+        </script>
+      </div>
+      <br />
+      <br />
+      <div class="info-container">
+        <text>Rainy Days</text>
+        <text>Evaluated: 2</text>
+      </div>
+
+      <div class="w3-content image-container" style="max-width:500px">
+        <img class="mySlides" src="https://cdn1.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg" style="width:100%">
+        <img class="mySlides" src="https://images.unsplash.com/photo-1557511073-0e3434f4a5ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" style="width:100%">
+        <img class="mySlides" src="https://images.unsplash.com/photo-1557511073-9bb8018e3ff3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" style="width:100%">
+        <button class="btn">hi</button>
+        <div>
+          <p>City Melancholic Nights by Fortnite_Photographer 5/9/19 | 16:00 </p>
+        </div>
+
+      </div>
+
+      <div class="w3-center">
+        <div class="w3-section">
+          <button class="w3-button w3-light-grey" onclick="plusDivs(-1)">❮ Prev</button>
+          <button class="w3-button w3-light-grey" onclick="plusDivs(1)">Next ❯</button>
+        </div>
+        <button class="w3-button demo-slidershow" onclick="currentDiv(1)">1</button>
+        <button class="w3-button demo-slidershow" onclick="currentDiv(2)">2</button>
+        <button class="w3-button demo-slidershow" onclick="currentDiv(3)">3</button>
+      </div>
+
+      <script>
+      var slideIndex = 1;
+      showDivs(slideIndex);
+
+      function plusDivs(n) {
+        showDivs(slideIndex += n);
+      }
+
+      function currentDiv(n) {
+        showDivs(slideIndex = n);
+      }
+
+      function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo-slidershow");
+        if (n > x.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = x.length}
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" w3-red", "");
+        }
+        x[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " w3-red";
+      }
+      </script>
+      <div class="button_container">
+
+      </div>
+    </div>
+  </body>
+</html>

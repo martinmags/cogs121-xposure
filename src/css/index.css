@@ -125,3 +125,10 @@ body{
   color: #FFFFFF;
   letter-spacing: 0.1em;
 }
+
+.centered-details{
+  max-width: 250px;
+  color: #808080;
+  margin-bottom: 20%;
+  align-self: center;
+}
