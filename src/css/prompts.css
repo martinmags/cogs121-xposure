@@ -11,6 +11,7 @@
   max-height: 100px;
   border-radius: 12px;
   padding: 3px;
+  cursor: pointer;
 }
 .image-container img:hover{
   filter:blur(2px);
