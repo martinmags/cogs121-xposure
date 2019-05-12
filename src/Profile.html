@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My Profile</title>
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/projects.css">
+    <link rel="stylesheet" href="css/cssreset.css">
+    <link rel="stylesheet" href="css/profile.css">
   </head>
 
   <body>
@@ -15,67 +15,88 @@
         <div id="invisible-spacer">
           <h1>.</h1>
         </div>
-        <div id="invisible-spacer">
-          <h1>.</h1>
+        <div id="header-title">
+          <header>PROFILE</header>
         </div>
-        <header id="header-title">MY PROFILE</header>
-        <div id="invisible-spacer">
-          <h1>.</h1>
+        <div id="edit_container">
+          <a href="EditProfile.html">
+            <button id="edit-btn">Edit</button>
+          </a>
         </div>
-        <span>
-          <i class="material-icons">
-            <a href="Settings.html" style="color: #FFFFFF">settings</a>
-          </i>
-        </span>
       </div>
 
       <div class="main_container">
-        <div class="project_container">
-          <div class="user_info">
-            <div id="username">BOB</div>
-            <div id="status">User information is here</div>
-          </div>
+        <div class="info_container">
+          <text id="sub-header">INFO</text>
+          <text id="info-text">ALIAS: Best_Photographer_SD</text>
+          <text id="info-text">NAME: Bob Bobby</text>
+        </div>
 
-          <div class="project_description">AWARDS</div>
-          <div class="project_card" href="OngoingProject.html">
-              <div id="username">PICTURE TITLE</div>
-              <div id="status"> Submitted April 20, 2018 </div>
-              <div id="prompt"> photo prompt info here</div>
-              <div id="photos">
-                <img src="https://cdn1.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg">
-                <img src="https://cdn1.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg">
-                <img src="https://cdn1.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg">
-              </div>
-          </div>
-
-          <div class="project_description">AWARDS</div>
-          <div class="project_card" href="OngoingProject.html">
-              <div id="username">PICTURE TITLE</div>
-              <div id="status"> Submitted April 20, 2018 </div>
-              <div id="prompt"> photo prompt info here</div>
-              <div id="photos">
-                <img src="https://cdn1.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg">
-                <img src="https://cdn1.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg">
-                <img src="https://cdn1.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg">
-              </div>
-          </div>
-
+        <div class="info_container">
+          <text id="sub-header">CONTACT</text>
+          <text id="info-text">IG: re.mags</text>          
+          <text id="info-text">EMAIL: email@ucsd.edu</text>
+          <text id="info-text">PORTFOLIO: martinmags@github.io</text>
+        </div>
+  
+        <div class="info_container">
+          <form action="index.html">
+            <input id="logout-btn" type="submit" value="LOG OUT">
+          </form>
+        </div>
       </div>
-    </div>
+  
+      <div class="work_container">
+        <!-- n submissions -->
+        <div id="submission">
+          <Text>Prompt 1</Text>
+          <div class="image_container">
+            <a class="photo">
+              <div id="photos"></div>
+            </a>
+          </div>
+        </div>
 
-      <div class="footer_container">
-        <footer>
-          <a href="Feed.html">
-            <button id="footer_button">FEED</button>
-          </a>
-          <a href="MyProjects.html">
-            <button id="footer_button">PROJECTS</button>
-          </a>
-          <a href="Profile.html">
-            <button id="footer_button">PROFILE</button>
-          </a>
-        </footer>
+        <div id="submission">
+          <Text>Prompt 2</Text>
+          <div class="image_container">
+            <a class="photo">
+              <div id="photos"></div>
+            </a>
+          </div>
+          <Text>#First-Place</Text>
+        </div>
+
+        <div id="submission">
+          <Text>Prompt 3</Text>
+          <div class="image_container">
+            <a class="photo">
+              <div id="photos"></div>
+            </a>
+          </div>
+        </div>
+
+        <div id="submission">
+          <Text>Prompt 4</Text>
+          <div class="image_container">
+            <a class="photo">
+              <div id="photos"></div>
+            </a>
+          </div>
+        </div>
       </div>
+
+      <footer class="footer_container">
+        <a href="Profile.html">
+          <button class="footer_button">PROFILE</button>
+        </a>
+        <a href="Feed.html">
+          <button class="footer_button">DISCOVER</button>
+        </a>
+        <a href="Prompts.html">
+          <button class="footer_button">PROMPTS</button>
+        </a>
+      </footer>
 
     </div>
   </body>
