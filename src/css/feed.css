@@ -1,0 +1,138 @@
+body{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  background: #141414;
+  color: #FFFFFF;
+}
+
+.screen_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/*Header*/
+.header_container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 10vh;
+  background: #141414;
+  align-items: center;
+}
+
+#invisible-spacer{
+  align-self: center;
+  visibility: hidden;
+  width: 70px;
+}
+
+#title_container{
+  font-weight: bolder;
+
+  color: white;
+  align-self: center;
+  font-size:1.7em;
+  letter-spacing: 0.1em;
+}
+
+#settings_container{
+  align-self: center;
+  width: 70px;
+}
+
+#settings-btn{
+  background-color: inherit;
+  color: white;
+  font-size: 16px;
+  border: none;
+}
+
+/*Search Container*/
+.search_container{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 5vh;
+  width: auto;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: #494949;
+}
+#search-btn{
+  background: inherit;
+  border: inherit;
+  text-align: center;
+}
+::-webkit-input-placeholder { /* Webkit */
+   color: white;
+}
+
+/*Main*/
+.main_container{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 80vh;
+  background-color: inherit;
+}
+
+
+/*Projects*/
+.project_container{
+  display: flex;
+  flex-direction: column;
+    align-items: center;
+
+}
+
+.image_container{
+  display: flex;
+  flex-direction: row;
+  width: 90vw;
+  height: 120px;
+  background-color: white;
+  border:1;
+  border-radius: 10px;
+/*  padding: 20px;
+  align-self: center;
+  width: 90%;
+  height: 90%;
+  overflow: scroll;
+  text-decoration: none;*/
+}
+
+.photo{
+  border:1px solid #141414;
+  width:inherit;
+}
+
+.winner_container{
+  display: flex;
+  flex-direction: row;
+  width: 90vw;
+}
+
+.winner{
+  width:inherit
+}
+
+/*Footer*/
+.footer_container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 5vh;
+  background: #141414;
+  align-items: center;
+  background-color: #494949;
+}
+
+.footer_button{
+  background-color: inherit;
+  border: none;
+  color: white;
+  text-align: center;
+  letter-spacing: 0.1em;
+}

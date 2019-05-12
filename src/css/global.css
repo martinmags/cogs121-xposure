@@ -10,6 +10,11 @@ body{
   justify-content: space-between;
 }
 
+#search-btn{
+  background: inherit;
+  border: inherit;
+}
+
 /*Header*/
 .header_container{
   display: flex;
