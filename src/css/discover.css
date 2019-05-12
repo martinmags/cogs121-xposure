@@ -60,14 +60,22 @@ body{
   color: #FFFFFF;
   background-color: #494949;
 }
+
 #search-btn{
   background: inherit;
   border: inherit;
   text-align: center;
 }
+input{
+  color: white;
+  outline: none;
+  width: 100vw;
+}
+
 ::-webkit-input-placeholder { /* Webkit */
    color: white;
 }
+
 
 /*Main*/
 .main_container{
