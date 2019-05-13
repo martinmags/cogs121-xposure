@@ -1,55 +1,55 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Create an Account</title>
-    <link rel="stylesheet" href="css/cssreset.css">
-    <link rel="stylesheet" href="css/createaccount.css">
 
-  </head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create an Account</title>
+  <link rel="stylesheet" href="css/cssreset.css">
+  <link rel="stylesheet" href="css/createaccount.css">
+</head>
 
-  <body>
-    <div class="screen_container">
-
-      <div class="top_container">
-        <a id="back-button" href="index.html">BACK</a>
-
-        <div class="header_container">
-          <div class="blur-box"> </div>
-          <header id="header-title">CREATE AN ACCOUNT</header>
-        </div>
+<body>
+  <div class="screen_container">
+    <div class="top_container">
+      <a id="back-button" href="index.html">BACK</a>
+      <div class="header_container">
+        <div class="blur-box"></div>
+        <header id="header-title">CREATE AN ACCOUNT</header>
       </div>
-
-      <div class="main_container">
-        <!-- lead to main dashboard  -->
-        <form action="Discover.html">
-          <div class="info_container">
-            <text id="subheader">INFO</text>
-            <input id="input-button" type="text" placeholder="  Alias">
-            <input id="input-button" type="text" placeholder="  Name">
-          </div>
-
-          <div class="info_container">
-            <text id="subheader">LOGIN</text>
-            <input id="input-button" type="text" placeholder="  Email">
-            <input id="input-button" type="password" placeholder="  Password">
-          </div>
-
-          <div class="info_container">
-            <text id="subheader">CONTACT</text>
-            <input id="input-button" type="text" placeholder="  Instagram">
-            <input id="input-button" type="text" placeholder="  Email">
-            <input id="input-button" type="text" placeholder="  Portfolio">
-          </div>
-
-          <div class="info_container">
-            <input class="button" type="submit" value="SUBMIT">
-          </div>
-        </form>
-      </div>
-
     </div>
-  </body>
+
+    <div class="main_container">
+      <!-- lead to main dashboard  -->
+      <form action="/users/signup" method="POST">
+        <div class="info_container">
+          <text id="subheader">INFO</text>
+          <input id="input-button" type="text" name="alias" placeholder="  Alias">
+          <input id="input-button" type="text" name="name" placeholder="  Name">
+        </div>
+
+        <div class="info_container">
+          <text id="subheader">LOGIN</text>
+          <input id="input-button" type="text" name="email" placeholder="  Email">
+          <input id="input-button" type="password" name="password" placeholder="  Password">
+        </div>
+
+        <div class="info_container">
+          <text id="subheader">CONTACT</text>
+          <input id="input-button" type="text" name="ig" placeholder="  Instagram">
+          <input id="input-button" type="text" name="portfolio" placeholder="  Portfolio">
+        </div>
+
+        <div class="info_container">
+          <input class="button" type="submit" value="SUBMIT">
+          <a id="back-button" href="index.html">BACK</a>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</body>
+
 </html>
+
 </html>

@@ -1,79 +1,128 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My Profile</title>
-    <link rel="stylesheet" href="css/cssreset.css">
-    <link rel="stylesheet" href="css/profile.css">
-  </head>
 
-  <body>
-    <div class="screen_container">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Profile</title>
+  <link rel="stylesheet" href="css/cssreset.css">
+  <link rel="stylesheet" href="css/profile.css">
 
-      <div class="header_container">
-        <div id="invisible-spacer">
-          <h1>.</h1>
-        </div>
-        <div id="header-title">
-          <header>PROFILE</header>
-        </div>
-        <div id="edit_container">
-          <a href="EditProfile.html">
-            <button id="edit-btn">Edit</button>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+
+  <!-- GitHub Fetch API -->
+  <script src="./js/fetch.umd.js"></script>
+
+  <script>
+    // Initialize Cloud Firestore through Firebase
+    firebase.initializeApp({
+      apiKey: "AIzaSyC6FPXu3_bOHpHr7AelgBKAMbGiIUPZ2Vo",
+      authDomain: "pandaexpressjs.firebaseapp.com",
+      projectId: "pandaexpressjs"
+    });
+
+    var db = firebase.firestore();
+
+    window.onload = function () {
+      fetch('/profile')
+        .then(res => res.json())
+        .then(function (data) {
+          if (data) {
+            console.log("User logged in. UID: ", data);
+            db.collection("users").doc(data)
+              .onSnapshot(function (doc) {
+                document.getElementById('span-alias').innerHTML = doc.data().alias;
+                document.getElementById('span-name').innerHTML = doc.data().name;
+                document.getElementById('span-ig').innerHTML = doc.data().ig;
+                document.getElementById('span-email').innerHTML = doc.data().email;
+                document.getElementById('span-portfolio').innerHTML = doc.data().portfolio;
+              });
+          }
+        }).catch(function (error) {
+          console.log("Request failed", error)
+        })
+    };
+  </script>
+</head>
+
+<body>
+  <div class="screen_container">
+
+    <div class="header_container">
+      <div id="invisible-spacer">
+        <h1>.</h1>
+      </div>
+      <div id="header-title">
+        <header>PROFILE</header>
+      </div>
+      <div id="edit_container">
+        <a href="EditProfile.html">
+          <button id="edit-btn">Edit</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="main_container">
+      <div class="info_container">
+        <text id="sub-header">INFO</text>
+        <text id="info-text">ALIAS: <span id="span-alias"></span></text>
+        <text id="info-text">NAME: <span id="span-name"></span></text>
+      </div>
+
+      <div class="info_container">
+        <text id="sub-header">CONTACT</text>
+        <text id="info-text">IG: <span id="span-ig"></span></text>
+        <text id="info-text">EMAIL: <span id="span-email"></span></text>
+        <text id="info-text">PORTFOLIO: <span id="span-portfolio"></span></text>
+      </div>
+
+      <div class="info_container">
+        <form action="/users/logout" method="POST">
+          <input type="submit" id="logout-btn" value="log out">
+        </form>
+      </div>
+    </div>
+
+    <div class="work_container">
+      <!-- n submissions -->
+      <div id="submission">
+        <Text>Prompt 1</Text>
+        <div class="image_container">
+          <a class="photo">
+            <div id="photos"></div>
           </a>
         </div>
       </div>
 
-      <div class="main_container">
-        <div class="info_container">
-          <text id="sub-header">Bob Bobby</text>
-          <text id="info-text">@Best_Photographer</text>
-          <text id="info-text">IG: re.mags</text>
-          <text id="info-text">EMAIL: email@ucsd.edu</text>
-          <text id="info-text">PORTFOLIO: martinmags@github.io</text>
+      <div id="submission">
+        <Text>Prompt 2</Text>
+        <div class="image_container">
+          <a class="photo">
+            <div id="photos"></div>
+          </a>
+        </div>
+        <Text>#First-Place</Text>
+      </div>
+
+      <div id="submission">
+        <Text>Prompt 3</Text>
+        <div class="image_container">
+          <a class="photo">
+            <div id="photos"></div>
+          </a>
         </div>
       </div>
 
-      <div class="work_container">
-        <!-- n submissions -->
-        <div id="submission">
-          <Text>Prompt 1</Text>
-          <div class="image_container">
-            <a class="photo">
-              <div id="photos"></div>
-            </a>
-          </div>
-        </div>
-
-        <div id="submission">
-          <Text>Prompt 2</Text>
-          <div class="image_container">
-            <a class="photo">
-              <div id="photos"></div>
-            </a>
-          </div>
-          <Text>#First-Place</Text>
-        </div>
-
-        <div id="submission">
-          <Text>Prompt 3</Text>
-          <div class="image_container">
-            <a class="photo">
-              <div id="photos"></div>
-            </a>
-          </div>
-        </div>
-
-        <div id="submission">
-          <Text>Prompt 4</Text>
-          <div class="image_container">
-            <a class="photo">
-              <div id="photos"></div>
-            </a>
-          </div>
+      <div id="submission">
+        <Text>Prompt 4</Text>
+        <div class="image_container">
+          <a class="photo">
+            <div id="photos"></div>
+          </a>
         </div>
       </div>
+    </div>
 
       <footer class="footer_container">
         <a href="Prompts.html">
@@ -87,7 +136,6 @@
         </a>
       </footer>
 
-    </div>
-  </body>
 </html>
+
 </html>
