@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Settings</title>
-    <link rel="stylesheet" href="css/global.css">
 
-  </head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Settings</title>
+  <link rel="stylesheet" href="css/global.css">
+</head>
 
-  <body>
-    <div class="screen_container">
+<body>
+  <div class="screen_container">
 
-      <div class="header_container">
-        <form id="formSize" action="Feed.html">
-          <input id="header-btn" type="submit" value="BACK"/>
-        </form>
-        <header id="header-title">SETTINGS</header>
-        <div id="invisible-spacer">
-          <h1>.</h1>
-        </div>
+    <div class="header_container">
+      <form id="formSize" action="Feed.html">
+        <input id="header-btn" type="submit" value="BACK" />
+      </form>
+      <header id="header-title">SETTINGS</header>
+      <div id="invisible-spacer">
+        <h1>.</h1>
       </div>
-
-      <div class="main_container">
-        <p> settings page here </p>
-        <button href="Index.html"> log out </button>
-      </div>
-
     </div>
-  </body>
+
+    <div class="main_container">
+      <p> settings page here </p>
+      <form action="/users/logout" method="POST">
+        <input type="submit" id="logout-btn" value="log out">
+      </form>
+    </div>
+
+  </div>
+</body>
+
 </html>
+
 </html>

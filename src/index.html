@@ -33,9 +33,9 @@
 
       <div class="button_container">
         <!-- link to main dashboard page -->
-          <form action="Discover.html" class="form_container">
-            <input id="input-button" type="text" placeholder="  Username">
-            <input id="input-button" type="text" placeholder="  Password">
+          <form action="/users/login" method="POST" class="form_container">
+            <input id="input-button" type="text" name="email" placeholder="  Email">
+            <input id="input-button" type="password" name="password" placeholder="  Password">
             <input class="button" type="submit" value="LOG IN" />
           </form>
         
