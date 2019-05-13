@@ -2,8 +2,7 @@
 
 #### Table of Contents
 1. [Logistics](#Logistics)
-2. [Idea Change in Milestone 3](#IdeaChange)
-3. [New Proposal](#NewProposal)
+3. [New Proposal: Our Idea Changed!](#NewProposal)
    - [UI Skeleton Webpage Screenshots](#Skeleton)
 
 <a name="Logistics"></a>
@@ -17,23 +16,25 @@
 3. Ryan Keng
 4. Yidong Luo
 
-**(Tentative) Tech**:
+**Tech Used**:
 * Node.js (backend runtime environment)
 * Express (backend framework)
 * Firebase (database)
-
-<a name="IdeaChange"></a>
-
-## Idea Change in Milestone 3
-Write about new idea here.
+* Unplash API
 
 <a name="NewProposal"></a>
 
 ## New Proposal
 **App Name**: *Xposure*<br>
-**Inspiration**: Inspiration blurb<br>
 **Description**:
-Description here.
+Xposure is a competitive photography platform that aims to give talented startup photographers the exposure they deserve.
+
+Every week the app selects 3 'collections' from a subset of collections using unsplash's API. Users can submit to these prompts, as well as review entries for each prompt. Reviews are standardized on a set criteria that provides constructive feedback to the photographer.
+
+Submission + Review System
+To encourage the whole system of improvement and competition, users that submit must also review another entry in the same prompt in order qualify for the weekly showcase. Reviewing in the same prompt provides the original poster a potentially different perspective or take on the prompt.
+
+At the end of the week, the entry with the best overall review is showcased on the discover screen, and the cycle repeats.
 
 
 **Target Audience**: *Photographers*
