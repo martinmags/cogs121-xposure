@@ -1,9 +1,11 @@
 body{
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
+  font-family: 'Avenir';
+  font-weight: normal;
+  font-style: normal;
   background: #141414;
 }
 
+/*45+15+50*/
 .screen_container{
   display: flex;
   flex-direction: column;
@@ -11,8 +13,8 @@ body{
   align-items: center;
 }
 
-/*Header*/
-.header_container{
+/*Text section*/
+.text_container{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -39,44 +41,55 @@ body{
   font-weight: bolder;
   color: #FFFFFF;
   align-self: center;
-  font-size:1.3em;
-  letter-spacing: 0.1em;
 }
 
-#invisible-spacer{
-  width: 50px;
-  height: 50px;
+#title{
+  font-size: 3.0em;
+  color: #FFFFFF;
   align-self: center;
-  visibility: hidden;
+  letter-spacing: 0.2em;
 }
 
-/*Main*/
-.main_container{
+/*App Information*/
+.information_container{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 90vh;
-  align-items: center;
+  height: 10vh;
+  justify-content: flex-end;
 }
 
-/*Text section*/
-.text_container{
+.row_container{
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
 }
 
+.photography-box{
+  background-color: #494949;
+  width: 50vw;
+  height:6vh;
+  text-align: right;
+}
+
+#photography-text{
+  color: white;
+  position: relative;
+  top:30%;
+  right:10%;
+  font-size: 12px;
+
+  letter-spacing: 0.2em;
+}
 #title{
   font-size: 3.0em;
   color: #FFFFFF;
   letter-spacing: 0.2em;
 }
 
-#oneliner{
-  color: #808080;
-  margin-bottom: 20%;
-  align-self: center;
+.brand-box{
+  background-color: #FFFFFF;
+  width: 50vw;
+  height:6vh;
+  text-align: left;
 }
 
 #subheader{
@@ -85,20 +98,31 @@ body{
   align-self: center;
 }
 
-#bottomline{
-  color: #FFFFFF;
-  text-decoration: none;
-  font-size: 0.8em;
+#brand-text{
+  color: black;
+  position: relative;
+  top:10%;
+  left:10%;
+  font-size: 12px;
+  letter-spacing: 0.2em;
 }
+
 
 /*Button section*/
 .button_container{
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  height: 50vh;
+  justify-content: center;
+  height: 40vh;
   align-items:center;
+}
 
+.form_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 20vh;
+  align-items: center;
 }
 
 .button{
@@ -138,4 +162,9 @@ textarea {
   resize: none;
   overflow: auto;
   background-color:#C4C4C4;
+}
+#bottomline{
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 0.8em;
 }

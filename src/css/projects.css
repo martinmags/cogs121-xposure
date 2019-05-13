@@ -1,7 +1,6 @@
 .project_container{
-  display:flex;
+  display: flex;
   flex-direction: column;
-  justify-content: space-around;
 }
 
 .project_description{
@@ -12,16 +11,14 @@
   opacity: 0.6;
 }
 
-.project_card{
-  margin-top: 10px;
-  border-radius: 20px;
-  background: #FFFFFF;
-  padding: 20px;
+.image_container{
+  display: flex;
+/*  padding: 20px;
   align-self: center;
   width: 90%;
   height: 90%;
   overflow: scroll;
-  text-decoration: none;
+  text-decoration: none;*/
 }
 
 .user_info{
@@ -51,8 +48,8 @@
   justify-content: space-evenly;
 }
 
-.project_card img {
+/*.project_card img {
   height: 70px;
   width: 90px;
   align-items:stretch;
-}
+}*/

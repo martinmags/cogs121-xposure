@@ -5,37 +5,44 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Xposure</title>
+    <link rel="stylesheet" href="css/cssreset.css"/>
     <link rel="stylesheet" href="css/index.css" />
   </head>
 
   <body>
     <div class="screen_container">
-      
+
       <div class="text_container">
-        <text id="title">Xposure</text>
-        <div class="text_bar">
-          <text id="oneliner">Insert cool catchphrase here.</text>
-        </div>
+        <text id="title">XPOSURE</text>
       </div>
-      <br>
-      <br>
+
+      <div class="information_container">
+
+        <div class="row_container">
+          <div class="photography-box">
+            <text id="photography-text">Photography</text>
+          </div>
+
+          <div class="brand-box">
+            <div class="blur-box"></div>
+            <text id="brand-text">Develop your <br>Brand</text>
+          </div>
+        </div>
+
+      </div>
+
       <div class="button_container">
-        <input id="input-button" type="text" placeholder="  Username"><br>
-        <input id="input-button" type="text" placeholder="  Password"><br>
-
         <!-- link to main dashboard page -->
-        <form action="Feed.html">
-          <input class="button" type="submit" value="LOG IN" />
-        </form>
+          <form action="/users/login" method="POST" class="form_container">
+            <input id="input-button" type="text" name="email" placeholder="  Email">
+            <input id="input-button" type="password" name="password" placeholder="  Password">
+            <br>
+            <input class="button" type="submit" value="LOG IN" />
+          </form>
 
-        <br>
-        <br>
-        <br>
-        <br>
-        <form action="CreateAccount.html">
-          <text id="bottomline">Don't have an account?</text>
+        <text id="bottomline">Don't have an account?
           <a id="bottomline" href="CreateAccount.html">SIGN UP</a>
-        </form>
+        </text>
       </div>
 
     </div>

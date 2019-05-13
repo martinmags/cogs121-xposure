@@ -1,0 +1,133 @@
+body{
+  font-family: 'Avenir', sans-serif;
+  font-weight: 400;
+  background: #141414;
+}
+
+/*20+ 80*/
+.screen_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/*Header*/
+.top_container{
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.header_container{
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  width: 100vw;
+  height:5vh;
+  justify-content: center;
+}
+.blur-box{
+  height: inherit;
+  width: inherit;
+  position: absolute;
+  filter: blur(4px);
+  background-color: inherit;
+}
+#header-title{
+  color: black;
+  align-self: center;
+  font-size:1.3em;
+  letter-spacing: 0.1em;
+  z-index: 2;
+}
+
+/*Main: 80/4*/
+.main_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80vh;
+  align-items: center;
+}
+
+.info_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 20vh;
+  align-items: center;
+  margin-bottom: 2vh;
+}
+
+#subheader{
+  color: white;
+  align-self: center;
+}
+
+/*Button*/
+.button{
+  width: 200px;
+  height: 30px;
+  background-color: #494949;
+  color: white;
+  border: 1px;
+  border-radius: 5px;
+  margin-bottom: 5%;
+  letter-spacing: 0.2em;
+  font-size: 14px;
+}
+
+#input-button{
+  width: 200px;
+  height: 30px;
+  margin: 2px 10px 2px 10px;
+  border-bottom-color: white;
+  border-top: 1px;
+  border-left: 1px;
+  border-right: 1px;
+  border-color: white;
+  background-color:#141414;
+  color: #FFFFFF;
+  letter-spacing: 0.1em;
+}
+
+#back-button{
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+  justify-content: space-around;
+  align-items: center;
+  width: 100px;
+  height: 30px;
+  font-size: 14px;
+  background-color: #494949;
+  color: white;
+  border: 1px;
+  border-radius: 5px;
+  margin: 5px 5px 5px 5px;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+  text-align: center;
+}
+
+#setting-button{
+  display: flex;
+  flex-direction: row;
+  align-self: flex-end;
+  justify-content: space-around;
+  align-items: center;
+  width: 100px;
+  height: 30px;
+  font-size: 14px;
+  background-color: #494949;
+  color: white;
+  border: 1px;
+  border-radius: 5px;
+  margin: 5px 5px 5px 5px;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+  text-align: center;
+}
