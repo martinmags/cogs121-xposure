@@ -1,5 +1,5 @@
 body{
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Avenir', sans-serif;
   font-weight: 400;
   background: #141414;
 }
@@ -16,9 +16,10 @@ body{
   display: flex;
   flex-direction: column;
   height: 20vh;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
 }
+
 
 .header_container{
   display: flex;
@@ -43,7 +44,7 @@ body{
   z-index: 2;
 }
 
-/*Main: 80/4*/ 
+/*Main: 80/4*/
 .main_container{
   display: flex;
   flex-direction: column;
@@ -58,6 +59,7 @@ body{
   justify-content: center;
   height: 20vh;
   align-items: center;
+  margin-bottom: 2vh;
 }
 
 #subheader{
@@ -81,7 +83,6 @@ body{
 #input-button{
   width: 200px;
   height: 30px;
-  font-size: 14px;
   margin: 2px 10px 2px 10px;
   border-bottom-color: white;
   border-top: 1px;
@@ -95,17 +96,38 @@ body{
 
 #back-button{
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 200px;
+  flex-direction: row;
+  align-self: flex-start;
+  justify-content: space-around;
+  align-items: center;
+  width: 100px;
   height: 30px;
   font-size: 14px;
   background-color: #494949;
   color: white;
   border: 1px;
   border-radius: 5px;
-  margin-bottom: 5%;
+  margin: 5px 5px 5px 5px;
   letter-spacing: 0.2em;
-  text-align: center;
   text-decoration: none;
+  text-align: center;
+}
+
+#setting-button{
+  display: flex;
+  flex-direction: row;
+  align-self: flex-end;
+  justify-content: space-around;
+  align-items: center;
+  width: 100px;
+  height: 30px;
+  font-size: 14px;
+  background-color: #494949;
+  color: white;
+  border: 1px;
+  border-radius: 5px;
+  margin: 5px 5px 5px 5px;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+  text-align: center;
 }
