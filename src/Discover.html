@@ -8,23 +8,6 @@
   <link rel="stylesheet" href="css/cssreset.css">
   <!-- <link rel="stylesheet" href="css/projects.css"> -->
   <link rel="stylesheet" href="css/discover.css">
-
-  <!-- GitHub Fetch API -->
-  <script src="./js/fetch.umd.js"></script>
-
-  <script>
-    window.onload = function () {
-      fetch('/discover')
-        .then(res => res.json())
-        .then(function (data) {
-          if (data) {
-            console.log("User logged in. UID: ", data);
-          }
-        }).catch(function (error) {
-          console.log("Request failed", error)
-        })
-    };
-  </script>
 </head>
 
 <body>

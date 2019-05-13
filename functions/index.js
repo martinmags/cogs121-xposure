@@ -42,23 +42,23 @@ app.get('/users', (req, res) => {
 });
 
 // Display a user's data when userid is specified
-app.get('/users/:userid', (req, res) => {
-   const userId = req.params.userid;
+// app.get('/users/:userid', (req, res) => {
+//    const userId = req.params.userid;
 
-   db.collection("users").doc(userId).get().then((doc) => {
-      if (doc.exists) {
-         console.log("Document data:", doc.data());
-         res.send(doc.data());
-      } else {
-         // doc.data() will be undefined in this case
-         console.log("No such document!");
-         res.send("No such document!");
-      }
-      return doc;
-   }).catch((error) => {
-      console.error("Error getting document:", error);
-   });
-});
+//    db.collection("users").doc(userId).get().then((doc) => {
+//       if (doc.exists) {
+//          console.log("Document data:", doc.data());
+//          res.send(doc.data());
+//       } else {
+//          // doc.data() will be undefined in this case
+//          console.log("No such document!");
+//          res.send("No such document!");
+//       }
+//       return doc;
+//    }).catch((error) => {
+//       console.error("Error getting document:", error);
+//    });
+// });
 
 // User sign up
 app.post('/users/signup', (req, res) => {
@@ -72,6 +72,7 @@ app.post('/users/signup', (req, res) => {
          db.collection("users").doc(data.user.uid).set({
             alias,
             name,
+            email,
             ig,
             portfolio
          })
@@ -124,7 +125,7 @@ app.post('/users/logout', (req, res) => {
 })
 
 // discover page, check if user is logged in
-app.get('/discover', (req, res) => {
+app.get('/profile', (req, res) => {
    firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
          // User is signed in.
