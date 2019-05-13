@@ -42,30 +42,29 @@ At the end of the week, the entry with the best overall review is showcased on t
 <a name="Skeleton"></a>
 
 ### UI Skeleton Webpage Screenshots
-<!-- User is able to sign-in or create an account if they don't have one yet.<br>
-![Initial Screen](milestones/assets/one_speaker/skeleton/index.png)<br>
-User is able to input their account information to access their account.<br>
-![Sign In Screen](milestones/assets/one_speaker/skeleton/signin.png)<br>
-User is able to create a new account.
-Currently, the sign in page leads to the student flow and the create new account page leads to the teacher flow for better visualization. This will be fixed once we are able to determine whether users are teachers or students to display different things on the same html file. <br>
-![Create Account Screen](milestones/assets/one_speaker/skeleton/createaccount.png)<br>
-If user creates a teacher account, a class key will be generated for students to register with.<br>
-![Teacher Class Key Screen](milestones/assets/one_speaker/skeleton/classkey.png)<br>
+User is able to sign-in or create an account if they don't have one yet.<br>
+![Initial Screen](milestones/assets/Xposure/index.png)<br>
 
-### Student View
-Students have access to current and previous classes through the dashboard.<br>
-![Student Dashboard Screen](milestones/assets/one_speaker/skeleton/studentdashboard.png)<br>
-Students can view their performance in each class and see how their peers are performing in class.<br>
-![Student Classes Screen](milestones/assets/one_speaker/skeleton/studentclass.png)<br>
+User is able to create an account.<br>
+![Create Account Screen](milestones/assets/Xposure/createAccount.png)<br>
 
-### Teacher View
-Teachers have access to classes they are teaching or have taught through the dashboard.<br>
-![Teacher Dashboard Screen](milestones/assets/one_speaker/skeleton/teacherdashboard.png)<br>
-Teachers can view their classes' performance.<br>
-![Teacher Classes Screen](milestones/assets/one_speaker/skeleton/teacherclasses.png)<br>
+Users are able to view different finished prompts in the home page.<br>
+![Home Page: Discover](milestones/assets/Xposure/discover.png)<br>
 
-### Shared
-Teachers and students both have access to the current session.<br>
-![Session Screen](milestones/assets/one_speaker/skeleton/session.png)<br>
-Temporary settings page.<br>
-![Settings](milestones/assets/one_speaker/skeleton/settings.png)<br> -->
+Users are able to view ongoing prompts.<br>
+![Prompts Screen](milestones/assets/Xposure/prompts.png)<br>
+
+Users are able to submit their works for each prompt.<br>
+![Submission Screen](milestones/assets/Xposure/submission.png)<br>
+
+Users are able to evaluate other people's works for each prompt.<br>
+![Evaluation Screen](milestones/assets/Xposure/evaluate.png)<br>
+
+Users are able to view their account information and submitted works in their profile.<br>
+![Profile Screen](milestones/assets/Xposure/profile.png)<br>
+
+Users are able to edit their account information.<br>
+![Edit Profile Screen](milestones/assets/Xposure/editProfile.png)<br>
+
+Users are able to change their account settings.<br>
+![Settings Screen](milestones/assets/Xposure/Settings.png)<br>
