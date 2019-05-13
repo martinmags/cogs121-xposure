@@ -1,5 +1,5 @@
 body{
-  font-family: Roboto;
+  font-family: 'Avenir';
   font-weight: normal;
   font-style: normal;
   background: #141414;
@@ -17,14 +17,13 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  height: 50vh;
+  height: 30vh;
   align-items: center;
 }
 
 #oneliner{
   color: #808080;
   align-self: center;
-
 }
 
 #title{
@@ -50,7 +49,7 @@ body{
 .photography-box{
   background-color: #494949;
   width: 50vw;
-  height:5vh;
+  height:6vh;
   text-align: right;
 }
 
@@ -66,7 +65,7 @@ body{
 .brand-box{
   background-color: #FFFFFF;
   width: 50vw;
-  height:5vh;
+  height:6vh;
   text-align: left;
 }
 
@@ -74,7 +73,7 @@ body{
   height: inherit;
   width: inherit;
   position: absolute;
-  filter: blur(4px);
+  filter: blur(2px);
   background-color: inherit;
 }
 
@@ -86,8 +85,6 @@ body{
   font-size: 12px;
   letter-spacing: 0.2em;
 }
-
-
 
 
 /*Button section*/
