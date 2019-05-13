@@ -9,20 +9,37 @@ body{
 .screen_container{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 /*Text section*/
 .text_container{
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  height: 30vh;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-content: center;
+  height: 10vh;
+  background-color: #141414;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
-#oneliner{
-  color: #808080;
+#back-btn{
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  border: none;
+  background-color: #141414;
+  color: white;
+  float: left;
+  align-self: left;
+  align-items:left;
+}
+
+#header-title{
+  font-weight: bolder;
+  color: #FFFFFF;
   align-self: center;
 }
 
@@ -59,6 +76,12 @@ body{
   top:30%;
   right:10%;
   font-size: 12px;
+
+  letter-spacing: 0.2em;
+}
+#title{
+  font-size: 3.0em;
+  color: #FFFFFF;
   letter-spacing: 0.2em;
 }
 
@@ -69,12 +92,10 @@ body{
   text-align: left;
 }
 
-.blur-box{
-  height: inherit;
-  width: inherit;
-  position: absolute;
-  filter: blur(2px);
-  background-color: inherit;
+#subheader{
+  color: #FFFFFF;
+  margin-bottom: 20%;
+  align-self: center;
 }
 
 #brand-text{
@@ -129,6 +150,19 @@ body{
   letter-spacing: 0.1em;
 }
 
+.centered-details{
+  max-width: 250px;
+  color: #808080;
+  align-self: center;
+  text-align: center;
+}
+
+/*Inputs*/
+textarea {
+  resize: none;
+  overflow: auto;
+  background-color:#C4C4C4;
+}
 #bottomline{
   color: #FFFFFF;
   text-decoration: none;
