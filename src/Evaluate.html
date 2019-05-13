@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Xposure</title>
     <link rel="stylesheet" href="css/index.css"/>
-    <link rel="stylesheet" href="css/prompts.css"/>
+    <link rel="stylesheet" href="css/evaluate.css"/>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 
@@ -13,16 +13,38 @@
 
   <body>
     <div class="screen_container">
+      <div><text id="title">Evaluate</text></div>
       <div class="text_container">
-        <text id="title">Evaluate</text>
+        <text id="prompt-name">Rainy Days</text>
         <div class="text_bar">
           <p class="centered-details">
-            Rainy Days
-            City Melancholic Nights by Fortnite_Photographer 5/9/19 | 16:00
+          City Melancholic Nights by Fortnite_Photographer 5/9/19 | 16:00
           </p>
         </div>
 
       </div>
+      <text id="prompt-name">Technique</text>
+      <text class="score">(out of 10)</text>
+      <form>
+        <input type="number" name="quantity" min="1" max="10">
+        <input type="submit">
+      </form>
+      <text id="prompt-name">Originality</text>
+      <text class="score">(out of 10)</text>
+      <form>
+        <input type="number" name="quantity" min="1" max="10">
+        <input type="submit">
+      </form>
+
+      <text id="prompt-name">Interpretation</text>
+      <br/>
+      <textarea rows="3" cols="30"></textarea>
+
+      <br/>
+      <br/>
+      <a href="PromptsScreen.html">
+        <button class="button">Submit</button>
+      </a>
     </div>
   </body>
 </html>

@@ -1,0 +1,25 @@
+.topic{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  /* or 143% */
+
+  letter-spacing: 0.2em;
+
+  color: #FFFFFF;
+}
+
+#input-container{
+  width:300px;
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+
+}
+
+input{
+  border:0;
+  background-color: #C4C4C4;
+}

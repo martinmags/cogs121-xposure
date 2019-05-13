@@ -7,7 +7,8 @@ body{
 .screen_container{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 /*Header*/
@@ -15,6 +16,7 @@ body{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  justify-content: center;
   height: 10vh;
   background-color: #141414;
   padding-left: 30px;
@@ -35,7 +37,7 @@ body{
 
 #header-title{
   font-weight: bolder;
-  color: white;
+  color: #FFFFFF;
   align-self: center;
   font-size:1.3em;
   letter-spacing: 0.1em;
@@ -61,15 +63,13 @@ body{
 .text_container{
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  height: 50vh;
+  justify-content: center;
   align-items: center;
 }
 
 #title{
   font-size: 3.0em;
   color: #FFFFFF;
-  align-self: center;
   letter-spacing: 0.2em;
 }
 
@@ -80,7 +80,7 @@ body{
 }
 
 #subheader{
-  color: white;
+  color: #FFFFFF;
   margin-bottom: 20%;
   align-self: center;
 }
@@ -129,6 +129,13 @@ body{
 .centered-details{
   max-width: 250px;
   color: #808080;
-  margin-bottom: 20%;
   align-self: center;
+  text-align: center;
+}
+
+/*Inputs*/
+textarea {
+  resize: none;
+  overflow: auto;
+  background-color:#C4C4C4;
 }
