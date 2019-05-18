@@ -1,5 +1,5 @@
 body{
-  font-family: Roboto;
+  font-family: 'Avenir';
   font-style: normal;
   font-weight: normal;
   background: #141414;
@@ -18,8 +18,6 @@ body{
   flex-direction: row;
   justify-content: space-around;
   height: 10vh;
-  background: #141414;
-  align-items: center;
 }
 
 #invisible-spacer{
@@ -29,6 +27,7 @@ body{
 }
 
 #title_container{
+  font-family: 'Roboto';
   font-weight: bolder;
   color: white;
   align-self: center;
@@ -81,8 +80,55 @@ input{
   display:flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 80vh;
+  /* height: 80vh; */
   background-color: inherit;
+}
+
+#sub-header{
+  font-size: 20px;
+  letter-spacing: 0.15em;
+  color: white;
+  align-self: flex-start;
+  margin-left: 20px;
+  margin-top: 1vh;
+}
+
+#prompt_text{
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: white;
+  align-self: flex-start;
+  justify-content: flex-start;
+}
+
+.first_half{
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 22vh;
+  margin-top: 1vh;
+}
+
+.second_half{
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 54vh;
+  margin-top: 3vh;
+}
+
+/*prompts*/
+.ongoing_prompts{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/*Finished prompts*/
+.finished_prompts{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 
@@ -90,39 +136,72 @@ input{
 .project_container{
   display: flex;
   flex-direction: column;
-    align-items: center;
+  align-items: center;
+  background: rgba(74, 74, 74, 0.5);
+  margin-top: 1vh;
+}
 
+.project_description{
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  margin-left: 5vw;
+  margin-top: 2vh;
+  align-items: stretch;
+  justify-content: space-around;
 }
 
 .image_container{
   display: flex;
   flex-direction: row;
+  width: 45vw;
+  height: 13vh;
+  justify-content: space-around;
+  margin: 1vw;
+}
+
+.finished_image_container{
+  display: grid;
+  margin-top: 1vh;
+  margin-bottom: 3vh;
   width: 90vw;
-  height: 120px;
-  background-color: white;
-  border:1;
-  border-radius: 10px;
-/*  padding: 20px;
-  align-self: center;
-  width: 90%;
-  height: 90%;
-  overflow: scroll;
-  text-decoration: none;*/
+  height: 15vh;
+  grid-template-columns: [col1] 33% [col2] 33% [col3] 33% [end];
+  grid-template-rows: [row1] 50% [row2] 50% [end];
 }
 
 .photo{
   border:1px solid #141414;
-  width:inherit;
+  width: 45vw;
+  /* border-radius: 10px; */
+  background-color: white;
+  margin-bottom: 1vh;
 }
 
-.winner_container{
-  display: flex;
-  flex-direction: row;
-  width: 90vw;
+#photo-big{
+  border:1px solid #141414;
+  /* border-radius: 10px; */
+  background-color: white;
+  grid-area: row1 / col1 / end / col3;
 }
+
+#photo-small1{
+  border:1px solid #141414;
+  /* border-radius: 10px; */
+  background-color: white;
+  grid-area: row1 / col3 / row2 / end;
+}
+
+#photo-small2{
+  border:1px solid #141414;
+  /* border-radius: 10px; */
+  background-color: white;
+  grid-area: row2 / col3 / end / end;
+}
+
 
 .winner{
-  width:inherit
+  margin-left: 5vw;
 }
 
 /*Footer*/

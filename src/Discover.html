@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Community Feed</title>
     <link rel="stylesheet" href="css/cssreset.css">
-    <!-- <link rel="stylesheet" href="css/projects.css"> -->
     <link rel="stylesheet" href="css/discover.css">
   </head>
 
@@ -13,18 +12,8 @@
     <div class="screen_container">
 
       <div class="header_container">
-        <div id="invisible-spacer">
-          <h1>.</h1>
-        </div>
-
         <div id="title_container">
           <header>XPOSURE</header>
-        </div>
-
-        <div id="settings_container">
-          <a href="Settings.html">
-            <button id="settings-btn">Settings</button>
-          </a>
         </div>
       </div>
 
@@ -35,58 +24,70 @@
       </div>
 
       <div class="main_container">
-        <div class="project_container">
-          <text>Prompt 1</text>
-          <div class="image_container">
-            <a class="photo" href="Submission.html">
-              <div id="photos"></div>
-            </a>
-            <a class="photo" href="Submission.html">
-              <div id="photos"></div>
-            </a>
+        <div class="first_half">
+        <Text id="sub-header">CURRENT CHALLENGES</Text>
+        <div class="ongoing_prompts">
+          <div class="project_container">
+            <div class="project_description">
+              <text id="prompt_text">Prompt 1:  </text>
+            </div>
+            <div class="image_container">
+              <a class="photo" href="Submission.html">
+                <div id="photos"></div>
+              </a>
+            </div>
           </div>
-          <div class="winner_container">
-            <text class="winner">First Place:</text>
-            <text class="winner">Runner-Up:</text>
-          </div>
+          <div class="project_container">
+            <div class="project_description">
+              <text id="prompt_text">Prompt 1:  </text>
+            </div>
+            <div class="image_container">
+              <a class="photo" href="Submission.html">
+                <div id="photos"></div>
+              </a>
+            </div>
         </div>
-        <div class="project_container">
-          <text>Prompt 2</text>
-          <div class="image_container">
-            <a class="photo" href="Submission.html">
-              <div id="photos"></div>
-            </a>
-            <a class="photo" href="Submission.html">
-              <div id="photos"></div>
-            </a>
-          </div>
-          <div class="winner_container">
-            <text class="winner">First Place:</text>
-            <text class="winner">Runner-Up:</text>
-          </div>
         </div>
-        <div class="project_container">
-          <text>Prompt 3</text>
-          <div class="image_container">
-            <a class="photo" href="Submission.html">
-              <div id="photos"></div>
-            </a>
-            <a class="photo" href="Submission.html">
-              <div id="photos"></div>
-            </a>
-          </div>
-          <div class="winner_container">
-            <text class="winner">First Place:</text>
-            <text class="winner">Runner-Up:</text>
-          </div>
-        </div>
-
       </div>
 
+      <div class="second_half">
+        <div class="finished_prompts">
+          <Text id="sub-header">FINISHED PROMPTS</Text>
+
+          <div class="project_container">
+            <div class="project_description">
+              <text id="prompt_text">PROMPT NAME</text>
+            </div>
+            <div class="finished_image_container">
+              <div id="photo-big">
+              </div>
+              <div id="photo-small1">
+              </div>
+              <div id="photo-small2">
+              </div>
+            </div>
+          </div>
+
+          <div class="project_container">
+            <div class="project_description">
+              <text id="prompt_text">PROMPT NAME</text>
+            </div>
+            <div class="finished_image_container">
+              <div id="photo-big">
+              </div>
+              <div id="photo-small1">
+              </div>
+              <div id="photo-small2">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
       <footer class="footer_container">
-        <a href="PromptsScreen.html">
-          <button class="footer_button">PROMPTS</button>
-        </a>
+
         <a href="Discover.html">
           <button class="footer_button">DISCOVER</button>
         </a>
