@@ -1,5 +1,5 @@
 body{
-  font-family: 'Roboto';
+  font-family: Roboto;
   font-weight: normal;
   font-style: normal;
   background: #141414;
@@ -9,38 +9,23 @@ body{
 .screen_container{
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
 }
 
 /*Text section*/
 .text_container{
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  justify-content: center;
-  height: 10vh;
-  background-color: #141414;
-  padding-left: 30px;
-  padding-right: 30px;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 45vh;
+  align-items: center;
 }
 
-#back-btn{
-  width: 100%;
-  height: 100%;
-  margin: 0px;
-  border: none;
-  background-color: #141414;
-  color: white;
-  float: left;
-  align-self: left;
-  align-items:left;
-}
-
-#header-title{
-  font-weight: bolder;
-  color: #FFFFFF;
+#oneliner{
+  color: #808080;
   align-self: center;
+
 }
 
 #title{
@@ -66,7 +51,7 @@ body{
 .photography-box{
   background-color: #494949;
   width: 50vw;
-  height:6vh;
+  height:5vh;
   text-align: right;
 }
 
@@ -76,26 +61,22 @@ body{
   top:30%;
   right:10%;
   font-size: 12px;
-
-  letter-spacing: 0.2em;
-}
-#title{
-  font-size: 3.0em;
-  color: #FFFFFF;
   letter-spacing: 0.2em;
 }
 
 .brand-box{
   background-color: #FFFFFF;
   width: 50vw;
-  height:6vh;
+  height:5vh;
   text-align: left;
 }
 
-#subheader{
-  color: #FFFFFF;
-  margin-bottom: 20%;
-  align-self: center;
+.blur-box{
+  height: inherit;
+  width: inherit;
+  position: absolute;
+  filter: blur(4px);
+  background-color: inherit;
 }
 
 #brand-text{
@@ -108,12 +89,14 @@ body{
 }
 
 
+
+
 /*Button section*/
 .button_container{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 40vh;
+  height: 35vh;
   align-items:center;
 }
 
@@ -150,40 +133,8 @@ body{
   letter-spacing: 0.1em;
 }
 
-.centered-details{
-  max-width: 250px;
-  color: #808080;
-  align-self: center;
-  text-align: center;
-}
-
-/*Inputs*/
-textarea {
-  resize: none;
-  overflow: auto;
-  background-color:#C4C4C4;
-}
 #bottomline{
   color: #FFFFFF;
   text-decoration: none;
   font-size: 0.8em;
-}
-
-/*Footer*/
-.footer_container{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  height: 5vh;
-  background: #141414;
-  align-items: center;
-  background-color: #494949;
-}
-
-.footer_button{
-  background-color: inherit;
-  border: none;
-  color: white;
-  text-align: center;
-  letter-spacing: 0.1em;
 }
