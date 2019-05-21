@@ -9,7 +9,32 @@
   <link rel="stylesheet" href="css/submission.css" />
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
 
+  <!-- GitHub Fetch API -->
+  <script src="./js/fetch.umd.js"></script>
+
+  <script>
+    // Initialize Cloud Firestore through Firebase
+    firebase.initializeApp({
+      apiKey: "AIzaSyC6FPXu3_bOHpHr7AelgBKAMbGiIUPZ2Vo",
+      authDomain: "pandaexpressjs.firebaseapp.com",
+      projectId: "pandaexpressjs"
+    });
+
+    window.onload = function () {
+      fetch('/profile')
+        .then(res => res.json())
+        .then(function (data) {
+          if (data) {
+            console.log("User logged in. UID: ", data);
+            document.getElementById('uid').value = data;
+          }
+        }).catch(function (error) {
+          console.log("Request failed", error)
+        })
+    };
+  </script>
 </head>
 
 <body>
@@ -50,6 +75,7 @@
 
     <form method="POST" action="/submit-form" enctype="multipart/form-data">
       <div id="input-container">
+        <input type="hidden" id="uid" name="uid" />
         <div>
           <text class="topic">Title:</text>
           <input type="text" name="title"><br>
