@@ -71,9 +71,15 @@ body{
 }
 
 .spacer{
-  height: 15vh;
-  margin-left: 5vw;
-  margin-top: 5vw;
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+br{
+  height: 10vh;
 }
 
 .eval_container{
@@ -148,12 +154,12 @@ body{
 #prompt_text{
   font-size: 13px;
   letter-spacing: 0.1em;
-  color: grey;
-  align-self: flex-start;
-  justify-content: flex-start;
+  color: #8F8F8F;
+  align-self: center;
+  justify-content: center;
   max-width: 70vw;
   margin-top: 1vh;
-  margin-left: 5vw;
+  /* margin-left: 5vw; */
 }
 
 /*Button*/
