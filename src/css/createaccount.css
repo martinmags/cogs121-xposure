@@ -15,7 +15,7 @@ body{
 .top_container{
   display: flex;
   flex-direction: column;
-  height: 20vh;
+  height: 15vh;
   justify-content: center;
   align-items: center;
 }
@@ -48,8 +48,8 @@ body{
 .main_container{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 80vh;
+  justify-content: flex-start;
+  height: 85vh;
   align-items: center;
 }
 
@@ -57,13 +57,109 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 20vh;
+  height: 10vh;
   align-items: center;
+}
+
+.text_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 15vh;
+  align-items: center;
+  margin-bottom: 2vh;
+}
+
+.spacer{
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+br{
+  height: 10vh;
+}
+
+.eval_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 28vh;
+  align-items: center;
+}
+
+.eval_container .button{
+  margin-top: 5vh;
+}
+
+
+.image{
+  display: grid;
+  justify-content: center;
+  align-self: center;
+  grid-template-columns: [col1] 20% [col2] auto [end] 20%;
+  grid-template-rows: [row1] 15% [row2] auto [end] 15%;
+  height: 15vh;
+}
+
+.image img{
+  grid-area: row2 / col2 / end / end;
+  height: 15vh;
+}
+
+.picture_grid{
+  display: grid;
+  align-items: stretch;
+  height: 20vh;
+  grid-template-columns: [col1] 33% [col2] 33% [col3] 33% [end];
+  grid-template-rows: [row1] 50% [row2] 50% [end];
+}
+
+.photo{
+  border:2px solid #141414;
+  background-color: white;
+}
+
+#photo-left{
+  grid-area: row1 / col1 / end / col3;
+}
+
+#photo-left-small1{
+  grid-area: row1 / col3 / row2 / end;
+}
+
+#photo-left-small2{
+  grid-area: row2 / col3 / end / end;
+}
+
+#photo-right{
+  grid-area: row1 / col2 / end / end;
+}
+
+#photo-right-small1{
+  grid-area: row1 / col1 / row2 / col2;
+}
+
+#photo-right-small2{
+  grid-area: row2 / col1 / end / col2;
 }
 
 #subheader{
   color: white;
   align-self: center;
+}
+
+#prompt_text{
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: #8F8F8F;
+  align-self: center;
+  justify-content: center;
+  max-width: 70vw;
+  margin-top: 1vh;
+  /* margin-left: 5vw; */
 }
 
 /*Button*/
@@ -77,6 +173,7 @@ body{
   margin-bottom: 5%;
   letter-spacing: 0.2em;
   font-size: 14px;
+  text-align: center;
 }
 
 #input-button{
@@ -91,6 +188,21 @@ body{
   background-color:#141414;
   color: #FFFFFF;
   letter-spacing: 0.1em;
+}
+
+#input-button-big{
+  width: 200px;
+  height: 70px;
+  margin: 2px 10px 2px 10px;
+  border-bottom-color: white;
+  border-top: 1px;
+  border-left: 1px;
+  border-right: 1px;
+  border-color: white;
+  background-color:#141414;
+  color: #FFFFFF;
+  letter-spacing: 0.1em;
+  align-content: flex-end;
 }
 
 #back-button{
