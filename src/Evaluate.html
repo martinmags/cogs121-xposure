@@ -1,51 +1,57 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Xposure</title>
-    <link rel="stylesheet" href="css/index.css"/>
-    <link rel="stylesheet" href="css/evaluate.css"/>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EVALUATE A PHOTO</title>
+  <link rel="stylesheet" href="css/cssreset.css">
+  <link rel="stylesheet" href="css/createaccount.css">
+</head>
 
-  </head>
-
-  <body>
-    <div class="screen_container">
-      <div><text id="title">Evaluate</text></div>
-      <div class="text_container">
-        <text id="prompt-name">Rainy Days</text>
-
-
+<body>
+  <div class="screen_container">
+    <div class="top_container">
+      <a id="back-button" href="Prompt.html">BACK</a>
+      <div class="header_container">
+        <div class="blur-box"></div>
+        <header id="header-title">EVALUATE A PHOTO</header>
       </div>
-      <div class="text_bar">
-        <p class="centered-details">
-        City Melancholic Nights by Fortnite_Photographer 5/9/19 | 16:00
-        </p>
-      </div>
-      <text id="prompt-name">Technique</text>
-      <text class="score">(out of 10)</text>
-      <form>
-        <input type="number" name="quantity" min="1" max="10">
-        <input type="submit">
-      </form>
-      <text id="prompt-name">Originality</text>
-      <text class="score">(out of 10)</text>
-      <form>
-        <input type="number" name="quantity" min="1" max="10">
-        <input type="submit">
-      </form>
-
-      <text id="prompt-name">Interpretation</text>
-      <br/>
-      <textarea rows="3" cols="30"></textarea>
-
-      <br/>
-      <br/>
-      <a href="PromptsScreen.html">
-        <button class="button">Submit</button>
-      </a>
     </div>
-  </body>
+
+    <div class="main_container">
+      <!-- lead to main dashboard  -->
+      <!-- <form action="/users/signup" method="POST"> -->
+      <form action="Discover.html">
+        <div class="text_container">
+          <text id="subheader">Evaluation Criteria</text>
+          <text id="prompt_text">You must evaluate a randomly generated submission from another user in order to submit your own work!</text>
+        </div>
+
+        <div class="eval_container">
+          <text id="subheader">Prompt Title</text>
+          <text id="prompt_text">Submitted by @bob</text>
+          <div class="image">
+            <img src="https://cdn1.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg">
+          </div>
+        </div>
+
+        <div class="eval_container">
+          <input id="input-button" type="number" name="ig" min="1" max="10" placeholder="  Technique (out of 10)">
+          <input id="input-button" type="number" name="portfolio" min="1" max="10" placeholder="  Originality (out of 10)">
+          <input id="input-button-big" type="text" name="portfolio" placeholder="  Interpretation">
+          <input id="input-button" type="number" name="portfolio" min="1" max="10" placeholder="  Overall Score (out of 10)">
+        </div>
+
+        <div class="info_container">
+          <input class="button" type="submit" value="SUBMIT">
+        </div>
+      </form>
+    </div>
+
+  </div>
+</body>
+
+</html>
+
 </html>

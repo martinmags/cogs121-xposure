@@ -5,9 +5,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Xposure</title>
-  <link rel="stylesheet" href="css/index.css" />
-  <link rel="stylesheet" href="css/submission.css" />
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="css/cssreset.css">
+  <link rel="stylesheet" href="css/createaccount.css" />
+
 
   <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
 
@@ -39,58 +39,40 @@
 
 <body>
   <div class="screen_container">
-    <div><text id="title">Submission</text></div>
-    <div class="text_container">
-      <div class="text_bar">
-        <p class="centered-details">
-          You can submit an entry, but to be qualified for the weekly showcase, you need to evaluate at least one other
-          user in the same prompt. Open up your perspectives and see how others interpret the same prompt.
-        </p>
-        <p class="centered-details">
-          *One entry per prompt.
-        </p>
+    <div class="top_container">
+      <a id="back-button" href="Prompt.html">BACK</a>
+      <div class="header_container">
+        <div class="blur-box"></div>
+        <header id="header-title">SUBMISSION</header>
       </div>
     </div>
-    <br />
-    <!-- <div id="input-container">
-      <div>
-        <text class="topic">Title:</text>
-        <input type="text" name="fname"><br>
-      </div>
-      <br />
-      <div>
-        <text class="topic">Files(jpeg):</text>
-        <button class="button" style="width:100px">Upload</button>
-      </div>
-      <div>
-        <text class="topic">Description(optional)</text>
-        <textarea rows="3" cols="30"></textarea>
-      </div>
-    </div>
-    <br />
-    <br />
-    <a href="PromptsScreen.html">
-      <button class="button">Submit</button>
-    </a> -->
 
-    <form method="POST" action="/submit-form" enctype="multipart/form-data">
-      <div id="input-container">
-        <input type="hidden" id="uid" name="uid" />
-        <div>
-          <text class="topic">Title:</text>
-          <input type="text" name="title"><br>
-        </div>
-        <div>
-          <text class="topic">Files(jpeg):</text>
-          <input type="file" name="document" />
-        </div>
-        <div>
-          <text class="topic">Description(optional)</text>
-          <textarea name="desc" rows="3" cols="30"></textarea>
-        </div>
+    <div class="main_container">
+      <div class="text_container">
+        <text id="subheader">Prompt Name</text>
+        <text id="prompt_text">Insert prompt description here</text>
+        <text id="prompt_text">Time remaining: 2 days 3 hrs 20 secs</text>
       </div>
-      <input type="submit" class="button" value="Submit" />
-    </form>
+
+      <form method="POST" action="/submit-form" enctype="multipart/form-data">
+        <div class="eval_container">
+          <input type="hidden" id="uid" name="uid" />
+          <input id="input-button" type="text" name="title" placeholder="  Title">
+          <input class="button" type="file" name="document">
+          <input id="input-button-big" type="text" name="desc" placeholder="  Description (Optional)">
+        </div>
+
+        <div class="spacer">
+          <text id="prompt_text">In order to successfully submit your work, you must also evaluate
+            another submission in the same prompt. Click continue to evaluate another user's work.</text>
+        </div>
+
+        <div class="info_container">
+          <input class="button" type="submit" value="CONTINUE">
+        </div>
+      </form>
+    </div>
+
   </div>
 </body>
 

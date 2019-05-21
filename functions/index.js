@@ -184,7 +184,7 @@ app.post('/submit-form', (req, res) => {
       })
          .then((docRef) => {
             console.log("Submission added! Document ID: ", docRef.id);
-            res.redirect("/Discover.html");
+            res.redirect("/Evaluate.html");
          })
          .catch((error) => {
             console.error("Error writing document: ", error);

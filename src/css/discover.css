@@ -85,7 +85,7 @@ input{
 }
 
 #sub-header{
-  font-size: 20px;
+  font-size: 16px;
   letter-spacing: 0.15em;
   color: white;
   align-self: flex-start;
@@ -94,7 +94,7 @@ input{
 }
 
 #prompt_text{
-  font-size: 15px;
+  font-size: 14px;
   letter-spacing: 0.1em;
   color: white;
   align-self: flex-start;
