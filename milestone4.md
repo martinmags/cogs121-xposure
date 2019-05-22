@@ -20,7 +20,7 @@
 
 ### UI Skeleton Webpage Screenshots
 
-For milestone4, we merged the ongoing prompts and finished prompts page to display both on the home page. We worked on the styling for each page in order for it to be consistent. 
+For milestone4, we merged the ongoing prompts and finished prompts page to display both on the home page. We worked on the styling for each page in order for it to be consistent.
 
 User is able to sign-in or create an account if they don't have one yet.<br>
 ![Initial Screen](milestones/assets/milestone4/signin.png)<br>
@@ -31,7 +31,7 @@ User is able to create an account.<br>
 Users are able to view different ongoing and finished prompts in the home page.<br>
 ![Home Page: Discover](milestones/assets/milestone4/discover.png)<br>
 
-Users are able to view ongoing prompts.<br>
+Users are able to view ongoing prompts and their submitted works.<br>
 ![Prompts Screen](milestones/assets/milestone4/prompt.png)<br>
 
 Users are able to submit their works for each prompt.<br>
