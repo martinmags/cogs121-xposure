@@ -19,42 +19,35 @@
 <a name="Skeleton"></a>
 
 ### UI Skeleton Webpage Screenshots
-TODO:
-milestone4.md contains a written explanation of how your UI's screenshots have improved upon the versions shown in milestone3.md in a noticeable way.
 
+For milestone4, we merged the ongoing prompts and finished prompts page to display both on the home page. We worked on the styling for each page in order for it to be consistent. 
 
 User is able to sign-in or create an account if they don't have one yet.<br>
-![Initial Screen](milestones/assets/Xposure/index.png)<br>
+![Initial Screen](milestones/assets/milestone4/signin.png)<br>
 
 User is able to create an account.<br>
-![Create Account Screen](milestones/assets/Xposure/createAccount.png)<br>
+![Create Account Screen](milestones/assets/milestone4/createaccount.png)<br>
 
-Users are able to view different finished prompts in the home page.<br>
-![Home Page: Discover](milestones/assets/Xposure/discover.png)<br>
+Users are able to view different ongoing and finished prompts in the home page.<br>
+![Home Page: Discover](milestones/assets/milestone4/discover.png)<br>
 
 Users are able to view ongoing prompts.<br>
-![Prompts Screen](milestones/assets/Xposure/prompts.png)<br>
+![Prompts Screen](milestones/assets/milestone4/prompt.png)<br>
 
 Users are able to submit their works for each prompt.<br>
-![Submission Screen](milestones/assets/Xposure/submission.png)<br>
+![Submission Screen](milestones/assets/milestone4/submission.png)<br>
 
 Users are able to evaluate other people's works for each prompt.<br>
-![Evaluation Screen](milestones/assets/Xposure/evaluate.png)<br>
+![Evaluation Screen](milestones/assets/milestone4/evaluate.png)<br>
 
 Users are able to view their account information and submitted works in their profile.<br>
-![Profile Screen](milestones/assets/Xposure/profile.png)<br>
+![Profile Screen](milestones/assets/milestone4/profile.png)<br>
 
 Users are able to edit their account information.<br>
-![Edit Profile Screen](milestones/assets/Xposure/editProfile.png)<br>
-
-Users are able to change their account settings.<br>
-![Settings Screen](milestones/assets/Xposure/Settings.png)<br>
+![Edit Profile Screen](milestones/assets/milestone4/editprofile.png)<br>
 
 
 <a name="UserActions"></a>
-
-TODO:
-milestone4.md contains a written description of at least two non-trivial actions that users can perform when they use your app. These should not be simply logging in or opening static webpages; they need to be substantive actions that demonstrate your app's core functionality, and also differ from one another in a significant way (2 points).
 
 ### User Action 1
 User submits an image for a prompt.
