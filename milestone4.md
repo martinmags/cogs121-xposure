@@ -57,5 +57,18 @@ TODO:
 milestone4.md contains a written description of at least two non-trivial actions that users can perform when they use your app. These should not be simply logging in or opening static webpages; they need to be substantive actions that demonstrate your app's core functionality, and also differ from one another in a significant way (2 points).
 
 ### User Action 1
+User submits an image for a prompt.
+
+1. User has an Xposure account.
+2. User visits `index.html` and fills in his/her email and password, and clicks "Log In".
+3. User is taken to `Discover.html`, and clicks on one of the Current Prompts available.
+4. User is taken to `Prompt.html`, and clicks on "Submit My Work".
+5. User is taken to `Submission.html`, where 3 input form fields will be displayed. The user fills in the title, uploads an image (jpeg), and fills in the description (optional). The user clicks on "Continue" to proceed.
 
 ### User Action 2
+User submits an evaluation for a submission.
+
+Following the steps above, the user is required to submit an evaluation for a randomly selected submission in order to complete his/her submission progress.
+
+6. User is taken to `Evaluate.html`, where 4 input form fields will be displayed. The user fills in the rating for technique (1-10), originality (1-10), a sentence or two for interpretation, and an overall score (1-10). The user clicks on "Submit" to proceed.
+7. User is taken to `Disocover.html`.
