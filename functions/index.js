@@ -118,12 +118,22 @@ app.post('/users/login', (req, res) => {
 
 // User log out
 app.post('/users/logout', (req, res) => {
-   if (firebase.auth().currentUser) {
-      firebase.auth().signOut();
-      res.redirect('/');
-   } else {
-      res.send("You're not logged in!");
-   }
+   // if (firebase.auth().currentUser) {
+   //    firebase.auth().signOut();
+   //    res.redirect('/');
+   // } else {
+   //    res.send("You're not logged in!");
+   // }
+   firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+         // User is signed in.
+         firebase.auth().signOut();
+         res.redirect('/');
+      } else {
+         // No user is signed in.
+         res.send("You're not logged in!");
+      }
+   });
 })
 
 // discover page, check if user is logged in
