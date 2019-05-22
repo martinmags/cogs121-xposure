@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const Busboy = require('busboy');
 const admin = require("firebase-admin");
 const functions = require('firebase-functions');
 const firebase = require("firebase/app");
@@ -23,6 +24,7 @@ firebase.initializeApp(firebaseConfig);
 var serviceAccount = require("./ServiceAccountKey.json");
 admin.initializeApp({
    credential: admin.credential.cert(serviceAccount),
+   storageBucket: "pandaexpressjs.appspot.com",
    databaseURL: "https://pandaexpressjs.firebaseio.com"
 });
 const db = admin.firestore();
@@ -134,5 +136,65 @@ app.get('/profile', (req, res) => {
    })
 })
 
+// generate 3 prompts once a week
+// https://firebase.google.com/docs/functions/schedule-functions?hl=en
+
+// submit photos to firebase storage
+// https://firebase.google.com/docs/storage/web/start
+
+var bucket = admin.storage().bucket();
+
+app.post('/submit-form', (req, res) => {
+   const busboy = new Busboy({ headers: req.headers });
+   // This object will accumulate all the fields, keyed by their name
+   const fields = {};
+   // This object will accumulate all the uploaded files, keyed by their name.
+   const uploads = {};
+
+   // This code will process each non-file field in the form.
+   busboy.on('field', (fieldname, val) => {
+      console.log(`Processed field ${fieldname}: ${val}.`);
+      fields[fieldname] = val;
+   });
+
+   // This code will process each file uploaded.
+   busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
+      console.log(`Processed file ${filename}`);
+      if (mimetype.includes('image') && filename) {
+         let fileExt = mimetype.replace('image/', '');
+         let imageName = fields["uid"] + '-' + fieldname + '.' + fileExt;
+         let tempImgUrl = 'submissions/' + imageName;
+         let bucketFile = bucket.file(tempImgUrl);
+         file.pipe(bucketFile.createWriteStream({ metadata: { contentType: mimetype } }));
+         uploads[fieldname] = tempImgUrl;
+      }
+   });
+
+   // Triggered once all uploaded files are processed by Busboy.
+   // We still need to wait for the disk writes (saves) to complete.
+   busboy.on('finish', () => {
+      db.collection("submissions").doc().set({
+         candidateId: fields["uid"],
+         promptId: "",
+         title: fields["title"],
+         description: fields["desc"],
+         file: uploads["document"],
+         entryDate: new Date().getTime(),
+         evaluations: []
+      })
+         .then((docRef) => {
+            console.log("Submission added! Document ID: ", docRef.id);
+            res.redirect("/Evaluate.html");
+         })
+         .catch((error) => {
+            console.error("Error writing document: ", error);
+            res.redirect("/Submission.html");
+         });
+   });
+
+   busboy.end(req.rawBody);
+})
+
+// submit evaluation for a submission
 
 exports.app = functions.https.onRequest(app);
