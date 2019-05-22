@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="css/cssreset.css">
   <link rel="stylesheet" href="css/createaccount.css" />
 
-
   <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
 
   <!-- GitHub Fetch API -->
@@ -50,13 +49,13 @@
     <div class="main_container">
       <div class="text_container">
         <text id="subheader">Prompt Name</text>
-        <text id="prompt_text">Insert prompt description here</text>
         <text id="prompt_text">Time remaining: 2 days 3 hrs 20 secs</text>
       </div>
 
       <form method="POST" action="/submit-form" enctype="multipart/form-data">
         <div class="eval_container">
           <input type="hidden" id="uid" name="uid" />
+          <br>
           <input id="input-button" type="text" name="title" placeholder="  Title">
           <input class="button" type="file" name="document">
           <input id="input-button-big" type="text" name="desc" placeholder="  Description (Optional)">
