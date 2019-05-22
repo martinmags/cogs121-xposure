@@ -1,35 +1,177 @@
-#prompt-name{
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 24px;
-  line-height: 10px;
-  /* or 42% */
+/* createaccount css copy */
+body{
+  font-family: 'Avenir', sans-serif;
+  font-weight: 400;
+  background: #141414;
+}
 
+/*20+ 80*/
+.screen_container{
   display: flex;
-  align-items: center;
-  text-align: center;
-  letter-spacing: 0.2em;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-  color: #FFFFFF;
+/*Header*/
+.top_container{
+  display: flex;
+  flex-direction: column;
+  height: 15vh;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.header_container{
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  width: 100vw;
+  height:5vh;
+  justify-content: center;
+}
+.blur-box{
+  height: inherit;
+  width: inherit;
+  position: absolute;
+  filter: blur(4px);
+  background-color: inherit;
+}
+#header-title{
+  color: black;
+  align-self: center;
+  font-size:1.3em;
+  letter-spacing: 0.1em;
+  z-index: 2;
+}
+
+/*Main: 80/4*/
+.main_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 85vh;
+  align-items: center;
+}
+
+.info_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 10vh;
+  align-items: center;
+}
+
+.text_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 15vh;
+  align-items: center;
+  margin-bottom: 2vh;
+}
+
+.eval_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 28vh;
+  align-items: center;
+}
+
+.eval_container .button{
   margin-top: 5vh;
 }
 
-.score{
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 10px;
-  /* or 42% */
 
-  display: flex;
-  align-items: center;
-  text-align: center;
-  letter-spacing: 0.2em;
-  color: #FFFFFF;
-  margin-top: 12px;
+.image{
+  display: grid;
+  justify-content: center;
+  align-self: center;
+  grid-template-columns: [col1] 20% [col2] auto [end] 20%;
+  grid-template-rows: [row1] 15% [row2] auto [end] 15%;
+  height: 15vh;
 }
-form{
-  padding-top: 3px;
+
+.image img{
+  grid-area: row2 / col2 / end / end;
+  height: 15vh;
+}
+
+#subheader{
+  color: white;
+  align-self: center;
+}
+
+#prompt_text{
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: #8F8F8F;
+  align-self: center;
+  justify-content: center;
+  max-width: 70vw;
+  margin-top: 1vh;
+  /* margin-left: 5vw; */
+}
+
+/*Button*/
+.button{
+  width: 225px;
+  height: 30px;
+  background-color: #494949;
+  color: white;
+  border: 1px;
+  border-radius: 5px;
+  margin-bottom: 5%;
+  letter-spacing: 0.2em;
+  font-size: 14px;
+  text-align: center;
+}
+
+.input-button{
+  width: 200px;
+  height: 30px;
+  margin: 2px 10px 2px 10px;
+  border-bottom-color: white;
+  border-top: 1px;
+  border-left: 1px;
+  border-right: 1px;
+  border-color: white;
+  background-color:#141414;
+  color: #FFFFFF;
+  letter-spacing: 0.1em;
+}
+
+.input-button-big{
+  width: 200px;
+  height: 70px;
+  margin: 2px 10px 2px 10px;
+  border-bottom-color: white;
+  border-top: 1px;
+  border-left: 1px;
+  border-right: 1px;
+  border-color: white;
+  background-color:#141414;
+  color: #FFFFFF;
+  letter-spacing: 0.1em;
+  align-content: flex-end;
+}
+
+.back-button{
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+  justify-content: space-around;
+  align-items: center;
+  width: 100px;
+  height: 30px;
+  font-size: 14px;
+  background-color: #494949;
+  color: white;
+  border: 1px;
+  border-radius: 5px;
+  margin: 5px 5px 5px 5px;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+  text-align: center;
 }
