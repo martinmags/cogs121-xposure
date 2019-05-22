@@ -7,12 +7,65 @@
   <title>EVALUATE A PHOTO</title>
   <link rel="stylesheet" href="css/cssreset.css">
   <link rel="stylesheet" href="css/createaccount.css">
+
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+
+  <!-- GitHub Fetch API -->
+  <script src="./js/fetch.umd.js"></script>
+  <script>
+    // Initialize Cloud Firestore through Firebase
+    firebase.initializeApp({
+      apiKey: "AIzaSyC6FPXu3_bOHpHr7AelgBKAMbGiIUPZ2Vo",
+      authDomain: "pandaexpressjs.firebaseapp.com",
+      projectId: "pandaexpressjs"
+    });
+
+    var db = firebase.database();
+
+    $('#submitButton').click(()=>{
+      var uid = "";
+      var subId = ""; // TODO: Change this
+      var date = new Date();
+      fetch('/profile')
+        .then(res => res.json())
+        .then(function (data) {
+          if (data) {
+            uid = data;
+          }
+        }).catch(function (error) {
+          console.log("Request failed", error)
+        })
+      var postData = {
+        userId: uid,
+        submissionId: subId,
+        technique: $('#technique').val(),
+        originality: $('#originality').val(),
+        interpretation: $('#interpretation').val(),
+        overallScore: $('#overall').val(),
+        entryDate: date.getTime()
+      };
+      var newKey = db.ref().child('evaluations').push().key;
+
+      // Write the new post's data simultaneously in the posts list and the user's post list.
+      var updates = {};
+      updates['/evaluations/' + newKey] = postData;
+      updates['/submissions/' + submissionId + '/evaluations/' + newKey] = newKey;
+
+      console.log(postData);
+      if(firebase.database().ref().update(updates)){
+        window.location.href = "Discover.html";
+      } else {
+        window.location.href = "Evaluate.html";
+      }
+    })
+  </script>
 </head>
 
 <body>
   <div class="screen_container">
     <div class="top_container">
-      <a id="back-button" href="Prompt.html">BACK</a>
+      <a class="back-button" href="Prompt.html">BACK</a>
       <div class="header_container">
         <div class="blur-box"></div>
         <header id="header-title">EVALUATE A PHOTO</header>
@@ -37,14 +90,14 @@
         </div>
 
         <div class="eval_container">
-          <input id="input-button" type="number" name="ig" min="1" max="10" placeholder="  Technique (out of 10)">
-          <input id="input-button" type="number" name="portfolio" min="1" max="10" placeholder="  Originality (out of 10)">
-          <input id="input-button-big" type="text" name="portfolio" placeholder="  Interpretation">
-          <input id="input-button" type="number" name="portfolio" min="1" max="10" placeholder="  Overall Score (out of 10)">
+          <input class="input-button" id="technique" type="number" name="ig" min="1" max="10" placeholder="  Technique (out of 10)">
+          <input class="input-button" id="originality" type="number" name="portfolio" min="1" max="10" placeholder="  Originality (out of 10)">
+          <input class="input-button-big" id="interpretation" type="text" name="portfolio" placeholder="  Interpretation">
+          <input class="input-button" id="overall" type="number" name="portfolio" min="1" max="10" placeholder="  Overall Score (out of 10)">
         </div>
 
         <div class="info_container">
-          <input class="button" type="submit" value="SUBMIT">
+          <input class="button" type="submit" value="SUBMIT" id="submitButton">
         </div>
       </form>
     </div>
