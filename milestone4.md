@@ -25,7 +25,7 @@ For milestone4, we merged the ongoing prompts and finished prompts page to displ
 User is able to sign-in or create an account if they don't have one yet.<br>
 ![Initial Screen](milestones/assets/milestone4/signin.png)<br>
 
-User is able to create an account.<br>
+User is able to create an account if they don't have one yet.<br>
 ![Create Account Screen](milestones/assets/milestone4/createaccount.png)<br>
 
 Users are able to view different ongoing and finished prompts in the home page.<br>
