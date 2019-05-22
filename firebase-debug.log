@@ -1,0 +1,80 @@
+[debug] [2019-05-13T21:36:41.185Z] ----------------------------------------------------------------------
+[debug] [2019-05-13T21:36:41.190Z] Command:       /usr/bin/node /usr/bin/firebase serve
+[debug] [2019-05-13T21:36:41.190Z] CLI Version:   6.9.2
+[debug] [2019-05-13T21:36:41.190Z] Platform:      linux
+[debug] [2019-05-13T21:36:41.191Z] Node Version:  v8.12.0
+[debug] [2019-05-13T21:36:41.191Z] Time:          Mon May 13 2019 14:36:41 GMT-0700 (PDT)
+[debug] [2019-05-13T21:36:41.191Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-05-13T21:36:41.205Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-05-13T21:36:41.205Z] > authorizing via signed-in user
+[debug] [2019-05-13T21:36:41.205Z] [iam] checking project pandaexpressjs for permissions ["firebase.projects.get"]
+[debug] [2019-05-13T21:36:41.208Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/pandaexpressjs:testIamPermissions  
+
+[debug] [2019-05-13T21:36:41.523Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-13T21:36:41.527Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/pandaexpressjs  
+ 
+[debug] [2019-05-13T21:36:41.849Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/bossu/Desktop/Projects/cogs121-xposure'...
+[info] 
+[warn] ⚠  Your functions directory does not specify a Node version.
+   - Learn more at https://firebase.google.com/docs/functions/manage-functions#set_runtime_options
+[debug] [2019-05-13T21:36:41.858Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/718178135759/clients/_:getWebAppConfig  
+ 
+[debug] [2019-05-13T21:36:41.859Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/718178135759:getServerAppConfig  
+ 
+[debug] [2019-05-13T21:36:42.023Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Emulator started at http://localhost:5001
+[debug] [2019-05-13T21:36:42.111Z] <<< HTTP RESPONSE 200
+[info] i  functions: Watching "/home/bossu/Desktop/Projects/cogs121-xposure/functions" for Cloud Functions...
+[info] i  hosting: Serving hosting files from: src
+[info] ✔  hosting: Local server: http://localhost:5000
+[debug] [2019-05-13T21:36:42.976Z] Functions runtime initialized.
+[debug] [2019-05-13T21:36:42.976Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[warn] ⚠  The Cloud Functions emulator requires the module "firebase-functions-test" to be installed as a development dependency. To fix this, run "npm install --save-dev firebase-functions-test" in your functions directory.
+[info] i  functions: Your functions could not be parsed due to an issue with your node_modules (see above)
+[info] [hosting] Rewriting /users/login to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[debug] [2019-05-13T21:36:46.413Z] [functions] GET request to function app accepted.
+[debug] [2019-05-13T21:36:46.430Z] [functions] Waiting for runtime to be ready!
+[debug] [2019-05-13T21:36:47.734Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-05-13T21:36:47.737Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[warn] ⚠  The Cloud Functions emulator requires the module "firebase-functions-test" to be installed as a development dependency. To fix this, run "npm install --save-dev firebase-functions-test" in your functions directory.
+[info] i  functions: Your functions could not be parsed due to an issue with your node_modules (see above)
+[info] [hosting] Rewriting /favicon.ico to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[debug] [2019-05-13T21:36:48.447Z] [functions] GET request to function app accepted.
+[debug] [2019-05-13T21:36:48.462Z] [functions] Waiting for runtime to be ready!
+[debug] [2019-05-13T21:36:49.200Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-05-13T21:36:49.201Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[warn] ⚠  The Cloud Functions emulator requires the module "firebase-functions-test" to be installed as a development dependency. To fix this, run "npm install --save-dev firebase-functions-test" in your functions directory.
+[info] i  functions: Your functions could not be parsed due to an issue with your node_modules (see above)
+[info] [hosting] Rewriting /users/login to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[debug] [2019-05-13T21:36:53.124Z] [functions] POST request to function app accepted.
+[info] [hosting] Rewriting /users/login to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[debug] [2019-05-13T21:36:54.916Z] [functions] POST request to function app accepted.
+[info] [hosting] Rewriting /users/login to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[debug] [2019-05-13T21:37:06.027Z] [functions] POST request to function app accepted.
+[info] [hosting] Rewriting /users/login to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[debug] [2019-05-13T21:37:07.330Z] [functions] POST request to function app accepted.
+[info] [hosting] Rewriting /users/login to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[debug] [2019-05-13T21:37:07.922Z] [functions] POST request to function app accepted.
+[info] [hosting] Rewriting /users/login to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[debug] [2019-05-13T21:37:08.345Z] [functions] POST request to function app accepted.
+[info] [hosting] Rewriting /users/login to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[debug] [2019-05-13T21:37:08.825Z] [functions] POST request to function app accepted.
+[info] [hosting] Rewriting /users/login to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[debug] [2019-05-13T21:37:09.392Z] [functions] POST request to function app accepted.
+[info] [hosting] Rewriting /users/login to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[debug] [2019-05-13T21:37:09.984Z] [functions] POST request to function app accepted.
+[info] [hosting] Rewriting /users/login to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[debug] [2019-05-13T21:37:13.348Z] [functions] POST request to function app accepted.
+[info] [hosting] Rewriting /favicon.ico to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[debug] [2019-05-13T21:38:13.399Z] [functions] GET request to function app accepted.
+[debug] [2019-05-13T21:38:13.411Z] [functions] Waiting for runtime to be ready!
+[debug] [2019-05-13T21:38:13.768Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-05-13T21:38:13.770Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[warn] ⚠  The Cloud Functions emulator requires the module "firebase-functions-test" to be installed as a development dependency. To fix this, run "npm install --save-dev firebase-functions-test" in your functions directory.
+[info] i  functions: Your functions could not be parsed due to an issue with your node_modules (see above)

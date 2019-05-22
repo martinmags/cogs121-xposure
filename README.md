@@ -27,6 +27,11 @@ Make sure you have installed the Firebase CLI:
 npm install -g firebase-tools
 ```
 
+Make sure you have development dependencies installed:
+```
+npm install --save-dev firebase-functions-test
+```
+
 Authenticate to your Firebase account:
 ```
 firebase login
@@ -36,3 +41,5 @@ Start a local web server:
 ```
 firebase serve
 ```
+
+
