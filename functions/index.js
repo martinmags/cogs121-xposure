@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+var request = require('request');
 const Busboy = require('busboy');
 const admin = require("firebase-admin");
 const functions = require('firebase-functions');
@@ -146,8 +147,43 @@ app.get('/profile', (req, res) => {
    })
 })
 
-// generate 3 prompts once a week
-// https://firebase.google.com/docs/functions/schedule-functions?hl=en
+// generate 3 prompts
+app.get('/gen-prompts', (req, res) => {
+
+   request("https://api.unsplash.com/collections/featured?page=8&per_page=3&client_id=a2e61cfb25649bf508835bb5dcded3701a65033ede47fd307f6adfc23acaaf8c",
+      function (error, response, body) {
+         if (!error && response.statusCode === 200) {
+            JSON.parse(body).forEach((e) => {
+               console.log(e["title"]);
+               console.log(e["cover_photo"]["urls"]["regular"]);
+
+               db.collection("prompts").add({
+                  title: e["title"],
+                  coverUrl: e["cover_photo"]["urls"]["regular"],
+                  entryDate: new Date().getTime(),
+                  deadline: new Date().getTime() + (7 * 24 * 60 * 60 * 1000),
+                  submissions: []
+               })
+                  .then((docRef) => {
+                     console.log("Prompt " + "\"" + e["title"]+ "\"" + " added! Document ID: " + docRef.id);
+                     // res.redirect("/Discover.html");
+                     // res.send("User added! Document ID: ", docRef.id);
+                  })
+                  .catch((error) => {
+                     console.error("Error writing document: ", error);
+                     // res.redirect("/CreateAccount.html");
+                     // res.send();
+                  });
+            });
+
+            res.json(JSON.parse(body));
+         } else {
+            res.json(error);
+         }
+      }
+   );
+
+})
 
 // submit photos to firebase storage
 // https://firebase.google.com/docs/storage/web/start

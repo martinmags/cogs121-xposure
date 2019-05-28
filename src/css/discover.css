@@ -61,7 +61,7 @@ body{
   justify-content: center;
 }
 .prompt{
-  min-height: 150px;
+  height: 150px;
   min-width: 150px;
   background-color: white;
   border-radius: 10px;
