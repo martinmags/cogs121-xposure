@@ -190,7 +190,40 @@ app.get('/gen-prompts', (req, res) => {
 
 var bucket = admin.storage().bucket();
 
+// app.post('/select-prompt', (req, res) => {
+//    let pid = req.body.promptId;
+//    res.redirect('/Prompt.html');
+// });
+
+// Handle passing promptId from Discover to Prompt
+const url = require('url');
+let pid = "";  // Idk how bad this is but if all else fails do this.
+app.get('/select-prompt', (req, res) => {
+   console.log('select-prompt');
+   console.log(req.query.promptId);
+   pid = req.query.promptId;
+   res.redirect(url.format({
+      pathname: "/Prompt.html",
+      query: req.query.promptId,
+   }));
+});
+
+// Handle passing promptId from Prompt to Submission
+app.get('/pass-prompt', (req, res) => {
+   console.log('pass-prompt');
+   console.log(req);
+   console.log(req.query.promptId);
+   console.log(pid);
+   res.redirect(url.format({
+      pathname:"/Submission.html",
+      query: req.query.promptId,
+   }));
+});
+
+// Write submission to db
 app.post('/submit-form', (req, res) => {
+   console.log('submit-form');
+   console.log(req);
    const busboy = new Busboy({ headers: req.headers });
    // This object will accumulate all the fields, keyed by their name
    const fields = {};
@@ -215,6 +248,10 @@ app.post('/submit-form', (req, res) => {
          uploads[fieldname] = tempImgUrl;
       }
    });
+
+   // TODO: Bind promptid to each submission
+   // TODO: Push submissionid to array of submissions in the corresponding prompt.
+   // let pid = req.query.promptId;
 
    // Triggered once all uploaded files are processed by Busboy.
    // We still need to wait for the disk writes (saves) to complete.
