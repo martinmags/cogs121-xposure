@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const url = require('url');
 var request = require('request');
 const Busboy = require('busboy');
 const admin = require("firebase-admin");
@@ -7,6 +8,7 @@ const functions = require('firebase-functions');
 const firebase = require("firebase/app");
 require("firebase/auth");
 require("firebase/database");
+require("firebase/firestore");
 
 const firebaseConfig = {
    apiKey: "AIzaSyC6FPXu3_bOHpHr7AelgBKAMbGiIUPZ2Vo",
@@ -119,12 +121,6 @@ app.post('/users/login', (req, res) => {
 
 // User log out
 app.post('/users/logout', (req, res) => {
-   // if (firebase.auth().currentUser) {
-   //    firebase.auth().signOut();
-   //    res.redirect('/');
-   // } else {
-   //    res.send("You're not logged in!");
-   // }
    firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
          // User is signed in.
@@ -165,14 +161,10 @@ app.get('/gen-prompts', (req, res) => {
                   submissions: []
                })
                   .then((docRef) => {
-                     console.log("Prompt " + "\"" + e["title"]+ "\"" + " added! Document ID: " + docRef.id);
-                     // res.redirect("/Discover.html");
-                     // res.send("User added! Document ID: ", docRef.id);
+                     console.log("Prompt " + "\"" + e["title"] + "\"" + " added! Document ID: " + docRef.id);
                   })
                   .catch((error) => {
                      console.error("Error writing document: ", error);
-                     // res.redirect("/CreateAccount.html");
-                     // res.send();
                   });
             });
 
@@ -185,40 +177,31 @@ app.get('/gen-prompts', (req, res) => {
 
 })
 
-// submit photos to firebase storage
-// https://firebase.google.com/docs/storage/web/start
-
-var bucket = admin.storage().bucket();
-
-// app.post('/select-prompt', (req, res) => {
-//    let pid = req.body.promptId;
-//    res.redirect('/Prompt.html');
-// });
-
 // Handle passing promptId from Discover to Prompt
-const url = require('url');
-let pid = "";  // Idk how bad this is but if all else fails do this.
-app.get('/select-prompt', (req, res) => {
-   console.log('select-prompt');
-   console.log(req.query.promptId);
-   pid = req.query.promptId;
+app.post('/select-prompt', (req, res) => {
+   let pid = req.body.promptId;
    res.redirect(url.format({
       pathname: "/Prompt.html",
-      query: req.query.promptId,
+      query: {
+         "pid": pid
+      },
    }));
 });
 
 // Handle passing promptId from Prompt to Submission
-app.get('/pass-prompt', (req, res) => {
-   console.log('pass-prompt');
-   console.log(req);
-   console.log(req.query.promptId);
-   console.log(pid);
+app.post('/pass-prompt', (req, res) => {
+   let pid = req.body.promptId;
    res.redirect(url.format({
-      pathname:"/Submission.html",
-      query: req.query.promptId,
+      pathname: "/Submission.html",
+      query: {
+         "pid": pid
+      },
    }));
 });
+
+// submit photos to firebase storage
+// https://firebase.google.com/docs/storage/web/start
+var bucket = admin.storage().bucket();
 
 // Write submission to db
 app.post('/submit-form', (req, res) => {
@@ -241,24 +224,20 @@ app.post('/submit-form', (req, res) => {
       console.log(`Processed file ${filename}`);
       if (mimetype.includes('image') && filename) {
          let fileExt = mimetype.replace('image/', '');
-         let imageName = fields["uid"] + '-' + fieldname + '.' + fileExt;
-         let tempImgUrl = 'submissions/' + imageName;
+         let imageName = fields["uid"] + '.' + fileExt;
+         let tempImgUrl = 'submissions/' + fields["promptId"] + '/' + imageName;
          let bucketFile = bucket.file(tempImgUrl);
          file.pipe(bucketFile.createWriteStream({ metadata: { contentType: mimetype } }));
          uploads[fieldname] = tempImgUrl;
       }
    });
 
-   // TODO: Bind promptid to each submission
-   // TODO: Push submissionid to array of submissions in the corresponding prompt.
-   // let pid = req.query.promptId;
-
    // Triggered once all uploaded files are processed by Busboy.
    // We still need to wait for the disk writes (saves) to complete.
    busboy.on('finish', () => {
-      db.collection("submissions").doc().set({
+      db.collection("submissions").add({
          candidateId: fields["uid"],
-         promptId: "",
+         promptId: fields["promptId"],
          title: fields["title"],
          description: fields["desc"],
          file: uploads["document"],
@@ -267,6 +246,17 @@ app.post('/submit-form', (req, res) => {
       })
          .then((docRef) => {
             console.log("Submission added! Document ID: ", docRef.id);
+
+            // Push submissionId to array of submissions in the corresponding user.
+            db.collection("users").doc(fields["uid"]).update({
+               submissions: admin.firestore.FieldValue.arrayUnion(docRef.id)
+            });
+
+            // Push submissionId to array of submissions in the corresponding prompt.
+            db.collection("prompts").doc(fields["promptId"]).update({
+               submissions: admin.firestore.FieldValue.arrayUnion(docRef.id)
+            });
+
             res.redirect("/Evaluate.html");
          })
          .catch((error) => {

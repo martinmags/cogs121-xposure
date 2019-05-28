@@ -127,6 +127,9 @@ input{
   outline: none;
   width: 100vw;
 }
+input.prompt {
+  width: unset;
+}
 
 ::-webkit-input-placeholder { /* Webkit */
    color: white;

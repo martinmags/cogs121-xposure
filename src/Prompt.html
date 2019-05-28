@@ -11,13 +11,31 @@
 
   <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
-  
+
   <script src="./js/displayImages.js"></script>
+
+  <script>
+    // extract promptId from URL params
+    function getUrlVars() {
+      var vars = {};
+      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+        vars[key] = value;
+      });
+      return vars;
+    }
+
+    let pid = getUrlVars()["pid"];
+    console.log("pid: " + pid);
+
+    window.onload = function () {
+      document.getElementById("pid").value = pid;
+    }
+  </script>
 </head>
 
 <body>
   <div class="screen_container">
-    
+
     <div class="top_container">
       <a id="back-button" href="Discover.html">BACK</a>
       <div class="header_container">
@@ -25,15 +43,19 @@
         <header id="header-title">Prompt Title</header>
       </div>
     </div>
-    
+
     <div class="time_remaining_container">
       <text id="time">Time remaining: 2 days 3 hrs 20 secs</text>
     </div>
 
     <div class="button_container">
-      <a href="Submission.html">
+      <form action="/pass-prompt" method="POST">
+        <input type="hidden" id="pid" name="promptId">
+        <input id="btn" type="submit" value="Submit my work">
+      </form>
+      <!-- <a href="Submission.html">
         <button id="btn">Submit my work</button>
-      </a>
+      </a> -->
     </div>
 
     <div class="submitted_header_container">

@@ -21,6 +21,18 @@
       projectId: "pandaexpressjs"
     });
 
+    // extract promptId from URL params
+    function getUrlVars() {
+      var vars = {};
+      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+        vars[key] = value;
+      });
+      return vars;
+    }
+
+    let pid = getUrlVars()["pid"];
+    console.log("pid: " + pid);
+
     window.onload = function () {
       fetch('/profile')
         .then(res => res.json())
@@ -32,6 +44,8 @@
         }).catch(function (error) {
           console.log("Request failed", error)
         })
+
+      document.getElementById("pid").value = pid;
     };
   </script>
 </head>
@@ -54,6 +68,7 @@
 
       <form method="POST" action="/submit-form" enctype="multipart/form-data">
         <div class="eval_container">
+          <input type="hidden" id="pid" name="promptId" />
           <input type="hidden" id="uid" name="uid" />
           <input id="input-button" type="text" name="title" placeholder="  Title">
           <input class="button" type="file" name="document">

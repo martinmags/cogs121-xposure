@@ -30,7 +30,10 @@
       querySnapshot.forEach((doc) => {
         tgtContainer.innerHTML += `
           <div class="col_container">
-            <a href="Prompt.html"><img class="prompt" alt="prompt" src="${doc.data()["coverUrl"]}"></img></a>
+            <form action="/select-prompt" method="POST">
+              <input type="hidden" id="pid" name="promptId" value="${doc.id}"/>
+              <input type="image" src="${doc.data()["coverUrl"]}" class="prompt" alt="prompt" />
+            </form>
             <text class="txt">${doc.data()["title"]}</text>
           </div>      
         `
