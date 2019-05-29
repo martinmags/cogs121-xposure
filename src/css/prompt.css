@@ -102,7 +102,7 @@ body{
   align-items: center;
   overflow-y: auto;
 }
-#image{
+.image{
   min-height: 300px;
   min-width: 300px;
   max-width: 500px;

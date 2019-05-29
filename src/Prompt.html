@@ -12,9 +12,18 @@
   <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
 
-  <script src="./js/displayImages.js"></script>
+  <!-- <script src="./js/displayImages.js"></script> -->
 
   <script>
+    // Initialize Cloud Firestore through Firebase
+    firebase.initializeApp({
+      apiKey: "AIzaSyC6FPXu3_bOHpHr7AelgBKAMbGiIUPZ2Vo",
+      authDomain: "pandaexpressjs.firebaseapp.com",
+      projectId: "pandaexpressjs"
+    });
+
+    var db = firebase.firestore();   
+     
     // extract promptId from URL params
     function getUrlVars() {
       var vars = {};
@@ -29,6 +38,30 @@
 
     window.onload = function () {
       document.getElementById("pid").value = pid;
+      db.collection("prompts").doc(pid).onSnapshot(doc => {
+        const sid = doc.data().submissions;
+        sid.forEach((sid)=> {
+          db.collection("submissions").doc(sid).onSnapshot(doc =>{
+            db.collection("submissions").get().then((querySnapshot) => {
+              const imgsrc = doc.data().file;
+              console.log(imgsrc);
+              let tgtContainer = document.querySelector(".submitted_container");
+
+              querySnapshot.forEach((doc) => {
+                tgtContainer.innerHTML += `
+                    <img class="image" alt="submission" src="${imgsrc}"></text>
+                `
+              })
+
+
+
+            });            
+          });
+        });
+        
+      });
+
+
     }
   </script>
 </head>
@@ -64,8 +97,8 @@
     </div>
 
     <div class="submitted_container">
-      <div id="image"></div>
     </div>
+    
   </div>
 </body>
 
