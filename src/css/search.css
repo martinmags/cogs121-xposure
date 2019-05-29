@@ -6,14 +6,14 @@ body{
     color: #FFFFFF;
     letter-spacing: 0.025em;
   }
-  
+
   /* 10 + 5 + 80 + 5*/
   .screen_container{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
-  
+
   /*Header=10*/
   .header_container{
     display: flex;
@@ -21,7 +21,7 @@ body{
     justify-content: space-around;
     height: 10vh;
   }
-  
+
   /*Search Container=5*/
   .search_container{
     display:flex;
@@ -36,9 +36,22 @@ body{
   .list_container{
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       text-align: center;
-      height: 80vh;
+      height: 75vh;
+      align-content: center;
+      margin-top: 5vh;
+  }
+
+  .user_container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    height: 5vh;
+    background-color: #292929;
+    border-bottom-color: black;
+    margin-bottom: 2vh;
   }
 
   #title{
@@ -48,7 +61,7 @@ body{
     align-self: center;
     font-size:1.7em;
   }
-  
+
   #search-btn{
     background: inherit;
     border: inherit;
@@ -62,13 +75,13 @@ body{
   input.prompt {
     width: 300px;
   }
-  
+
   ::-webkit-input-placeholder { /* Webkit */
      color: white;
   }
 
 
-  
+
   /*Footer*/
   .footer_container{
     display: flex;
@@ -79,7 +92,7 @@ body{
     align-items: center;
     background-color: #494949;
   }
-  
+
   .footer_button{
     background-color: inherit;
     border: none;
@@ -88,7 +101,7 @@ body{
     letter-spacing: 0.1em;
     text-decoration: none;
   }
-  
+
   a{
     text-decoration: none;
     color: white;

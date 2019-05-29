@@ -25,9 +25,9 @@
 
     });
 
-    var db = firebase.firestore();   
+    var db = firebase.firestore();
     var storageRef = firebase.storage().ref();
-     
+
     // extract promptId from URL params
     function getUrlVars() {
       var vars = {};
@@ -59,10 +59,10 @@
                 // Handle any errors
                 console.error("Error getting download URL: ", error);
               });
-            });            
+            });
           });
         });
-        
+
       });
 
 
@@ -77,7 +77,7 @@
       <a id="back-button" href="Discover.html">BACK</a>
       <div class="header_container">
         <div class="blur-box"></div>
-        <header id="header-title">Prompt Title</header>
+        <header id="header-title">Dancers</header>
       </div>
     </div>
 
@@ -102,7 +102,7 @@
 
     <div class="submitted_container">
     </div>
-    
+
   </div>
 </body>
 
