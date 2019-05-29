@@ -11,6 +11,7 @@
 
   <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
 
   <!-- <script src="./js/displayImages.js"></script> -->
 
@@ -19,10 +20,13 @@
     firebase.initializeApp({
       apiKey: "AIzaSyC6FPXu3_bOHpHr7AelgBKAMbGiIUPZ2Vo",
       authDomain: "pandaexpressjs.firebaseapp.com",
-      projectId: "pandaexpressjs"
+      projectId: "pandaexpressjs",
+      storageBucket: "pandaexpressjs.appspot.com"
+
     });
 
     var db = firebase.firestore();   
+    var storageRef = firebase.storage().ref();
      
     // extract promptId from URL params
     function getUrlVars() {
@@ -46,11 +50,14 @@
               const imgsrc = doc.data().file;
               console.log(imgsrc);
               let tgtContainer = document.querySelector(".submitted_container");
-
-              querySnapshot.forEach((doc) => {
-                tgtContainer.innerHTML += `
-                    <img class="image" alt="submission" src="${imgsrc}"></img>
-                `
+              // firebase storage
+              storageRef.child(imgsrc).getDownloadURL().then(function (url) {
+                  tgtContainer.innerHTML += `
+                    <img class="image" alt="submission" src="${url}"></img>
+                    `
+              }).catch(function (error) {
+                // Handle any errors
+                console.error("Error getting download URL: ", error);
               });
             });            
           });
