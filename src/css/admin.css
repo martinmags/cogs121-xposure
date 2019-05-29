@@ -1,0 +1,33 @@
+body {
+   font-family: 'Avenir';
+   font-style: normal;
+   font-weight: normal;
+   background: #141414;
+   color: #FFFFFF;
+   letter-spacing: 0.025em;
+}
+
+/* 10 + 5 + 25 + 60 + 5*/
+
+.screen_container {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+}
+
+/*Header=10*/
+
+.header_container {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   height: 10vh;
+}
+
+#title {
+   font-family: 'Roboto';
+   font-weight: bolder;
+   color: white;
+   align-self: center;
+   font-size: 1.7em;
+}

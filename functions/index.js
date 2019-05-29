@@ -79,7 +79,9 @@ app.post('/users/signup', (req, res) => {
             name,
             email,
             ig,
-            portfolio
+            portfolio,
+            submissions: [],
+            evaluations: []
          })
             .then((docRef) => {
                console.log("User added! Document ID: ", docRef.id);
@@ -109,14 +111,25 @@ app.post('/users/login', (req, res) => {
    const { body } = req;
    const { email, password } = body;
 
-   firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(function (data) {
-         console.log('uid', data.user.uid);
-         res.redirect('/Discover.html');
-      })
-      .catch(function (error) {
-         res.send(error);
-      });
+   if (email === "admin@ucsd.edu") {
+      firebase.auth().signInWithEmailAndPassword(email, password)
+         .then(function (data) {
+            console.log('uid', data.user.uid);
+            res.redirect('/Admin.html');
+         })
+         .catch(function (error) {
+            res.send(error);
+         });
+   } else {
+      firebase.auth().signInWithEmailAndPassword(email, password)
+         .then(function (data) {
+            console.log('uid', data.user.uid);
+            res.redirect('/Discover.html');
+         })
+         .catch(function (error) {
+            res.send(error);
+         });
+   }
 })
 
 // User log out
@@ -205,8 +218,6 @@ var bucket = admin.storage().bucket();
 
 // Write submission to db
 app.post('/submit-form', (req, res) => {
-   console.log('submit-form');
-   console.log(req);
    const busboy = new Busboy({ headers: req.headers });
    // This object will accumulate all the fields, keyed by their name
    const fields = {};
