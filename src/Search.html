@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Discover New Photographers</title>
+  <link rel="stylesheet" href="css/cssreset.css">
+  <link rel="stylesheet" href="css/search.css">
+</head>
+
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+
+<script src="./js/fetch.umd.js"></script>
+
+<body>
+  <div class="screen_container">
+
+    <div class="header_container">
+      <header id="title">USER SEARCH</header>
+    </div>
+
+    <div class="search_container">
+      <form action="Discover.html">
+        <input id="search-btn" type="text" placeholder="Search Users">
+      </form>
+    </div>
+    
+    <!-- TODO: Display all users as buttons that link to their profile -->
+    <div class="list_container"></div>
+    
+    <footer class="footer_container">
+      <a class="footer_button" href="Search.html">SEARCH</a>
+      <a class="footer_button" href="Discover.html">DISCOVER</a>
+      <a class="footer_button" href="Profile.html">MY PROFILE</a>
+    </footer>
+
+  </div>
+
+</body>
+
+</html>
+
+</html>

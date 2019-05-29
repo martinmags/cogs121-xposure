@@ -62,7 +62,7 @@ body{
 }
 .prompt{
   height: 150px;
-  min-width: 150px;
+  width: 150px;
   background-color: white;
   border-radius: 10px;
   margin-left: 10px;
@@ -128,7 +128,7 @@ input{
   width: 100vw;
 }
 input.prompt {
-  width: unset;
+  width: 300px;
 }
 
 ::-webkit-input-placeholder { /* Webkit */
@@ -187,4 +187,10 @@ input.prompt {
   color: white;
   text-align: center;
   letter-spacing: 0.1em;
+  text-decoration: none;
+}
+
+a{
+  text-decoration: none;
+  color: white;
 }

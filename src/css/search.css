@@ -1,0 +1,95 @@
+body{
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: normal;
+    background: #141414;
+    color: #FFFFFF;
+    letter-spacing: 0.025em;
+  }
+  
+  /* 10 + 5 + 80 + 5*/
+  .screen_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /*Header=10*/
+  .header_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 10vh;
+  }
+  
+  /*Search Container=5*/
+  .search_container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 5vh;
+    background-color: #494949;
+  }
+
+  /* list container */
+  .list_container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      height: 80vh;
+  }
+
+  #title{
+    font-family: 'Roboto';
+    font-weight: bolder;
+    color: white;
+    align-self: center;
+    font-size:1.7em;
+  }
+  
+  #search-btn{
+    background: inherit;
+    border: inherit;
+    text-align: center;
+  }
+  input{
+    color: white;
+    outline: none;
+    width: 100vw;
+  }
+  input.prompt {
+    width: 300px;
+  }
+  
+  ::-webkit-input-placeholder { /* Webkit */
+     color: white;
+  }
+
+
+  
+  /*Footer*/
+  .footer_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 5vh;
+    background: #141414;
+    align-items: center;
+    background-color: #494949;
+  }
+  
+  .footer_button{
+    background-color: inherit;
+    border: none;
+    color: white;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+  }
+  
+  a{
+    text-decoration: none;
+    color: white;
+  }
