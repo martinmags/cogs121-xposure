@@ -278,8 +278,13 @@ app.post('/submit-form', (req, res) => {
             db.collection("prompts").doc(fields["promptId"]).update({
                submissions: admin.firestore.FieldValue.arrayUnion(docRef.id)
             });
-
-            res.redirect("/Evaluate.html");
+            // redirect to prompts page
+            res.redirect(url.format({
+               pathname: "/Prompt.html",
+               query: {
+                  "pid": fields["promptId"]
+               },
+            }));
          })
          .catch((error) => {
             console.error("Error writing document: ", error);
