@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>My Profile</title>
   <link rel="stylesheet" href="css/cssreset.css">
-  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="css/profile_search.css">
 
   <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
@@ -49,36 +49,47 @@
 <body>
   <div class="screen_container">
 
-    <div class="header_container">
-      <div id="invisible-spacer">
-        <h1>.</h1>
-      </div>
+    <!-- <div class="header_container">
+      <a id="back-button" href="Prompt.html">BACK</a>
       <div id="header-title">
-        <header>PROFILE</header>
+        <header>USER SEARCH</header>
       </div>
-      <div id="edit_container">
-        <a href="EditProfile.html">
-          <button id="edit-btn">Edit</button>
-        </a>
+    </div> -->
+
+    <div class="top_container">
+      <a id="back-button" href="Search.html">BACK</a>
+      <div class="header_container">
+        <div class="blur-box"></div>
+        <header id="header-title">USER SEARCH</header>
       </div>
     </div>
 
     <div class="main_container">
       <div class="text_container">
-          <text id="sub-header"><span id="span-name">NAME HERE</span></text>
-          <text id="info-text"><span id="span-alias">Alias here</span></text>
-          <text id="info-text"><span id="span-ig">@instagram</span></text>
-          <text id="info-text"><span id="span-email">email@ucsd.edu</span></text>
-          <text id="info-text"><span id="span-portfolio">portfolio.com</span></text>
+          <text id="sub-header"><span id="span-name">Martin Magsombol</span></text>
+          <text id="info-text"><span id="span-alias">re.mags</span></text>
+          <text id="info-text"><span id="span-ig">@re.mags</span></text>
+          <text id="info-text"><span id="span-email">tacticalmango@live.com</span></text>
+          <text id="info-text"><span id="span-portfolio">NA</span></text>
         </div>
     </div>
 
     <div class="work_container">
+
       <!-- n submissions -->
+
+      <div id="submission">
+        <Text>Spirituality</Text>
+        <div class="image_container">
+          <img src="https://jeffcarreira.com/wp-content/uploads/2017/11/what-is-spirituality.jpg">
+          </img>
+        </div>
+      </div>
+
       <div id="submission">
         <Text>Portraits</Text>
         <div class="image_container">
-            <img src="https://format-com-cld-res.cloudinary.com/image/private/s--fFvXh4h5--/c_limit,g_center,h_700,w_65535/a_auto,fl_keep_iptc.progressive,q_95/48342-2833557-portraits-of-strangers-9391.jpg">
+            <img src="https://www.howtogeek.com/wp-content/uploads/2016/11/dani.jpg.pagespeed.ce.5MoNNrVjxO.jpg">
             </img>
         </div>
       </div>
@@ -86,27 +97,12 @@
       <div id="submission">
         <Text>Food & Drink</Text>
         <div class="image_container">
-          <img src="https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg">
+          <img src="https://www.steigenberger.com/cache/images/022_SHR_mnchen_resta_b505a027250022d5ad887f6-1-1-1-1.jpg">
           </img>
         </div>
         <Text>#First-Place</Text>
       </div>
 
-      <div id="submission">
-        <Text>Spirituality</Text>
-        <div class="image_container">
-          <img src="https://images.theconversation.com/files/194855/original/file-20171115-19836-uy2yzs.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip">
-          </img>
-        </div>
-      </div>
-
-      <div id="submission">
-        <Text>Travel</Text>
-        <div class="image_container">
-          <img src="https://www.tibco.com/blog/wp-content/uploads/2017/12/traveling.png">
-          </img>
-        </div>
-      </div>
     </div>
 
     <footer class="footer_container">
