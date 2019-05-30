@@ -7,12 +7,47 @@
   <title>Discover New Photographers</title>
   <link rel="stylesheet" href="css/cssreset.css">
   <link rel="stylesheet" href="css/search.css">
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+
+  <!-- GitHub Fetch API -->
+  <script src="./js/fetch.umd.js"></script>
+  <script>
+    // Initialize Cloud Firestore through Firebase
+    firebase.initializeApp({
+      apiKey: "AIzaSyC6FPXu3_bOHpHr7AelgBKAMbGiIUPZ2Vo",
+      authDomain: "pandaexpressjs.firebaseapp.com",
+      projectId: "pandaexpressjs",
+    });
+
+    var db = firebase.firestore();
+
+    // TODO: turn ${doc.data().alias} to buttons.
+    window.onload = function () {
+      db.collection("users").get().then((querySnapshot) => {
+        let container = document.querySelector("#list_container");
+        querySnapshot.forEach((doc) => {
+          console.log(doc.data())
+          console.log(doc.id);
+          container.innerHTML += `
+            <form class= "user_container" action="/select-user" method="POST">
+              <input type="hidden" id="uid" name="userId" value="${doc.id}"/>
+              <input type="submit" class="txt" value="Alias: ${doc.data().alias}">
+            </form>  
+          `
+        });
+      });
+
+
+
+
+    };
+
+  </script>
+
 </head>
-
-<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
-
-<script src="./js/fetch.umd.js"></script>
 
 <body>
   <div class="screen_container">
@@ -28,28 +63,7 @@
     </div>
 
     <!-- TODO: Display all users as buttons that link to their profile -->
-    <div class="list_container">
-      <div class="user_container">
-        @bob Bob: <br>
-        2 submissions
-      </div>
-      <div class="user_container">
-        @re.mags Martin Magsombol: <br>
-        0 submissions
-      </div>
-      <div class="user_container">
-        @sally Sally: <br>
-        0 submissions
-      </div>
-      <div class="user_container">
-        @re.mags Martin Cool boi Magsombol: <br>
-        0 submissions
-      </div>
-      <div class="user_container">
-        @pandaman Panda Boy: <br>
-        1 submission
-      </div>
-    </div>
+    <div id="list_container"></div>
 
     <footer class="footer_container">
       <a class="footer_button" href="Search.html">SEARCH</a>

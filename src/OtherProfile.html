@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>My Profile</title>
   <link rel="stylesheet" href="css/cssreset.css">
-  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="css/otherprofile.css">
 
   <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
@@ -28,26 +28,30 @@
     var db = firebase.firestore();
     var storageRef = firebase.storage().ref();
 
-    window.onload = function () {
-      fetch('/profile')
-        .then(res => res.json())
-        .then(function (uid) {
-          if (uid) {
-            console.log("User logged in. UID: ", uid);
-            db.collection("users").doc(uid)
-              .onSnapshot(function (doc) {
-                document.getElementById('span-alias').innerHTML = `<text>Alias: </text>` + doc.data().alias;
-                document.getElementById('span-name').innerHTML = `<text>Name: </text>` + doc.data().name;
-                document.getElementById('span-ig').innerHTML = `<text>Instagram: </text>` + doc.data().ig;
-                document.getElementById('span-email').innerHTML = `<text>Email Contact: </text>` + doc.data().email;
-                document.getElementById('span-portfolio').innerHTML = `<text>Portfolio: </text>` + doc.data().portfolio;
+    // extract promptId from URL params
+    function getUrlVars() {
+      var vars = {};
+      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+        vars[key] = value;
+      });
+      return vars;
+    }
 
-                console.log("Works");
-                console.log(doc.data().submissions);
-                const sid = doc.data().submissions;
-              
-                
-                sid.forEach((sid)=> {
+    let uid = getUrlVars()["uid"];
+    console.log("uid: " + uid);
+
+    window.onload = function () {
+      db.collection("users").doc(uid).onSnapshot(doc => {
+        console.log(doc.data());
+        document.getElementById('span-alias').innerHTML = `<text>Alias: </text>` + doc.data().alias;
+        document.getElementById('span-name').innerHTML = `<text>Name: </text>` + doc.data().name;
+        document.getElementById('span-ig').innerHTML = `<text>Instagram: </text>` + doc.data().ig;
+        document.getElementById('span-email').innerHTML = `<text>Email Contact: </text>` + doc.data().email;
+        document.getElementById('span-portfolio').innerHTML = `<text>Portfolio: </text>` + doc.data().portfolio;
+
+        const sid = doc.data().submissions;
+
+        sid.forEach((sid)=> {
                   db.collection("submissions").doc(sid).onSnapshot(doc =>{
                     db.collection("submissions").get().then((querySnapshot) => {
                       const imgsrc = doc.data().file;
@@ -102,12 +106,10 @@
                     });
                   });
                 });
-              });
 
-          }
-        }).catch(function (error) {
-          console.log("Request failed", error)
-        })
+
+
+      });
     };
   </script>
 </head>
@@ -116,16 +118,14 @@
   <div class="screen_container">
 
     <div class="header_container">
-      <div id="invisible-spacer">
-        <h1>.</h1>
+      <div id="back-btn_container">
+        <a id="back-btn" href="Search.html">Back</a>
       </div>
       <div id="header-title">
         <header>PROFILE</header>
       </div>
-      <div id="edit_container">
-        <a href="EditProfile.html">
-          <button id="edit-btn">Edit</button>
-        </a>
+      <div id="invisible-spacer">
+          <h1>.</h1>
       </div>
     </div>
 
@@ -137,20 +137,11 @@
           <text id="info-text"><span id="span-email">email@ucsd.edu</span></text>
           <text id="info-text"><span id="span-portfolio">portfolio.com</span></text>
         </div>
-        <form action="/users/logout" method="POST">
-          <input type="submit" class="button" value="LOG OUT">
-        </form>
     </div>
 
     <div id="work_container">
       <!-- n submissions -->
     </div>
-
-    <footer class="footer_container">
-      <a class="footer_button" href="Search.html">SEARCH</a>
-      <a class="footer_button" href="Discover.html">DISCOVER</a>
-      <a class="footer_button" href="Profile.html">MY PROFILE</a>
-    </footer>
 
 </html>
 

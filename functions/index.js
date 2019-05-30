@@ -190,6 +190,17 @@ app.get('/gen-prompts', (req, res) => {
 
 })
 
+// Handle passing uId from Search to Prompt
+app.post('/select-user', (req, res) => {
+   let uid = req.body.userId;
+   res.redirect(url.format({
+      pathname: "/OtherProfile.html",
+      query: {
+         "uid": uid
+      },
+   }));
+});
+
 // Handle passing promptId from Discover to Prompt
 app.post('/select-prompt', (req, res) => {
    let pid = req.body.promptId;

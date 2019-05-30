@@ -33,16 +33,18 @@ body{
   }
 
   /* list container */
-  .list_container{
+  #list_container{
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       text-align: center;
-      height: 75vh;
+      height: 80vh;
       align-content: center;
-      margin-top: 5vh;
   }
 
+  .txt{
+    text-align: left;
+  }
   .user_container{
     display:flex;
     flex-direction: column;
@@ -51,6 +53,7 @@ body{
     height: 5vh;
     background-color: #292929;
     border-bottom-color: black;
+    margin-top: 2vh;
     margin-bottom: 2vh;
   }
 
