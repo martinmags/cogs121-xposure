@@ -10,6 +10,8 @@
 
   <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
+
 
   <!-- GitHub Fetch API -->
   <script src="./js/fetch.umd.js"></script>
@@ -19,25 +21,89 @@
     firebase.initializeApp({
       apiKey: "AIzaSyC6FPXu3_bOHpHr7AelgBKAMbGiIUPZ2Vo",
       authDomain: "pandaexpressjs.firebaseapp.com",
-      projectId: "pandaexpressjs"
+      projectId: "pandaexpressjs",
+      storageBucket: "pandaexpressjs.appspot.com"
     });
 
     var db = firebase.firestore();
+    var storageRef = firebase.storage().ref();
 
     window.onload = function () {
       fetch('/profile')
         .then(res => res.json())
-        .then(function (data) {
-          if (data) {
-            console.log("User logged in. UID: ", data);
-            db.collection("users").doc(data)
+        .then(function (pid) {
+          if (pid) {
+            console.log("User logged in. UID: ", pid);
+            db.collection("users").doc(pid)
               .onSnapshot(function (doc) {
-                document.getElementById('span-alias').innerHTML = doc.data().alias;
-                document.getElementById('span-name').innerHTML = doc.data().name;
-                document.getElementById('span-ig').innerHTML = doc.data().ig;
-                document.getElementById('span-email').innerHTML = doc.data().email;
-                document.getElementById('span-portfolio').innerHTML = doc.data().portfolio;
+                document.getElementById('span-alias').innerHTML = `<text>Alias: </text>` + doc.data().alias;
+                document.getElementById('span-name').innerHTML = `<text>Name: </text>` + doc.data().name;
+                document.getElementById('span-ig').innerHTML = `<text>Instagram: </text>` + doc.data().ig;
+                document.getElementById('span-email').innerHTML = `<text>Email Contact: </text>` + doc.data().email;
+                document.getElementById('span-portfolio').innerHTML = `<text>Portfolio: </text>` + doc.data().portfolio;
+
+                console.log("Works");
+                console.log(doc.data().submissions);
+                const sid = doc.data().submissions;
+              
+                
+                sid.forEach((sid)=> {
+                  db.collection("submissions").doc(sid).onSnapshot(doc =>{
+                    db.collection("submissions").get().then((querySnapshot) => {
+                      const imgsrc = doc.data().file;
+                      const pid = doc.data().promptId;
+                      console.log(imgsrc);
+
+                      db.collection("prompts").doc(pid).onSnapshot(doc =>{
+                        const promptTitle = doc.data().title;
+
+
+                        // firebase storage
+                        storageRef.child(imgsrc).getDownloadURL().then(function (url) {
+                            document.getElementById('work_container').innerHTML += `
+                            <div id="submission">
+                              <div class="title_container">
+                                <text class="header">${promptTitle}</text> 
+                                <text class="wintxt"></text> 
+                              </div>
+                              
+                              <div class="image_container">                                              
+                                <img class="photo" alt="submission" src="${url}"></img>
+                                <div class="comments_container">
+                                  <p class="comments">Great natural tones and technique is standard. Could have shot the model in the environent for more context.</p>
+                                  <text class= "txt">Overall Score: 9/10</text>
+                                  <hr class="line"/>
+                                  <p class="comments"> Warm yet natural earthy tones. Looks like it could below to a larger collection of</p>
+                                  <text>Overall Score: 8/10</text>
+                                  <hr class="line"/>
+                                  <p class="comments">Great natural tones and technique is standard. Could have shot the model in the environent for more context.</p>
+                                  <text>Overall Score: 7/10</text>
+                                  <hr class="line"/>
+                                  <p class="comments"> Warm yet natural earthy tones. Looks like it could below to a larger collection of portraits.</p>
+                                  <text>Overall Score: 9/10</text>
+                                  <hr class="line"/>
+                                  <p class="comments">Great natural tones and technique is standard. Could have shot the model in the environent for more context.</p>
+                                  <text>Overall Score: 7/10</text>
+                                  <hr class="line"/>
+                                  <p class="comments"> Warm yet natural earthy tones. Looks like it could below to a larger collection of portraits.</p>
+                                  <text>Overall Score: 8/10</text>
+                                  <hr class="line"/>
+                                </div>
+                              </div>
+                            </div>
+                            `
+                        }).catch(function (error) {
+                          // Handle any errors
+                          console.error("Error getting download URL: ", error);
+                        });
+
+                      });
+
+                    });
+                  });
+                });
               });
+
           }
         }).catch(function (error) {
           console.log("Request failed", error)
@@ -71,42 +137,13 @@
           <text id="info-text"><span id="span-email">email@ucsd.edu</span></text>
           <text id="info-text"><span id="span-portfolio">portfolio.com</span></text>
         </div>
+        <form action="/users/logout" method="POST">
+          <input type="submit" class="button" value="LOG OUT">
+        </form>
     </div>
 
-    <div class="work_container">
+    <div id="work_container">
       <!-- n submissions -->
-      <div id="submission">
-        <Text>Portraits</Text>
-        <div class="image_container">
-            <img src="https://format-com-cld-res.cloudinary.com/image/private/s--fFvXh4h5--/c_limit,g_center,h_700,w_65535/a_auto,fl_keep_iptc.progressive,q_95/48342-2833557-portraits-of-strangers-9391.jpg">
-            </img>
-        </div>
-      </div>
-
-      <div id="submission">
-        <Text>Food & Drink</Text>
-        <div class="image_container">
-          <img src="https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg">
-          </img>
-        </div>
-        <Text>#First-Place</Text>
-      </div>
-
-      <div id="submission">
-        <Text>Spirituality</Text>
-        <div class="image_container">
-          <img src="https://images.theconversation.com/files/194855/original/file-20171115-19836-uy2yzs.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip">
-          </img>
-        </div>
-      </div>
-
-      <div id="submission">
-        <Text>Travel</Text>
-        <div class="image_container">
-          <img src="https://www.tibco.com/blog/wp-content/uploads/2017/12/traveling.png">
-          </img>
-        </div>
-      </div>
     </div>
 
     <footer class="footer_container">
