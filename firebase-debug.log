@@ -1,38 +1,65 @@
-[debug] [2019-05-30T06:55:42.025Z] ----------------------------------------------------------------------
-[debug] [2019-05-30T06:55:42.027Z] Command:       /Users/kylee/.nvm/versions/node/v9.5.0/bin/node /Users/kylee/.nvm/versions/node/v9.5.0/bin/firebase serve
-[debug] [2019-05-30T06:55:42.027Z] CLI Version:   6.7.2
-[debug] [2019-05-30T06:55:42.027Z] Platform:      darwin
-[debug] [2019-05-30T06:55:42.027Z] Node Version:  v9.5.0
-[debug] [2019-05-30T06:55:42.028Z] Time:          Wed May 29 2019 23:55:42 GMT-0700 (PDT)
-[debug] [2019-05-30T06:55:42.028Z] ----------------------------------------------------------------------
+[debug] [2019-05-30T07:16:16.537Z] ----------------------------------------------------------------------
+[debug] [2019-05-30T07:16:16.539Z] Command:       /Users/kylee/.nvm/versions/node/v9.5.0/bin/node /Users/kylee/.nvm/versions/node/v9.5.0/bin/firebase serve
+[debug] [2019-05-30T07:16:16.539Z] CLI Version:   6.7.2
+[debug] [2019-05-30T07:16:16.539Z] Platform:      darwin
+[debug] [2019-05-30T07:16:16.539Z] Node Version:  v9.5.0
+[debug] [2019-05-30T07:16:16.540Z] Time:          Thu May 30 2019 00:16:16 GMT-0700 (PDT)
+[debug] [2019-05-30T07:16:16.540Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2019-05-30T06:55:42.080Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2019-05-30T06:55:42.080Z] > authorizing via signed-in user
-[debug] [2019-05-30T06:55:42.080Z] [iam] checking project pandaexpressjs for permissions ["firebase.projects.get"]
-[debug] [2019-05-30T06:55:42.082Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/pandaexpressjs:testIamPermissions  
+[debug] [2019-05-30T07:16:16.557Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-05-30T07:16:16.557Z] > authorizing via signed-in user
+[debug] [2019-05-30T07:16:16.557Z] [iam] checking project pandaexpressjs for permissions ["firebase.projects.get"]
+[debug] [2019-05-30T07:16:16.559Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/pandaexpressjs:testIamPermissions  
 
-[debug] [2019-05-30T06:55:42.393Z] <<< HTTP RESPONSE 200
-[debug] [2019-05-30T06:55:42.395Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/pandaexpressjs  
+[debug] [2019-05-30T07:16:16.889Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-30T07:16:16.892Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/pandaexpressjs  
  
-[debug] [2019-05-30T06:55:42.714Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-30T07:16:17.196Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from '/Users/kylee/Desktop/COGS121GUO/cogs121'...
 [info] 
 [info] i  functions: Preparing to emulate functions.
-[debug] [2019-05-30T06:55:45.046Z] Fetching environment
-[debug] [2019-05-30T06:55:45.065Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/718178135759:getServerAppConfig  
+[debug] [2019-05-30T07:16:20.791Z] Fetching environment
+[debug] [2019-05-30T07:16:20.824Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/718178135759:getServerAppConfig  
  
-[debug] [2019-05-30T06:55:45.066Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/718178135759/clients/_:getWebAppConfig  
+[debug] [2019-05-30T07:16:20.825Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/718178135759/clients/_:getWebAppConfig  
  
-[debug] [2019-05-30T06:55:45.249Z] <<< HTTP RESPONSE 200
-[debug] [2019-05-30T06:55:45.250Z] Starting @google-cloud/functions-emulator
-[debug] [2019-05-30T06:55:45.282Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-30T07:16:21.013Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-30T07:16:21.013Z] Starting @google-cloud/functions-emulator
+[debug] [2019-05-30T07:16:21.430Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: src
 [info] ✔  hosting: Local server: http://localhost:5000
-[debug] [2019-05-30T06:55:48.828Z] Parsing function triggers
-[info] ✔  functions: app: http://localhost:5001/pandaexpressjs/us-central1/app
+[debug] [2019-05-30T07:16:25.108Z] Parsing function triggers
 [info] [hosting] Rewriting /users/login to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] ✔  functions: app: http://localhost:5001/pandaexpressjs/us-central1/app
 [info] [hosting] Rewriting /select-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
 [info] [hosting] Rewriting /pass-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
 [info] [hosting] Rewriting /profile to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
-[info] [hosting] Rewriting /submit-form to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /users/login to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /pass-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /users/login to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /evaluate-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /evaluate-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /evaluate-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /evaluate-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /evaluate-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /evaluate-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /evaluate-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /evaluate-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /evaluate-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /evaluate-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /evaluate-prompt to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app

@@ -295,6 +295,17 @@ app.post('/submit-form', (req, res) => {
    busboy.end(req.rawBody);
 })
 
-// submit evaluation for a submission
+// Handle passing candidateId from Prompt to Evaluate
+app.post('/evaluate-prompt', (req, res) => {
+  console.log(req.body);
+   let evalInfo = req.body.evalInfo;
+   console.log(evalInfo);
+   res.redirect(url.format({
+      pathname: "/Evaluate.html",
+      query: {
+         "evalInfo": evalInfo
+      },
+   }));
+});
 
 exports.app = functions.https.onRequest(app);

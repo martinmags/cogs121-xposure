@@ -47,12 +47,20 @@
           db.collection("submissions").doc(sid).onSnapshot(doc =>{
             db.collection("submissions").get().then((querySnapshot) => {
               const imgsrc = doc.data().file;
-              console.log(imgsrc);
+              const candidateId = doc.data().candidateId;
+              const file = doc.data().file;
+              // console.log(imgsrc);
+              // console.log(doc.data());
+              console.log(doc.data().file);
+              //
               let tgtContainer = document.querySelector(".submitted_container");
               // firebase storage
               storageRef.child(imgsrc).getDownloadURL().then(function (url) {
                   tgtContainer.innerHTML += `
-                    <img class="image" alt="submission" src="${url}"></img>
+                  <form action="/evaluate-prompt" method="POST">
+                    <input type="hidden" id="candidateId" name="evalInfo" value="${candidateId}/${file}">
+                    <input type="image" class="image" alt="submission" src="${url}"></img>
+                  </form>
                     `
               }).catch(function (error) {
                 // Handle any errors
