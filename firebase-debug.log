@@ -1,0 +1,43 @@
+[debug] [2019-05-31T07:07:29.388Z] ----------------------------------------------------------------------
+[debug] [2019-05-31T07:07:29.390Z] Command:       /Users/kylee/.nvm/versions/node/v9.5.0/bin/node /Users/kylee/.nvm/versions/node/v9.5.0/bin/firebase serve
+[debug] [2019-05-31T07:07:29.391Z] CLI Version:   6.7.2
+[debug] [2019-05-31T07:07:29.391Z] Platform:      darwin
+[debug] [2019-05-31T07:07:29.391Z] Node Version:  v9.5.0
+[debug] [2019-05-31T07:07:29.391Z] Time:          Fri May 31 2019 00:07:29 GMT-0700 (PDT)
+[debug] [2019-05-31T07:07:29.391Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-05-31T07:07:29.410Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-05-31T07:07:29.411Z] > authorizing via signed-in user
+[debug] [2019-05-31T07:07:29.411Z] [iam] checking project pandaexpressjs for permissions ["firebase.projects.get"]
+[debug] [2019-05-31T07:07:29.413Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/pandaexpressjs:testIamPermissions  
+
+[debug] [2019-05-31T07:07:29.744Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-31T07:07:29.746Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/pandaexpressjs  
+ 
+[debug] [2019-05-31T07:07:30.020Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/kylee/Desktop/COGS121GUO/cogs121'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2019-05-31T07:07:33.000Z] Fetching environment
+[debug] [2019-05-31T07:07:33.030Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/718178135759:getServerAppConfig  
+ 
+[debug] [2019-05-31T07:07:33.030Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/718178135759/clients/_:getWebAppConfig  
+ 
+[debug] [2019-05-31T07:07:33.218Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-31T07:07:33.218Z] Starting @google-cloud/functions-emulator
+[debug] [2019-05-31T07:07:33.363Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: src
+[info] ✔  hosting: Local server: http://localhost:5000
+[debug] [2019-05-31T07:07:38.285Z] Parsing function triggers
+[info] [hosting] Rewriting /users/login to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] ✔  functions: app: http://localhost:5001/pandaexpressjs/us-central1/app
+[info] [hosting] Rewriting /profile to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-user to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-user to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-user to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-user to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-user to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-user to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-user to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-user to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app

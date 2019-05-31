@@ -11,6 +11,7 @@
 
   <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
   <!-- GitHub Fetch API -->
   <script src="./js/fetch.umd.js"></script>
@@ -29,21 +30,60 @@
       db.collection("users").get().then((querySnapshot) => {
         let container = document.querySelector("#list_container");
         querySnapshot.forEach((doc) => {
-          console.log(doc.data())
+          console.log(doc.data());
           console.log(doc.id);
           container.innerHTML += `
             <form class= "user_container" action="/select-user" method="POST">
               <input type="hidden" id="uid" name="userId" value="${doc.id}"/>
               <input type="submit" class="txt" value="Alias: ${doc.data().alias}">
-            </form>  
+            </form>
           `
         });
       });
 
-
-
-
+      document.querySelector("#search-btn").addEventListener('keypress', function (e) {
+        // if (e.key === 'Enter') { //if enter pressed
+          console.log(document.querySelector("search-btn"));
+          handleSearch(); //call handle search method
+        // }
+      });
     };
+
+    //search functionality searches through alias as user types
+    //entering wrong alias will not work
+    function handleSearch(e) {
+      db.collection("users").get().then((querySnapshot) => {
+        let container = document.querySelector("#list_container");
+
+        //extract search query
+        let searchQuery = document.getElementById("search-btn").value;
+        console.log(searchQuery);
+
+        //reload contents only if searchQuery exists
+        if(searchQuery){
+          //delete current users
+          querySnapshot.forEach((doc)=>{
+            container.innerHTML = ``;
+          })
+
+          //add matches
+          querySnapshot.forEach((doc) => {
+            // if(doc.data().alias == searchQuery){
+            if(doc.data().alias.includes(searchQuery)){
+              console.log(doc.data());
+              console.log(doc.id);
+              container.innerHTML += `
+                <form class= "user_container" action="/select-user" method="POST">
+                  <input type="hidden" id="uid" name="userId" value="${doc.id}"/>
+                  <input type="submit" class="txt" value="Alias: ${doc.data().alias}">
+                </form>
+                `
+            };
+        });
+        }
+    })};
+
+
 
   </script>
 
@@ -57,7 +97,7 @@
     </div>
 
     <div class="search_container">
-      <form action="Discover.html">
+      <form>
         <input id="search-btn" type="text" placeholder="Search Users">
       </form>
     </div>
