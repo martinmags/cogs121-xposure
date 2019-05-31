@@ -6,12 +6,55 @@
    <title>Admin</title>
    <link rel="stylesheet" href="css/cssreset.css">
    <link rel="stylesheet" href="css/admin.css">
+
+   <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+
+   <script src="./js/fetch.umd.js"></script>
+
+   <script>
+      // Initialize Cloud Firestore through Firebase
+      firebase.initializeApp({
+         apiKey: "AIzaSyC6FPXu3_bOHpHr7AelgBKAMbGiIUPZ2Vo",
+         authDomain: "pandaexpressjs.firebaseapp.com",
+         projectId: "pandaexpressjs"
+      });
+
+      var db = firebase.firestore();
+
+      window.onload = function () {
+         let tgtCurList = document.getElementById("cur_prompts_list");
+         let curPrompts = db.collection("prompts").where("status", "==", "thisweek");
+         curPrompts.get().then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+               // console.log(doc.id, ' => ', doc.data());
+               tgtCurList.innerHTML += `
+                  <li>${doc.data().title}</li>
+               `;
+            });
+         });
+      }
+   </script>
 </head>
 
 <body>
    <div class="screen_container">
       <div class="header_container">
          <header id="title">Welcome, Admin!</header>
+      </div>
+      <div class="text_container">
+         <form action="/users/logout" method="POST">
+            <input type="submit" class="button" value="LOG OUT">
+         </form>
+      </div>
+      <div class="cur_prompts_container">
+         <h1>Current Prompts</h1>
+         <ul id="cur_prompts_list"></ul>
+         <div class="button_container">
+            <form action="/pass-prompt" method="POST">
+               <input id="btn" type="submit" value="Generate new prompts">
+            </form>
+         </div>
       </div>
    </div>
 </body>
