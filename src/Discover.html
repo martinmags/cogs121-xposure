@@ -11,6 +11,7 @@
 
 <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
 
 <script src="./js/fetch.umd.js"></script>
 
@@ -19,13 +20,16 @@
   firebase.initializeApp({
     apiKey: "AIzaSyC6FPXu3_bOHpHr7AelgBKAMbGiIUPZ2Vo",
     authDomain: "pandaexpressjs.firebaseapp.com",
-    projectId: "pandaexpressjs"
+    projectId: "pandaexpressjs",
+    storageBucket: "pandaexpressjs.appspot.com"
   });
 
   var db = firebase.firestore();
+  var storageRef = firebase.storage().ref();
 
   window.onload = function () {
-    db.collection("prompts").get().then((querySnapshot) => {
+    // populate current prompts container
+    db.collection("prompts").where("status", "==", "thisweek").get().then((querySnapshot) => {
       let tgtContainer = document.querySelector(".prompts_container > .row_container");
       querySnapshot.forEach((doc) => {
         tgtContainer.innerHTML += `
@@ -37,6 +41,50 @@
             <text class="txt">${doc.data()["title"]}</text>
           </div>
         `
+      })
+    })
+
+    // populate previous prompt showcase container
+    db.collection("prompts").where("status", "==", "thisweek").get().then((querySnapshot) => {
+      let tgtContainer = document.querySelector(".showcase_container");
+      querySnapshot.forEach((prompt) => {
+        console.log("Winning submissions: " + prompt.data().winners);
+        let imgUrlArr = [];
+        prompt.data().winners.forEach((subId) => {
+          db.collection("submissions").doc(subId).get().then(function (sub) {
+            console.log("Candidate ID: " + sub.data().candidateId);
+
+            let imgsrc = sub.data().file;
+            storageRef.child(imgsrc).getDownloadURL().then(function (url) {
+              console.log(url);
+              // imgUrlArr.push(url);
+              // asyncFunction(url, () => {
+                imgUrlArr.push(url);
+                if (imgUrlArr.length === prompt.data().winners.length) {
+                  callback();
+                }
+              // });
+            }).catch(function (error) {
+              // Handle any errors
+              console.error("Error getting download URL: ", error);
+            });
+          });
+        });
+
+        function callback() {
+          tgtContainer.innerHTML += `
+            <div class="showcase">
+              <div class="row_container">
+                <img id="winner1" src=${imgUrlArr[0]}></img>
+                <div class="col_container">
+                  <img id="winner2" src=${imgUrlArr[1]}></img>
+                  <img id="winner3" src=${imgUrlArr[2]}></img>
+                </div>
+              </div>
+              <text class="txt">${prompt.data().title}</text>
+            </div>
+          `;
+        }
       })
     })
   }
@@ -65,12 +113,15 @@
     </div>
 
     <div class="showcase_container">
-      <div class="showcase">
+      <!-- <div class="showcase">
         <div class="row_container">
-          <img id="winner1" src="https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg"></img>
+          <img id="winner1"
+            src="https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg"></img>
           <div class="col_container">
-            <img id="winner2" src="https://cdn.theatlantic.com/assets/media/img/mt/2019/02/GettyImages_836292392/lead_720_405.jpg?mod=1550273297"></img>
-            <img id="winner3" src="https://www.usnews.com/dims4/USNEWS/ee804ef/2147483647/thumbnail/640x420/quality/85/?url=http%3A%2F%2Fcom-usnews-beam-media.s3.amazonaws.com%2F1d%2Fe3%2Fbd9d17494a3185442cc96053740d%2F180522-obesity-editorial.jpg"></img>
+            <img id="winner2"
+              src="https://cdn.theatlantic.com/assets/media/img/mt/2019/02/GettyImages_836292392/lead_720_405.jpg?mod=1550273297"></img>
+            <img id="winner3"
+              src="https://www.usnews.com/dims4/USNEWS/ee804ef/2147483647/thumbnail/640x420/quality/85/?url=http%3A%2F%2Fcom-usnews-beam-media.s3.amazonaws.com%2F1d%2Fe3%2Fbd9d17494a3185442cc96053740d%2F180522-obesity-editorial.jpg"></img>
           </div>
         </div>
         <text class="txt">Food & Drink</text>
@@ -80,7 +131,8 @@
         <div class="row_container">
           <img id="winner1" src="https://downloads.biblica.com/social-media/images/online_bible_social_share.jpg"></img>
           <div class="col_container">
-            <img id="winner2" src="https://s2982.pcdn.co/wp-content/uploads/2017/07/ritual-meditation-mindfulness-feature-470x248.png"></img>
+            <img id="winner2"
+              src="https://s2982.pcdn.co/wp-content/uploads/2017/07/ritual-meditation-mindfulness-feature-470x248.png"></img>
             <img id="winner3" src="https://media.pagefly.io/file/get/incensejpg-1536005806846.jpg"></img>
           </div>
         </div>
@@ -89,14 +141,17 @@
 
       <div class="showcase">
         <div class="row_container">
-          <img id="winner1" src="https://cdn.pariscityvision.com/media/catalog/product/cache/1/image/755x433/9df78eab33525d08d6e5fb8d27136e95/c/i/cit-01-eiffel-tower-sunset_1.jpg"></img>
+          <img id="winner1"
+            src="https://cdn.pariscityvision.com/media/catalog/product/cache/1/image/755x433/9df78eab33525d08d6e5fb8d27136e95/c/i/cit-01-eiffel-tower-sunset_1.jpg"></img>
           <div class="col_container">
-            <img id="winner2" src="https://www.chinadiscovery.com/assets/images/shanghai/bund/huangpu-river-cruise.jpg"></img>
-            <img id="winner3" src="https://bucketrediseno.s3.amazonaws.com/uploads/article/parallax_en/216/optimizada_puerto-vallarta-airport.jpg"></img>
+            <img id="winner2"
+              src="https://www.chinadiscovery.com/assets/images/shanghai/bund/huangpu-river-cruise.jpg"></img>
+            <img id="winner3"
+              src="https://bucketrediseno.s3.amazonaws.com/uploads/article/parallax_en/216/optimizada_puerto-vallarta-airport.jpg"></img>
           </div>
         </div>
         <text class="txt">Travel</text>
-      </div>
+      </div> -->
     </div>
 
     <footer class="footer_container">

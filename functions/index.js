@@ -175,44 +175,98 @@ app.get("/profile", (req, res) => {
 
 // generate 3 prompts
 app.get("/gen-prompts", (req, res) => {
-  request(
-    "https://api.unsplash.com/collections/featured?page=8&per_page=3&client_id=a2e61cfb25649bf508835bb5dcded3701a65033ede47fd307f6adfc23acaaf8c",
-    (error, response, body) => {
-      if (!error && response.statusCode === 200) {
-        JSON.parse(body).forEach(e => {
-          console.log(e["title"]);
-          console.log(e["cover_photo"]["urls"]["regular"]);
+   // update "lastweek" prompts to "archived"
+   db.collection("prompts").where("status", "==", "lastweek").get().then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+         db.collection("prompts").doc(doc.id).update({ "status": "archived" });
+      });
+   });
+   console.log("archived lastweek prompts");
 
-          db.collection("prompts")
-            .add({
-              title: e["title"],
-              coverUrl: e["cover_photo"]["urls"]["regular"],
-              entryDate: new Date().getTime(),
-              deadline: new Date().getTime() + 7 * 24 * 60 * 60 * 1000,
-              submissions: []
-            })
-            .then(docRef => {
-              console.log(
-                "Prompt " +
-                  '"' +
-                  e["title"] +
-                  '"' +
-                  " added! Document ID: " +
-                  docRef.id
-              );
-              return null;
-            })
-            .catch(error => {
-              console.error("Error writing document: ", error);
+   // update "thisweek" prompts to "lastweek"
+   db.collection("prompts").where("status", "==", "thisweek").get().then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+         db.collection("prompts").doc(doc.id).update({ "status": "lastweek" });
+      });
+   });
+   console.log("this week prompts are now last week prompts");
+
+   // choose top winners for each of "lastweek" prompts
+   db.collection("prompts").where("status", "==", "lastweek").get().then(function (p_qs) {
+      // for each prompt, get array of submissions
+      p_qs.forEach(function (prompt) {
+         // for each submission, get array of evaluations and calculate avgScore
+         prompt.data().submissions.forEach(function (subId) {
+            let sum = 0;
+            let count = 0;
+            db.collection("submissions").doc(subId).get().then(function (sub) {
+               // for each evaluation, get overallScore
+               sub.data().evaluations.forEach(function (evalId) {
+                  db.collection("evaluations").doc(evalId).get().then(function (eval) {
+                     sum += eval.data().overallScore;
+                     count++;
+                  });
+               });
             });
-        });
+            // calculate mean across all evals for this submission
+            let avg;
+            if (count === 0) {
+               // if received no evals, avg is 0
+               avg = 0;
+            } else {
+               avg = sum / count;
+            }
+            // update submission avgScore
+            db.collection("submissions").doc(subId).update({ "avgScore": avg });
+         });
+         // identify top 3 winners
+         db.collection("submissions").where("promptId", "==", prompt.id).orderBy("avgScore", "desc").limit(3).get().then(function (w_qs) {
+            w_qs.forEach(function (winningSub) {
+               // update prompt winners array
+               db.collection("prompts").doc(prompt.id).update({ "winners": admin.firestore.FieldValue.arrayUnion(winningSub.id) });
+            });
+         });
+      });
+   });
 
-        res.json(JSON.parse(body));
-      } else {
-        res.json(error);
+   // randomly select a page number from 1 to 20
+   let pageNum = Math.floor(Math.random() * 20) + 1;
+
+   // add new prompts from unsplash to db, set status to "thisweek"
+   request(
+      `https://api.unsplash.com/collections/featured?page=${pageNum}&per_page=3&client_id=a2e61cfb25649bf508835bb5dcded3701a65033ede47fd307f6adfc23acaaf8c`,
+      (error, response, body) => {
+         if (!error && response.statusCode === 200) {
+            JSON.parse(body).forEach(e => {
+               console.log(e["title"]);
+               console.log(e["cover_photo"]["urls"]["regular"]);
+
+               db.collection("prompts")
+                  .add({
+                     title: e["title"],
+                     coverUrl: e["cover_photo"]["urls"]["regular"],
+                     entryDate: new Date().getTime(),
+                     deadline: new Date().getTime() + 7 * 24 * 60 * 60 * 1000,
+                     submissions: [],
+                     status: "thisweek",
+                     winners: []
+                  })
+                  .then(docRef => {
+                     console.log("Prompt \"" + e["title"] + "\" added! Document ID: " + docRef.id);
+                     return null;
+                  })
+                  .catch(error => {
+                     console.error("Error writing document: ", error);
+                  });
+            });
+
+            // res.json(JSON.parse(body));
+            res.redirect("/Admin.html");
+         } else {
+            res.send(error);
+         }
       }
-    }
-  );
+   );
 });
 
 // Handle passing uId from Search to Prompt
