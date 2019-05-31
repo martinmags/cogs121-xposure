@@ -34,13 +34,16 @@
         return parts[1].split("%2Fsubmissions%2F");
       }
       let userId = getUrlVars()[0];
-      let pidAndImgId = getUrlVars()[1];
-      let pid = pidAndImgId.split("%2F")[0];
-      let imgId = pidAndImgId.split("%2F")[1];
+      let pidImgIdSubId = getUrlVars()[1];
+      let pid = pidImgIdSubId.split("%2F")[0];
+      let imgIdSubId = pidImgIdSubId.split("%2F")[1];
+      let imgId = imgIdSubId.split("&subId=")[0];
+      let subId = imgIdSubId.split("&subId=")[1];
+
       console.log("user id is:", userId);
       console.log("pid is:", pid);
       console.log("img is:", imgId);
-
+      console.log("sub id is:", subId);
       window.onload = function() {
         fetch("/profile")
           .then(res => res.json())
@@ -70,7 +73,6 @@
               .then(url => $("#promtPic").attr("src", url));
           });
 
-        let subId = "tempSubId";
         document.getElementById("uid").value = userId;
         document.getElementById("subId").value = subId;
         document.getElementById("imgId").value = imgId;
@@ -84,11 +86,17 @@
         document.getElementById("oringinalityScore").value = $(
           "#originality"
         ).val();
+        //Not working super properly
+        // let num1 = parseInt($("#technique").val(), 10);
+        // let num2 = parseInt($("#originality").val(), 10);
+        // let num3 = parseInt($("#theme").val(), 10);
+        // let avg = (num1 + num2 + num3) / 3;
         document.getElementById("overallScore").value = $("#overall").val();
         document.getElementById("interpretationText").value = $(
           "#interpretation"
         ).val();
         document.getElementById("date").value = date.getTime();
+        //document.getElementById("#themeScore").value = $("#theme").val();
       });
     </script>
   </head>
@@ -117,6 +125,7 @@
           <input type="hidden" id="imgId" name="imgId" />
           <input type="hidden" id="techniqueScore" name="techniqueScore" />
           <input type="hidden" id="oringinalityScore" name="originalityScore" />
+          <input type="hidden" id="themeScore" name="themeScore" />
           <input type="hidden" id="overallScore" name="overallScore" />
           <input type="hidden" id="interpretationText" name="interpretation" />
           <input type="hidden" id="date" name="date" />

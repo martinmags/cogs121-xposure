@@ -59,6 +59,7 @@
                   tgtContainer.innerHTML += `
                   <form action="/evaluate-prompt" method="POST">
                     <input type="hidden" id="candidateId" name="evalInfo" value="${candidateId}/${file}">
+                    <input type="hidden" id="subId" name="subId" value="${sid}">
                     <input type="image" class="image" alt="submission" src="${url}"></img>
                   </form>
                     `
