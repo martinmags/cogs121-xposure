@@ -98,12 +98,12 @@ body{
   height: 15vh;
 }
 
-#subheader{
+.subheader{
   color: white;
   align-self: center;
 }
 
-#prompt_text{
+.prompt_text{
   font-size: 13px;
   letter-spacing: 0.1em;
   color: #8F8F8F;

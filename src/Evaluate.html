@@ -1,110 +1,190 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EVALUATE A PHOTO</title>
+    <link rel="stylesheet" href="css/cssreset.css" />
+    <link rel="stylesheet" href="css/evaluate.css" />
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>EVALUATE A PHOTO</title>
-  <link rel="stylesheet" href="css/cssreset.css">
-  <link rel="stylesheet" href="css/evaluate.css">
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
 
-  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
-  <!-- GitHub Fetch API -->
-  <script src="./js/fetch.umd.js"></script>
-  <script>
-    // Initialize Cloud Firestore through Firebase
-    firebase.initializeApp({
-      apiKey: "AIzaSyC6FPXu3_bOHpHr7AelgBKAMbGiIUPZ2Vo",
-      authDomain: "pandaexpressjs.firebaseapp.com",
-      projectId: "pandaexpressjs"
-    });
+    <!-- GitHub Fetch API -->
+    <script src="./js/fetch.umd.js"></script>
 
-    var db = firebase.database();
+    <script>
+      // Initialize Cloud Firestore through Firebase
+      firebase.initializeApp({
+        apiKey: "AIzaSyC6FPXu3_bOHpHr7AelgBKAMbGiIUPZ2Vo",
+        authDomain: "pandaexpressjs.firebaseapp.com",
+        projectId: "pandaexpressjs",
+        storageBucket: "pandaexpressjs.appspot.com"
+      });
+      var db = firebase.firestore();
+      var storageRef = firebase.storage().ref();
 
-    $('#submitButton').click(()=>{
-      var uid = "";
-      var subId = ""; // TODO: Change this
-      var date = new Date();
-      fetch('/profile')
-        .then(res => res.json())
-        .then(function (data) {
-          if (data) {
-            uid = data;
-          }
-        }).catch(function (error) {
-          console.log("Request failed", error)
-        })
-      var postData = {
-        userId: uid,
-        submissionId: subId,
-        technique: $('#technique').val(),
-        originality: $('#originality').val(),
-        interpretation: $('#interpretation').val(),
-        overallScore: $('#overall').val(),
-        entryDate: date.getTime()
-      };
-      var newKey = db.ref().child('evaluations').push().key;
-
-      // Write the new post's data simultaneously in the posts list and the user's post list.
-      var updates = {};
-      updates['/evaluations/' + newKey] = postData;
-      updates['/submissions/' + submissionId + '/evaluations/' + newKey] = newKey;
-
-      console.log(postData);
-      if(firebase.database().ref().update(updates)){
-        window.location.href = "Discover.html";
-      } else {
-        window.location.href = "Evaluate.html";
+      // extract promptId from URL params
+      function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.split("evalInfo=");
+        return parts[1].split("%2Fsubmissions%2F");
       }
-    })
-  </script>
-</head>
+      let userId = getUrlVars()[0];
+      let pidAndImgId = getUrlVars()[1];
+      let pid = pidAndImgId.split("%2F")[0];
+      let imgId = pidAndImgId.split("%2F")[1];
+      console.log("user id is:", userId);
+      console.log("pid is:", pid);
+      console.log("img is:", imgId);
 
-<body>
-  <div class="screen_container">
-    <div class="top_container">
-      <a class="back-button" href="Prompt.html">BACK</a>
-      <div class="header_container">
-        <div class="blur-box"></div>
-        <header id="header-title">EVALUATE A PHOTO</header>
+      window.onload = function() {
+        fetch("/profile")
+          .then(res => res.json())
+          .then(function(data) {
+            if (data) {
+              uid = data;
+            }
+            document.getElementById("uid").value = data;
+          })
+          .catch(function(error) {
+            console.log("Request failed", error);
+          });
+        db.collection("prompts")
+          .doc(pid)
+          .onSnapshot(doc => {
+            console.log(doc.data());
+            $("#prompt_title").html(doc.data().title);
+          });
+        db.collection("users")
+          .doc(userId)
+          .onSnapshot(doc => {
+            console.log(doc.data());
+            $("#submitted_by").html("Submitted by @" + doc.data().alias);
+            storageRef
+              .child("submissions/" + pid + "/" + imgId)
+              .getDownloadURL()
+              .then(url => $("#promtPic").attr("src", url));
+          });
+
+        let subId = "tempSubId";
+        document.getElementById("uid").value = userId;
+        document.getElementById("subId").value = subId;
+        document.getElementById("imgId").value = imgId;
+        document.getElementById("pid").value = pid;
+      };
+
+      $(document).on("click", "#submitButton", function(e) {
+        var date = new Date();
+
+        document.getElementById("techniqueScore").value = $("#technique").val();
+        document.getElementById("oringinalityScore").value = $(
+          "#originality"
+        ).val();
+        document.getElementById("overallScore").value = $("#overall").val();
+        document.getElementById("interpretationText").value = $(
+          "#interpretation"
+        ).val();
+        document.getElementById("date").value = date.getTime();
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="screen_container">
+      <div class="top_container">
+        <a class="back-button" href="Prompt.html">BACK</a>
+        <div class="header_container">
+          <div class="blur-box"></div>
+          <header id="header-title">EVALUATE A PHOTO</header>
+        </div>
+      </div>
+
+      <div class="main_container">
+        <!-- lead to main dashboard -->
+        <!-- <form action="/users/signup" method="POST"> -->
+        <form
+          method="POST"
+          action="/submit-evaluation"
+          enctype="multipart/form-data"
+        >
+          <input type="hidden" id="pid" name="promptId" />
+          <input type="hidden" id="uid" name="uid" />
+          <input type="hidden" id="subId" name="subId" />
+          <input type="hidden" id="imgId" name="imgId" />
+          <input type="hidden" id="techniqueScore" name="techniqueScore" />
+          <input
+            type="hidden"
+            id="oringinalityScore"
+            name="oringinalityScore"
+          />
+          <input type="hidden" id="overallScore" name="overallScore" />
+          <input type="hidden" id="interpretationText" name="interpretation" />
+          <input type="hidden" id="date" name="date" />
+
+          <div class="text_container">
+            <text class="subheader">Evaluation Criteria</text>
+            <text class="prompt_text"
+              >You must evaluate a randomly generated submission from another
+              user in order to submit your own work!</text
+            >
+          </div>
+          <div class="eval_container">
+            <text class="subheader" id="prompt_title">Dancers</text>
+            <text class="prompt_text" id="submitted_by">Submitted by @</text>
+            <div class="image"><img id="promtPic" /></div>
+          </div>
+
+          <div class="eval_container">
+            <input
+              class="input-button"
+              id="technique"
+              type="number"
+              name="ig"
+              min="1"
+              max="10"
+              placeholder="  Technique (out of 10)"
+            />
+            <input
+              class="input-button"
+              id="originality"
+              type="number"
+              name="portfolio"
+              min="1"
+              max="10"
+              placeholder="  Originality (out of 10)"
+            />
+            <input
+              class="input-button-big"
+              id="interpretation"
+              type="text"
+              name="portfolio"
+              placeholder="  Interpretation"
+            />
+            <input
+              class="input-button"
+              id="overall"
+              type="number"
+              name="portfolio"
+              min="1"
+              max="10"
+              placeholder="  Overall Score (out of 10)"
+            />
+          </div>
+
+          <div class="info_container">
+            <input
+              class="button"
+              type="submit"
+              value="SUBMIT"
+              id="submitButton"
+            />
+          </div>
+        </form>
       </div>
     </div>
-
-    <div class="main_container">
-      <!-- lead to main dashboard  -->
-      <!-- <form action="/users/signup" method="POST"> -->
-      <form action="Discover.html">
-        <div class="text_container">
-          <text id="subheader">Evaluation Criteria</text>
-          <text id="prompt_text">You must evaluate a randomly generated submission from another user in order to submit your own work!</text>
-        </div>
-
-        <div class="eval_container">
-          <text id="subheader">Dancers</text>
-          <text id="prompt_text">Submitted by @bob</text>
-          <div class="image">
-            <img src="https://cdn1.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg">
-          </div>
-        </div>
-
-        <div class="eval_container">
-          <input class="input-button" id="technique" type="number" name="ig" min="1" max="10" placeholder="  Technique (out of 10)">
-          <input class="input-button" id="originality" type="number" name="portfolio" min="1" max="10" placeholder="  Originality (out of 10)">
-          <input class="input-button-big" id="interpretation" type="text" name="portfolio" placeholder="  Interpretation">
-          <input class="input-button" id="overall" type="number" name="portfolio" min="1" max="10" placeholder="  Overall Score (out of 10)">
-        </div>
-
-        <div class="info_container">
-          <input class="button" type="submit" value="SUBMIT" id="submitButton">
-        </div>
-      </form>
-    </div>
-
-  </div>
-</body>
-
-</html>
-
+  </body>
 </html>
