@@ -401,4 +401,52 @@ app.post("/submit-evaluation", (req, res) => {
   busboy.end(req.rawBody);
 });
 
+//Handle edit profile
+app.post('/update-profile', (req, res) => {
+  console.log(req.body);
+  const busboy = new Busboy({ headers: req.headers });
+  // This object will accumulate all the fields, keyed by their name
+  const fields = {};
+
+  // This code will process each non-file field in the form.
+  busboy.on("field", (fieldname, val) => {
+    console.log(`Processed field ${fieldname}: ${val}.`);
+    fields[fieldname] = val;
+  });
+
+  // Triggered once all uploaded files are processed by Busboy.
+  // We still need to wait for the disk writes (saves) to complete.
+  busboy.on("finish", () => {
+
+
+    let newDocRef = db.collection("users").doc(fields["uid"]);
+    newDocRef
+      .update({
+        alias: fields["alias"],
+        name: fields["name"],
+        ig: fields["ig"],
+        email: fields["email"],
+        portfolio: fields["portfolio"],
+      })
+      .then(docRef => {
+        // redirect to prompts page
+        res.redirect(
+          url.format({
+            pathname: "/Profile.html",
+            query: {
+              uid: fields["uid"]
+            }
+          })
+        );
+
+        return null;
+      })
+      .catch(error => {
+        console.error("Error writing document: ", error);
+      });
+  });
+
+  busboy.end(req.rawBody);
+});
+
 exports.app = functions.https.onRequest(app);

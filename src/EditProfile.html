@@ -6,6 +6,50 @@
     <title>My Profile</title>
     <link rel="stylesheet" href="css/cssreset.css">
     <link rel="stylesheet" href="css/editprofile.css">
+
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!-- GitHub Fetch API -->
+    <script src="./js/fetch.umd.js"></script>
+
+    <script>
+      // Initialize Cloud Firestore through Firebase
+      firebase.initializeApp({
+        apiKey: "AIzaSyC6FPXu3_bOHpHr7AelgBKAMbGiIUPZ2Vo",
+        authDomain: "pandaexpressjs.firebaseapp.com",
+        projectId: "pandaexpressjs",
+        storageBucket: "pandaexpressjs.appspot.com"
+      });
+
+      var db = firebase.firestore();
+      var storageRef = firebase.storage().ref();
+
+      window.onload = function () {
+        fetch('/profile')
+          .then(res => res.json())
+          .then(function (data) {
+            if (data) {
+              console.log("User logged in. UID: ", data);
+            }
+            document.getElementById("uid").value = data;
+          }).catch(function (error) {
+            console.log("Request failed", error);
+          });
+
+          $(document).on("click", "#submitButton", function(e) {
+            document.getElementById("alias").value = $(".alias").val();
+            document.getElementById("name").value = $(".name").val();
+            document.getElementById("ig").value = $(".ig").val();
+            document.getElementById("email").value = $(".email").val();
+            document.getElementById("portfolio").value = $(".portfolio").val();
+          });
+      };
+
+    </script>
   </head>
 
   <body>
@@ -16,25 +60,32 @@
       </div>
 
       <div class="main_container">
+        <form action="/update-profile" method="POST">
+          <input type="hidden" id="uid" name="uid" />
+          <input type="hidden" id="alias" name="alias" />
+          <input type="hidden" id="name" name="name" />
+          <input type="hidden" id="ig" name="ig" />
+          <input type="hidden" id="email" name="email" />
+          <input type="hidden" id="portfolio" name="portfolio" />
 
-        <div class="info_container">
-          <text id="subheader">INFO</text>
-          <input id="input-button" type="text" placeholder="  Alias: Best_Photographer_SD">
-          <input id="input-button" type="password" placeholder="  Name: Bob Bobby">
-        </div>
 
-        <div class="info_container">
-          <text id="subheader">CONTACT</text>
-          <input id="input-button" type="text" placeholder="  Instagram: re.mags">
-          <input id="input-button" type="text" placeholder="  Email: email@ucsd.edu">
-          <input id="input-button" type="text" placeholder="  Portfolio: martinmags@github.io">
-        </div>
+          <div class="info_container">
+            <text id="subheader">INFO</text>
+            <input id="input-button" class="alias" type="text" placeholder="  Alias: Best_Photographer_SD">
+            <input id="input-button" class="name" type="text" placeholder="  Name: Bob Bobby">
+          </div>
 
-        <div class="info_container">
-          <form action="Profile.html">
-            <input class="button" type="submit" value="SAVE CHANGES">
-          </form>
-        </div>
+          <div class="info_container">
+            <text id="subheader">CONTACT</text>
+            <input id="input-button" class="ig" type="text" placeholder="  Instagram: re.mags">
+            <input id="input-button" class="email" type="text" placeholder="  Email: email@ucsd.edu">
+            <input id="input-button" class="portfolio" type="text" placeholder="  Portfolio: martinmags@github.io">
+          </div>
+
+          <div class="info_container">
+              <input class="button" id="submitButton" type="submit" value="SAVE CHANGES">
+          </div>
+      </form>
       </div>
 
 
