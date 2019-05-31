@@ -177,6 +177,7 @@ app.get("/gen-prompts", (req, res) => {
          db.collection("prompts").doc(doc.id).update({ "status": "archived" });
       });
    });
+   console.log("archived lastweek prompts");
 
    // update "thisweek" prompts to "lastweek"
    db.collection("prompts").where("status", "==", "thisweek").get().then(function (querySnapshot) {
@@ -184,6 +185,7 @@ app.get("/gen-prompts", (req, res) => {
          db.collection("prompts").doc(doc.id).update({ "status": "lastweek" });
       });
    });
+   console.log("this week prompts are now last week prompts");
 
    // choose top winners for each of "lastweek" prompts
    db.collection("prompts").where("status", "==", "lastweek").get().then(function (p_qs) {
@@ -191,7 +193,6 @@ app.get("/gen-prompts", (req, res) => {
       p_qs.forEach(function (prompt) {
          // for each submission, get array of evaluations and calculate avgScore
          prompt.data().submissions.forEach(function (subId) {
-            // calculate mean across all evals for this submission
             let sum = 0;
             let count = 0;
             db.collection("submissions").doc(subId).get().then(function (sub) {
@@ -203,7 +204,14 @@ app.get("/gen-prompts", (req, res) => {
                   });
                });
             });
-            let avg = sum/count;
+            // calculate mean across all evals for this submission
+            let avg;
+            if (count === 0) {
+               // if received no evals, avg is 0
+               avg = 0;
+            } else {
+               avg = sum / count;
+            }
             // update submission avgScore
             db.collection("submissions").doc(subId).update({ "avgScore": avg });
          });
@@ -217,9 +225,12 @@ app.get("/gen-prompts", (req, res) => {
       });
    });
 
+   // randomly select a page number from 1 to 20
+   let pageNum = Math.floor(Math.random() * 20) + 1;
+
    // add new prompts from unsplash to db, set status to "thisweek"
    request(
-      "https://api.unsplash.com/collections/featured?page=8&per_page=3&client_id=a2e61cfb25649bf508835bb5dcded3701a65033ede47fd307f6adfc23acaaf8c",
+      `https://api.unsplash.com/collections/featured?page=${pageNum}&per_page=3&client_id=a2e61cfb25649bf508835bb5dcded3701a65033ede47fd307f6adfc23acaaf8c`,
       (error, response, body) => {
          if (!error && response.statusCode === 200) {
             JSON.parse(body).forEach(e => {
@@ -245,9 +256,10 @@ app.get("/gen-prompts", (req, res) => {
                   });
             });
 
-            res.json(JSON.parse(body));
+            // res.json(JSON.parse(body));
+            res.redirect("/Admin.html");
          } else {
-            res.json(error);
+            res.send(error);
          }
       }
    );
