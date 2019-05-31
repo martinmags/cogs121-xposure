@@ -27,8 +27,17 @@
          let curPrompts = db.collection("prompts").where("status", "==", "thisweek");
          curPrompts.get().then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
-               // console.log(doc.id, ' => ', doc.data());
                tgtCurList.innerHTML += `
+                  <li>${doc.data().title}</li>
+               `;
+            });
+         });
+
+         let tgtPrevList = document.getElementById("prev_prompts_list");
+         let prevPrompts = db.collection("prompts").where("status", "==", "lastweek");
+         prevPrompts.get().then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+               tgtPrevList.innerHTML += `
                   <li>${doc.data().title}</li>
                `;
             });
@@ -47,14 +56,18 @@
             <input type="submit" class="button" value="LOG OUT">
          </form>
       </div>
-      <div class="cur_prompts_container">
+      <div class="button_container">
+         <form action="/pass-prompt" method="POST">
+            <input id="btn" type="submit" value="Generate new prompts">
+         </form>
+      </div>
+      <div class="prompts_container">
          <h1>Current Prompts</h1>
          <ul id="cur_prompts_list"></ul>
-         <div class="button_container">
-            <form action="/pass-prompt" method="POST">
-               <input id="btn" type="submit" value="Generate new prompts">
-            </form>
-         </div>
+      </div>
+      <div class="prompts_container">
+         <h1>Previous Prompts</h1>
+         <ul id="prev_prompts_list"></ul>
       </div>
    </div>
 </body>

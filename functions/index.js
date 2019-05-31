@@ -171,6 +171,53 @@ app.get("/profile", (req, res) => {
 
 // generate 3 prompts
 app.get("/gen-prompts", (req, res) => {
+   // update "lastweek" prompts to "archived"
+   db.collection("prompts").where("status", "==", "lastweek").get().then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+         db.collection("prompts").doc(doc.id).update({ "status": "archived" });
+      });
+   });
+
+   // update "thisweek" prompts to "lastweek"
+   db.collection("prompts").where("status", "==", "thisweek").get().then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+         db.collection("prompts").doc(doc.id).update({ "status": "lastweek" });
+      });
+   });
+
+   // choose top winners for each of "lastweek" prompts
+   db.collection("prompts").where("status", "==", "lastweek").get().then(function (p_qs) {
+      // for each prompt, get array of submissions
+      p_qs.forEach(function (prompt) {
+         // for each submission, get array of evaluations and calculate avgScore
+         prompt.data().submissions.forEach(function (subId) {
+            // calculate mean across all evals for this submission
+            let sum = 0;
+            let count = 0;
+            db.collection("submissions").doc(subId).get().then(function (sub) {
+               // for each evaluation, get overallScore
+               sub.data().evaluations.forEach(function (evalId) {
+                  db.collection("evaluations").doc(evalId).get().then(function (eval) {
+                     sum += eval.data().overallScore;
+                     count++;
+                  });
+               });
+            });
+            let avg = sum/count;
+            // update submission avgScore
+            db.collection("submissions").doc(subId).update({ "avgScore": avg });
+         });
+         // identify top 3 winners
+         db.collection("submissions").where("promptId", "==", prompt.id).orderBy("avgScore", "desc").limit(3).get().then(function (w_qs) {
+            w_qs.forEach(function (winningSub) {
+               // update prompt winners array
+               db.collection("prompts").doc(prompt.id).update({ "winners": admin.firestore.FieldValue.arrayUnion(winningSub.id) });
+            });
+         });
+      });
+   });
+
+   // add new prompts from unsplash to db, set status to "thisweek"
    request(
       "https://api.unsplash.com/collections/featured?page=8&per_page=3&client_id=a2e61cfb25649bf508835bb5dcded3701a65033ede47fd307f6adfc23acaaf8c",
       (error, response, body) => {
@@ -185,17 +232,12 @@ app.get("/gen-prompts", (req, res) => {
                      coverUrl: e["cover_photo"]["urls"]["regular"],
                      entryDate: new Date().getTime(),
                      deadline: new Date().getTime() + 7 * 24 * 60 * 60 * 1000,
-                     submissions: []
+                     submissions: [],
+                     status: "thisweek",
+                     winners: []
                   })
                   .then(docRef => {
-                     console.log(
-                        "Prompt " +
-                        '"' +
-                        e["title"] +
-                        '"' +
-                        " added! Document ID: " +
-                        docRef.id
-                     );
+                     console.log("Prompt \"" + e["title"] + "\" added! Document ID: " + docRef.id);
                      return null;
                   })
                   .catch(error => {

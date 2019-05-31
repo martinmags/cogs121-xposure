@@ -25,7 +25,7 @@
   var db = firebase.firestore();
 
   window.onload = function () {
-    db.collection("prompts").get().then((querySnapshot) => {
+    db.collection("prompts").where("status", "==", "thisweek").get().then((querySnapshot) => {
       let tgtContainer = document.querySelector(".prompts_container > .row_container");
       querySnapshot.forEach((doc) => {
         tgtContainer.innerHTML += `
