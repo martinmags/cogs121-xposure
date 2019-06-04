@@ -27,7 +27,6 @@
 
     var db = firebase.firestore();
     var storageRef = firebase.storage().ref();
-
     window.onload = function () {
       fetch('/profile')
         .then(res => res.json())
@@ -42,64 +41,65 @@
                 document.getElementById('span-email').innerHTML = `<text>Email Contact: </text>` + doc.data().email;
                 document.getElementById('span-portfolio').innerHTML = `<text>Portfolio: </text>` + doc.data().portfolio;
 
-                console.log("Works");
-                console.log(doc.data().submissions);
-                const sid = doc.data().submissions;
-              
-                
+                const sid = doc.data().submissions;              
+                const submissionArray = doc.data().submissions;
                 sid.forEach((sid)=> {
                   db.collection("submissions").doc(sid).onSnapshot(doc =>{
                     db.collection("submissions").get().then((querySnapshot) => {
+                      
                       const imgsrc = doc.data().file;
                       const pid = doc.data().promptId;
-                      console.log(imgsrc);
+                      const eid = doc.data().evaluations;
 
                       db.collection("prompts").doc(pid).onSnapshot(doc =>{
-                        const promptTitle = doc.data().title;
-
+                        const promptTitle = doc.data().title;                        
 
                         // firebase storage
                         storageRef.child(imgsrc).getDownloadURL().then(function (url) {
-                            document.getElementById('work_container').innerHTML += `
-                            <div id="submission">
-                              <div class="title_container">
-                                <text class="header">${promptTitle}</text> 
-                                <text class="wintxt"></text> 
-                              </div>
-                              
-                              <div class="image_container">                                              
-                                <img class="photo" alt="submission" src="${url}"></img>
-                                <div class="comments_container">
-                                  <p class="comments">Great natural tones and technique is standard. Could have shot the model in the environent for more context.</p>
-                                  <text class= "txt">Overall Score: 9/10</text>
-                                  <hr class="line"/>
-                                  <p class="comments"> Warm yet natural earthy tones. Looks like it could below to a larger collection of</p>
-                                  <text>Overall Score: 8/10</text>
-                                  <hr class="line"/>
-                                  <p class="comments">Great natural tones and technique is standard. Could have shot the model in the environent for more context.</p>
-                                  <text>Overall Score: 7/10</text>
-                                  <hr class="line"/>
-                                  <p class="comments"> Warm yet natural earthy tones. Looks like it could below to a larger collection of portraits.</p>
-                                  <text>Overall Score: 9/10</text>
-                                  <hr class="line"/>
-                                  <p class="comments">Great natural tones and technique is standard. Could have shot the model in the environent for more context.</p>
-                                  <text>Overall Score: 7/10</text>
-                                  <hr class="line"/>
-                                  <p class="comments"> Warm yet natural earthy tones. Looks like it could below to a larger collection of portraits.</p>
-                                  <text>Overall Score: 8/10</text>
-                                  <hr class="line"/>
-                                </div>
-                              </div>
+                          document.getElementById('work_container').innerHTML += `
+                          <div id="submission">
+                            <div id="title_container">
+                              <text class="header">${promptTitle}</text>
+                              <text class="wintxt"></text> 
                             </div>
-                            `
+                            <div class="image_container">                                              
+                              <img class="photo" alt="submission" src="${url}"></img>
+                              <div id="comments_container_${eid}"></div>
+                            </div>
+                          </div>`
+                          console.log(eid.length)
+                          if (eid.length > 0){
+                            console.log("TIMES LOOPED");
+                            eid.forEach((eid)=>{
+                              console.log(eid)
+                              db.collection("evaluations").doc(eid).onSnapshot(doc =>{
+                                db.collection("evaluations").get().then((querySnapshot) => {     
+                                  document.getElementById(`comments_container_${eid}`).innerHTML += `
+                                    <p class="comments">\"${doc.data().interpretation}\"</p>
+                                    <text class="txt">Technique: ${doc.data().technique}</text>
+                                    <text class="txt">Originality: ${doc.data().originality}</text>
+                                    <text class= "txt">Overall Score: ${doc.data().overallScore}</text>
+                                    <hr class="line"/>
+                                  `
+                                });
+                              });
+                            });
+                          }
+
+                            
+                          
                         }).catch(function (error) {
                           // Handle any errors
                           console.error("Error getting download URL: ", error);
                         });
 
+
                       });
 
+                      
+
                     });
+
                   });
                 });
               });
@@ -131,8 +131,8 @@
 
     <div class="main_container">
       <div class="text_container">
-          <text id="sub-header"><span id="span-name">NAME HERE</span></text>
-          <text id="info-text"><span id="span-alias">Alias here</span></text>
+          <text id="sub-header"><span id="span-alias">Alias here</span></text>
+          <text id="info-text"><span id="span-name">Name here</span></text>
           <text id="info-text"><span id="span-ig">@instagram</span></text>
           <text id="info-text"><span id="span-email">email@ucsd.edu</span></text>
           <text id="info-text"><span id="span-portfolio">portfolio.com</span></text>
@@ -145,7 +145,7 @@
     <div id="work_container">
       <!-- n submissions -->
     </div>
-
+    
     <footer class="footer_container">
       <a class="footer_button" href="Search.html">SEARCH</a>
       <a class="footer_button" href="Discover.html">DISCOVER</a>

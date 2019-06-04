@@ -117,7 +117,7 @@ body{
   margin-bottom: 1vh;
   margin-left: 5px;
 }
-.comments_container{
+#comments_container{
   display: flex;
   flex-direction: column;
   width: 50vw;
@@ -126,18 +126,17 @@ body{
   overflow-x: hidden;
 }
 .comments{
-  margin: 5px;
   font-size: .8em;
-
+  line-height:1.2em;
 }
-.title_container{
+#title_container{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 .txt{
-  margin-left: 5px;
-  margin-bottom: 5px;
+  margin: 5px;
+  font-size: .8em;
 }
 
 .header{
