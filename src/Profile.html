@@ -64,7 +64,14 @@
                             </div>
                             <div class="image_container">                                              
                               <img class="photo" alt="submission" src="${url}"></img>
-                              <div id="comments_container_${eid}"></div>
+                              <div id="comments_container_${sid}" 
+                                style="display: flex;
+                                flex-direction: column;
+                                width: 50vw;
+                                justify-content: flex-start;
+                                overflow-y: auto;
+                                overflow-x: hidden;">
+                              </div>
                             </div>
                           </div>`
                           console.log(eid.length)
@@ -74,7 +81,7 @@
                               console.log(eid)
                               db.collection("evaluations").doc(eid).onSnapshot(doc =>{
                                 db.collection("evaluations").get().then((querySnapshot) => {     
-                                  document.getElementById(`comments_container_${eid}`).innerHTML += `
+                                  document.getElementById(`comments_container_${sid}`).innerHTML += `
                                     <p class="comments">\"${doc.data().interpretation}\"</p>
                                     <text class="txt">Technique: ${doc.data().technique}</text>
                                     <text class="txt">Originality: ${doc.data().originality}</text>
@@ -84,6 +91,10 @@
                                 });
                               });
                             });
+                          }
+                          else{
+                            document.getElementById(`comments_container_${sid}`).innerHTML += `
+                              <text class="txt">No evaluations</text>`
                           }
 
                             
