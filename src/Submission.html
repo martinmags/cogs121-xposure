@@ -44,7 +44,11 @@
       window.onload = function() {
         // back button href
         document.getElementById("back-button").href = "Prompt.html?pid=" + pid;
-        document.getElementById("subheader").innerHTML = pid;
+        db.collection("prompts")
+          .doc(pid)
+          .onSnapshot(doc => {
+            document.getElementById("subheader").innerHTML = doc.data().title;
+          });
         fetch("/profile")
           .then(res => res.json())
           .then(function(data) {
