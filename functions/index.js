@@ -205,23 +205,31 @@ app.get("/gen-prompts", (req, res) => {
                   .doc(evalId)
                   .get()
                   .then(eval => {
-                    sum += eval.data().overallScore;
+                    sum += parseInt(eval.data().overallScore, 10);
                     count++;
+
+                    if (count === sub.data().evaluations.length) {
+                      callback();
+                    }
                   });
               });
+
+              function callback() {
+                // calculate mean across all evals for this submission
+                let avg;
+                if (count === 0) {
+                  // if received no evals, avg is 0
+                  avg = 0;
+                } else {
+                  avg = sum / count;
+                }
+
+                // update submission avgScore
+                db.collection("submissions")
+                  .doc(subId)
+                  .update({ avgScore: avg });
+              }
             });
-          // calculate mean across all evals for this submission
-          let avg;
-          if (count === 0) {
-            // if received no evals, avg is 0
-            avg = 0;
-          } else {
-            avg = sum / count;
-          }
-          // update submission avgScore
-          db.collection("submissions")
-            .doc(subId)
-            .update({ avgScore: avg });
         });
         // identify top 3 winners
         db.collection("submissions")
