@@ -1,3 +1,4 @@
+<!-- Users are able to evaluate a selected submission. -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -45,6 +46,7 @@
       console.log("img is:", imgId);
       console.log("sub id is:", subId);
       window.onload = function() {
+        //get user id
         fetch("/profile")
           .then(res => res.json())
           .then(function(data) {
@@ -56,12 +58,14 @@
           .catch(function(error) {
             console.log("Request failed", error);
           });
+          //gets prompt title
         db.collection("prompts")
           .doc(pid)
           .onSnapshot(doc => {
             console.log(doc.data());
             $("#prompt_title").html(doc.data().title);
           });
+          //gets submission info
         db.collection("users")
           .doc(userId)
           .onSnapshot(doc => {
@@ -72,13 +76,12 @@
               .getDownloadURL()
               .then(url => $("#promtPic").attr("src", url));
           });
-
         document.getElementById("uid").value = userId;
         document.getElementById("subId").value = subId;
         document.getElementById("imgId").value = imgId;
         document.getElementById("pid").value = pid;
       };
-
+      //upload evaluation
       $(document).on("click", "#submitButton", function(e) {
         var date = new Date();
 

@@ -1,4 +1,4 @@
-<!-- user search stack -->
+<!-- This file displays profile page of the user behind the winning submission. -->
 <!DOCTYPE html>
 <html>
 
@@ -44,6 +44,7 @@
     window.onload = function () {
       db.collection("users").doc(uid).onSnapshot(doc => {
         console.log(doc.data());
+        //display user info
         document.getElementById('span-alias').innerHTML = `<text>Alias: </text>` + doc.data().alias;
         document.getElementById('span-name').innerHTML = `<text>Name: </text>` + doc.data().name;
         document.getElementById('span-ig').innerHTML = `<text>Instagram: </text><a id="ig-link" target="_blank" href="https://www.instagram.com/${doc.data().ig}">@${doc.data().ig}</a>`;
@@ -52,8 +53,9 @@
 
         const sid = doc.data().submissions;
 
-        if (sid.length > 0){            
+        if (sid.length > 0){
           sid.forEach((sid)=> {
+            //display submissions
             db.collection("submissions").doc(sid).onSnapshot(doc =>{
               db.collection("submissions").get().then((querySnapshot) => {
                 const imgsrc = doc.data().file;
@@ -77,7 +79,7 @@
 
                         <div class="image_container">
                           <img class="photo" alt="submission" src="${url}"></img>
-                          <div id="comments_container_${sid}" 
+                          <div id="comments_container_${sid}"
                             style="display: flex;
                             flex-direction: column;
                             width: 50vw;
@@ -88,10 +90,11 @@
                         </div>
                       </div>`
                       if (eid.length > 0){
+                        //display evaluations
                         eid.forEach((eid)=>{
                           console.log(eid)
                           db.collection("evaluations").doc(eid).onSnapshot(doc =>{
-                            db.collection("evaluations").get().then((querySnapshot) => {     
+                            db.collection("evaluations").get().then((querySnapshot) => {
                               document.getElementById(`comments_container_${sid}`).innerHTML += `
                                 <p class="comments">\"${doc.data().interpretation}\"</p>
                                 <text class="txt">Technique: ${doc.data().technique}</text>
@@ -104,6 +107,7 @@
                         });
                       }
                       else{
+                        //no evaluations to display
                         document.getElementById(`comments_container_${sid}`).innerHTML += `
                           <text class="txt">No evaluations</text>`
                       }

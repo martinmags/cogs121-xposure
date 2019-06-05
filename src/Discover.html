@@ -1,3 +1,7 @@
+<!-- This file displays current prompts using Unsplash API and display the
+previous prompts winners (highest Overallscore) by fetching data from firebase.
+The current prompts section leads users to Prompts.html, and the previous prompts
+showcase leads users to their corresponding winner profiles. -->
 <!DOCTYPE html>
 <html>
 
@@ -78,7 +82,7 @@
             });
           });
         });
-
+        //updates winning images
         function callback() {
           tgtContainer.innerHTML += `
             <div class="showcase">

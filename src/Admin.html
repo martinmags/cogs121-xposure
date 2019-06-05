@@ -1,3 +1,5 @@
+<!-- This file shows up only for the user who logs in with the admin account.
+It allows admins to generate new prompts weekly. -->
 <!DOCTYPE html>
 
 <head>
@@ -23,6 +25,7 @@
       var db = firebase.firestore();
 
       window.onload = function () {
+         //targets current prompts for the week
          let tgtCurList = document.getElementById("cur_prompts_list");
          let curPrompts = db.collection("prompts").where("status", "==", "thisweek");
          curPrompts.get().then(function (querySnapshot) {
@@ -33,6 +36,7 @@
             });
          });
 
+         //targets previous prompts finished last week
          let tgtPrevList = document.getElementById("prev_prompts_list");
          let prevPrompts = db.collection("prompts").where("status", "==", "lastweek");
          prevPrompts.get().then(function (querySnapshot) {
