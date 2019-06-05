@@ -37,9 +37,9 @@
               .onSnapshot(function (doc) {
                 document.getElementById('span-alias').innerHTML = `<text>Alias: </text>` + doc.data().alias;
                 document.getElementById('span-name').innerHTML = `<text>Name: </text>` + doc.data().name;
-                document.getElementById('span-ig').innerHTML = `<text>Instagram: </text><a id="ig-link" target="_blank" href="https://www.instagram.com/` + doc.data().ig + `">@${doc.data().ig}</a>`;
+                document.getElementById('span-ig').innerHTML = `<text>Instagram: </text><a id="ig-link" target="_blank" href="https://www.instagram.com/${doc.data().ig}">@${doc.data().ig}</a>`;
                 document.getElementById('span-email').innerHTML = `<text>Email Contact: </text>` + doc.data().email;
-                document.getElementById('span-portfolio').innerHTML = `<text>Portfolio: </text>` + doc.data().portfolio;
+                document.getElementById('span-portfolio').innerHTML = `<text>Portfolio: </text><a id="portfolio-link" target="_blank" href="${doc.data().portfolio}">${doc.data().portfolio}</a>`;
 
                 const sid = doc.data().submissions;
                 if (sid.length > 0){            
