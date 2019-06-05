@@ -1,3 +1,5 @@
+// index.js handles server-side processes, e.g. form submissions, routing, database calls.
+
 const express = require("express");
 const app = express();
 const url = require("url");
@@ -49,25 +51,6 @@ app.get("/users", (req, res) => {
       res.send("Error: " + error);
     });
 });
-
-// Display a user's data when userid is specified
-// app.get('/users/:userid', (req, res) => {
-//    const userId = req.params.userid;
-
-//    db.collection("users").doc(userId).get().then((doc) => {
-//       if (doc.exists) {
-//          console.log("Document data:", doc.data());
-//          res.send(doc.data());
-//       } else {
-//          // doc.data() will be undefined in this case
-//          console.log("No such document!");
-//          res.send("No such document!");
-//       }
-//       return doc;
-//    }).catch((error) => {
-//       console.error("Error getting document:", error);
-//    });
-// });
 
 // User sign up
 app.post("/users/signup", (req, res) => {
@@ -452,6 +435,7 @@ app.post("/evaluate-prompt", (req, res) => {
   );
 });
 
+// Handle evaluation submission
 app.post("/submit-evaluation", (req, res) => {
   console.log(req.body);
   const busboy = new Busboy({ headers: req.headers });
