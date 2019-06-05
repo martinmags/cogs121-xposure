@@ -301,12 +301,25 @@ app.get("/gen-prompts", (req, res) => {
   );
 });
 
-// Handle passing uId from Search to Prompt
+// Handle passing uId from Search to OtherProfile
 app.post("/select-user", (req, res) => {
   let uid = req.body.userId;
   res.redirect(
     url.format({
       pathname: "/OtherProfile.html",
+      query: {
+        uid: uid
+      }
+    })
+  );
+});
+
+// Handle passing uId from Discover to WinnerProfile
+app.post("/select-winner", (req, res) => {
+  let uid = req.body.userId;
+  res.redirect(
+    url.format({
+      pathname: "/WinnerProfile.html",
       query: {
         uid: uid
       }
@@ -536,7 +549,6 @@ app.post("/update-profile", (req, res) => {
         alias: fields["alias"],
         name: fields["name"],
         ig: fields["ig"],
-        email: fields["email"],
         portfolio: fields["portfolio"]
       })
       .then(docRef => {

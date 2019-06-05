@@ -1,6 +1,4 @@
-<!-- This file allows a profile page to be dynamically display based on the
-user's selection. After a user clicks on another profile in the search page,
- this is the page that shows up. -->
+<!-- This file displays profile page of the user behind the winning submission. -->
 <!DOCTYPE html>
 <html>
 
@@ -9,7 +7,7 @@ user's selection. After a user clicks on another profile in the search page,
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>My Profile</title>
   <link rel="stylesheet" href="css/cssreset.css">
-  <link rel="stylesheet" href="css/otherprofile.css">
+  <link rel="stylesheet" href="css/winnerprofile.css">
 
   <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
@@ -46,7 +44,7 @@ user's selection. After a user clicks on another profile in the search page,
     window.onload = function () {
       db.collection("users").doc(uid).onSnapshot(doc => {
         console.log(doc.data());
-        //get user info
+        //display user info
         document.getElementById('span-alias').innerHTML = `<text>Alias: </text>` + doc.data().alias;
         document.getElementById('span-name').innerHTML = `<text>Name: </text>` + doc.data().name;
         document.getElementById('span-ig').innerHTML = `<text>Instagram: </text><a id="ig-link" target="_blank" href="https://www.instagram.com/${doc.data().ig}">@${doc.data().ig}</a>`;
@@ -57,9 +55,9 @@ user's selection. After a user clicks on another profile in the search page,
 
         if (sid.length > 0){
           sid.forEach((sid)=> {
+            //display submissions
             db.collection("submissions").doc(sid).onSnapshot(doc =>{
               db.collection("submissions").get().then((querySnapshot) => {
-                //get user info
                 const imgsrc = doc.data().file;
                 const pid = doc.data().promptId;
                 const eid = doc.data().evaluations;
@@ -72,7 +70,6 @@ user's selection. After a user clicks on another profile in the search page,
 
                   // firebase storage
                   storageRef.child(imgsrc).getDownloadURL().then(function (url) {
-                    //display each submission
                       document.getElementById('work_container').innerHTML += `
                       <div id="submission">
                         <div class="title_container">
@@ -93,9 +90,9 @@ user's selection. After a user clicks on another profile in the search page,
                         </div>
                       </div>`
                       if (eid.length > 0){
+                        //display evaluations
                         eid.forEach((eid)=>{
                           console.log(eid)
-                          //dynamically display evaluations
                           db.collection("evaluations").doc(eid).onSnapshot(doc =>{
                             db.collection("evaluations").get().then((querySnapshot) => {
                               document.getElementById(`comments_container_${sid}`).innerHTML += `
@@ -110,6 +107,7 @@ user's selection. After a user clicks on another profile in the search page,
                         });
                       }
                       else{
+                        //no evaluations to display
                         document.getElementById(`comments_container_${sid}`).innerHTML += `
                           <text class="txt">No evaluations</text>`
                       }
@@ -125,7 +123,6 @@ user's selection. After a user clicks on another profile in the search page,
           });
         }
         else{
-          //user has no submissions
           document.getElementById("work_container").innerHTML += `
             <text class="none">No Submissions to display</text>`
         }
@@ -142,7 +139,7 @@ user's selection. After a user clicks on another profile in the search page,
 
     <div class="header_container">
       <div id="back-btn_container">
-        <a id="back-btn" href="Search.html">Back</a>
+        <a id="back-btn" href="Discover.html">Back</a>
       </div>
       <div id="header-title">
         <header>PROFILE</header>

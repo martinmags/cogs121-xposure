@@ -1,3 +1,4 @@
+<!-- This file allows users to create a new account with input validation. -->
 <!DOCTYPE html>
 <html>
 
@@ -7,6 +8,79 @@
   <title>Create an Account</title>
   <link rel="stylesheet" href="css/cssreset.css">
   <link rel="stylesheet" href="css/createaccount.css">
+  <script>
+    function validateInput(){
+        var alias = document.forms["newAccount"]["alias"];
+        var name = document.forms["newAccount"]["name"];
+        var email = document.forms["newAccount"]["email"];
+        var password = document.forms["newAccount"]["password"];
+        var ig = document.forms["newAccount"]["ig"];
+        var portfolio = document.forms["newAccount"]["portfolio"];
+
+        //validates alias input
+        if (alias.value == ""){
+            window.alert("Please enter a valid alias.");
+            alias.focus();
+            return false;
+        }
+        //validates name input
+        if (name.value == ""){
+            window.alert("Please enter a valid name.");
+            name.focus();
+            return false;
+        }
+        //validates email input
+        if (email.value == ""){
+            window.alert("Please enter a valid e-mail address.");
+            email.focus();
+            return false;
+        }
+
+        if (email.value.indexOf("@", 0) < 0){
+            window.alert("Please enter a valid e-mail address.");
+            email.focus();
+            return false;
+        }
+
+        if (email.value.indexOf(".", 0) < 0){
+            window.alert("Please enter a valid e-mail address.");
+            email.focus();
+            return false;
+        }
+        //validates password input
+        if (password.value == ""){
+            window.alert("Please enter a password.");
+            password.focus();
+            return false;
+        }
+        //validates instagram input
+        if (ig.value == ""){
+            window.alert("Please enter a valid instagram handle.");
+            ig.focus();
+            return false;
+        }
+        //validates portfolio input
+        if (portfolio.value == ""){
+            window.alert("Please enter a valid portfolio link.");
+            portfolio.focus();
+            return false;
+        }
+
+        if (portfolio.value.indexOf("www.", 0) < 0){
+            window.alert("Please enter a valid portfolio link.");
+            portfolio.focus();
+            return false;
+        }
+
+        if (portfolio.value.indexOf(".com", 0) < 0){
+            window.alert("Please enter a valid portfolio link.");
+            portfolio.focus();
+            return false;
+        }
+
+        return true;
+    }
+  </script>
 </head>
 
 <body>
@@ -21,7 +95,7 @@
 
     <div class="main_container">
       <!-- lead to main dashboard  -->
-      <form action="/users/signup" method="POST">
+      <form name="newAccount" action="/users/signup" onsubmit="return validateInput()" method="POST">
         <div class="info_container">
           <text id="subheader">INFO</text>
           <input id="input-button" type="text" name="alias" placeholder="  Alias">

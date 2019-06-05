@@ -1,3 +1,6 @@
+<!-- This file dynamically displays submissions for each prompt that is
+selected. After a user clicks on a prompt from the discover screen,
+this page is what they see.-->
 <!DOCTYPE html>
 <html>
 
@@ -40,6 +43,18 @@
     console.log("pid: " + pid);
 
     window.onload = function () {
+      // show due date
+      db.collection("prompts").doc(pid).get().then(function (prompt) {
+        let tgtContainer = document.querySelector("#time");
+        let deadlineDate = new Date(prompt.data().deadline);
+        let month = deadlineDate.getMonth() + 1;
+        let day = deadlineDate.getDate();
+        let year = deadlineDate.getFullYear();
+        let deadlineFormatted = year + "/" + month + "/" + day;
+        tgtContainer.innerHTML = "Due by the end of " + deadlineFormatted + ".";
+      });
+
+      //display submissions
       document.getElementById("pid").value = pid;
       db.collection("prompts").doc(pid).onSnapshot(doc => {
         const sid = doc.data().submissions;
@@ -49,8 +64,6 @@
               const imgsrc = doc.data().file;
               const candidateId = doc.data().candidateId;
               const file = doc.data().file;
-              // console.log(imgsrc);
-              // console.log(doc.data());
               console.log(doc.data().file);
               //
               let tgtContainer = document.querySelector(".submitted_container");
@@ -90,7 +103,7 @@
     </div>
 
     <div class="time_remaining_container">
-      <text id="time">Time remaining: 2 days 3 hrs 20 secs</text>
+      <text id="time"></text>
     </div>
 
     <div class="button_container">

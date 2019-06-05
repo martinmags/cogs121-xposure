@@ -1,3 +1,5 @@
+/* Contains styling for the EditProfile.html page. */
+
 body{
   font-family: 'Avenir', sans-serif;
   font-weight: 400;
@@ -80,7 +82,7 @@ body{
   text-align: center;
 }
 
-#input-button{
+input{
   width: 200px;
   height: 30px;
   margin: 2px 10px 2px 10px;
