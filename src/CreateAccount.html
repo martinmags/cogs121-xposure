@@ -58,7 +58,7 @@
             return false;
         }
 
-        if (ig.value.indexOf("https://www.instagram.com/", 0) < 0){
+        if (ig.value.indexOf("instagram.com", 0) < 0){
             window.alert("Please enter a valid instagram link.");
             email.focus();
             return false;
@@ -70,7 +70,7 @@
             return false;
         }
 
-        if (portfolio.value.indexOf("https://www.", 0) < 0){
+        if (portfolio.value.indexOf("www.", 0) < 0){
             window.alert("Please enter a valid portfolio link.");
             portfolio.focus();
             return false;
