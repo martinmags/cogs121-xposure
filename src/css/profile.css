@@ -133,8 +133,8 @@ body{
   overflow-x: hidden;
 }
 .comments{
-  font-size: .8em;
-  line-height:1.2em;
+  margin: 5px;
+  margin-bottom: 10px;
 }
 #title_container{
   display: flex;
@@ -142,7 +142,8 @@ body{
   justify-content: space-around;
 }
 .txt{
-  margin: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
   font-size: .8em;
 }
 

@@ -147,7 +147,7 @@ body{
   }
   .comments{
     margin: 5px;
-    font-size: .8em;
+    margin-bottom: 10px;
 
   }
   .title_container{
@@ -156,6 +156,8 @@ body{
     justify-content: space-around;
   }
   .txt{
+    font-size: .8em;
+
     margin-left: 5px;
     margin-bottom: 5px;
   }

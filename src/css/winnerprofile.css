@@ -147,8 +147,7 @@ body{
   }
   .comments{
     margin: 5px;
-    font-size: .8em;
-
+    margin-bottom: 10px;
   }
   .title_container{
     display: flex;
@@ -158,6 +157,7 @@ body{
   .txt{
     margin-left: 5px;
     margin-bottom: 5px;
+    font-size: .8em;
   }
 
   .header{
