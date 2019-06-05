@@ -46,6 +46,9 @@
       console.log("img is:", imgId);
       console.log("sub id is:", subId);
       window.onload = function() {
+        // back button href
+        document.querySelector('.back-button').href = "Prompt.html?pid=" + pid;
+
         let uid;
         fetch("/profile")
           .then(res => res.json())
