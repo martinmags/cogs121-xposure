@@ -49,3 +49,5 @@
 [info] [hosting] Rewriting /select-user to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
 [info] [hosting] Rewriting /select-user to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
 [info] [hosting] Rewriting /select-user to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /users/signup to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /users/signup to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app

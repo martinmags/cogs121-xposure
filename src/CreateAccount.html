@@ -7,6 +7,78 @@
   <title>Create an Account</title>
   <link rel="stylesheet" href="css/cssreset.css">
   <link rel="stylesheet" href="css/createaccount.css">
+  <script>
+    function validateInput(){
+        var alias = document.forms["newAccount"]["alias"];
+        var name = document.forms["newAccount"]["name"];
+        var email = document.forms["newAccount"]["email"];
+        var password = document.forms["newAccount"]["password"];
+        var ig = document.forms["newAccount"]["ig"];
+        var portfolio = document.forms["newAccount"]["portfolio"];
+
+        if (alias.value == ""){
+            window.alert("Please enter a valid alias.");
+            alias.focus();
+            return false;
+        }
+
+        if (name.value == ""){
+            window.alert("Please enter a valid name.");
+            name.focus();
+            return false;
+        }
+
+        if (email.value == ""){
+            window.alert("Please enter a valid e-mail address.");
+            email.focus();
+            return false;
+        }
+
+        if (email.value.indexOf("@", 0) < 0){
+            window.alert("Please enter a valid e-mail address.");
+            email.focus();
+            return false;
+        }
+
+        if (email.value.indexOf(".", 0) < 0){
+            window.alert("Please enter a valid e-mail address.");
+            email.focus();
+            return false;
+        }
+
+        if (password.value == ""){
+            window.alert("Please enter a password.");
+            password.focus();
+            return false;
+        }
+
+        if (ig.value == ""){
+            window.alert("Please enter a valid instagram link.");
+            ig.focus();
+            return false;
+        }
+
+        if (ig.value.indexOf("https://www.instagram.com/", 0) < 0){
+            window.alert("Please enter a valid instagram link.");
+            email.focus();
+            return false;
+        }
+
+        if (portfolio.value == ""){
+            window.alert("Please enter a valid portfolio link.");
+            portfolio.focus();
+            return false;
+        }
+
+        if (portfolio.value.indexOf("https://www.", 0) < 0){
+            window.alert("Please enter a valid portfolio link.");
+            portfolio.focus();
+            return false;
+        }
+
+        return true;
+    }
+  </script>
 </head>
 
 <body>
@@ -21,7 +93,7 @@
 
     <div class="main_container">
       <!-- lead to main dashboard  -->
-      <form action="/users/signup" method="POST">
+      <form name="newAccount" action="/users/signup" onsubmit="return validateInput()" method="POST">
         <div class="info_container">
           <text id="subheader">INFO</text>
           <input id="input-button" type="text" name="alias" placeholder="  Alias">
