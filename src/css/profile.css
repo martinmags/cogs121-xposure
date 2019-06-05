@@ -118,7 +118,7 @@ body{
   margin-left: 5px;
 }
 
-#ig-link{
+#ig-link, #portfolio-link {
   text-decoration: underline wheat;
 }
 
