@@ -69,4 +69,4 @@ https://docs.google.com/presentation/u/1/d/1QO2rpaqMpB8XT7hkCKAXRQ6ahNNOgLcYB_yj
 <a name="Video"></a>
 
 ## Demo Video
-[Watch Demo Here!](www.youtube.com)
+[Watch Demo Here!](https://youtu.be/GRMotiFKgV4)

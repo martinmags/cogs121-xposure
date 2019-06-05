@@ -66,7 +66,7 @@ this page is what they see.-->
               const candidateId = doc.data().candidateId;
               const file = doc.data().file;
               console.log(doc.data().file);
-              //
+              
               let tgtContainer = document.querySelector(".submitted_container");
               // firebase storage
               storageRef.child(imgsrc).getDownloadURL().then(function (url) {
