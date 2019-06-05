@@ -62,7 +62,7 @@ showcase leads users to their corresponding winner profiles. -->
     })
 
     // populate previous prompt showcase container
-    db.collection("prompts").where("status", "==", "thisweek").get().then((querySnapshot) => {
+    db.collection("prompts").where("status", "==", "lastweek").get().then((querySnapshot) => {
       let tgtContainer = document.querySelector(".showcase_container");
       querySnapshot.forEach((prompt) => {
         console.log("Winning submissions: " + prompt.data().winners);
