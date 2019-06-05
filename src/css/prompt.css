@@ -1,3 +1,5 @@
+/* Contains styling for the Prompt.html page. */
+
 body{
   font-family: 'Avenir', sans-serif;
   font-weight: 400;
@@ -54,7 +56,7 @@ body{
 #time{
   color: #8F8F8F;
   text-align: center;
-  font-size: 1.0em;  
+  font-size: 1.0em;
 }
 
 /*Submit my work 10*/
