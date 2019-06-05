@@ -158,98 +158,130 @@ app.get("/profile", (req, res) => {
 
 // generate 3 prompts
 app.get("/gen-prompts", (req, res) => {
-   // update "lastweek" prompts to "archived"
-   db.collection("prompts").where("status", "==", "lastweek").get().then(function (querySnapshot) {
-      querySnapshot.forEach(function (doc) {
-         db.collection("prompts").doc(doc.id).update({ "status": "archived" });
+  // update "lastweek" prompts to "archived"
+  db.collection("prompts")
+    .where("status", "==", "lastweek")
+    .get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        db.collection("prompts")
+          .doc(doc.id)
+          .update({ status: "archived" });
       });
-   });
-   console.log("archived lastweek prompts");
+    });
+  console.log("archived lastweek prompts");
 
-   // update "thisweek" prompts to "lastweek"
-   db.collection("prompts").where("status", "==", "thisweek").get().then(function (querySnapshot) {
-      querySnapshot.forEach(function (doc) {
-         db.collection("prompts").doc(doc.id).update({ "status": "lastweek" });
+  // update "thisweek" prompts to "lastweek"
+  db.collection("prompts")
+    .where("status", "==", "thisweek")
+    .get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        db.collection("prompts")
+          .doc(doc.id)
+          .update({ status: "lastweek" });
       });
-   });
-   console.log("this week prompts are now last week prompts");
+    });
+  console.log("this week prompts are now last week prompts");
 
-   // choose top winners for each of "lastweek" prompts
-   db.collection("prompts").where("status", "==", "lastweek").get().then(function (p_qs) {
+  // choose top winners for each of "lastweek" prompts
+  db.collection("prompts")
+    .where("status", "==", "lastweek")
+    .get()
+    .then(p_qs => {
       // for each prompt, get array of submissions
-      p_qs.forEach(function (prompt) {
-         // for each submission, get array of evaluations and calculate avgScore
-         prompt.data().submissions.forEach(function (subId) {
-            let sum = 0;
-            let count = 0;
-            db.collection("submissions").doc(subId).get().then(function (sub) {
-               // for each evaluation, get overallScore
-               sub.data().evaluations.forEach(function (evalId) {
-                  db.collection("evaluations").doc(evalId).get().then(function (eval) {
-                     sum += eval.data().overallScore;
-                     count++;
+      p_qs.forEach(prompt => {
+        // for each submission, get array of evaluations and calculate avgScore
+        prompt.data().submissions.forEach(subId => {
+          let sum = 0;
+          let count = 0;
+          db.collection("submissions")
+            .doc(subId)
+            .get()
+            .then(sub => {
+              // for each evaluation, get overallScore
+              sub.data().evaluations.forEach(evalId => {
+                db.collection("evaluations")
+                  .doc(evalId)
+                  .get()
+                  .then(eval => {
+                    sum += eval.data().overallScore;
+                    count++;
                   });
-               });
+              });
             });
-            // calculate mean across all evals for this submission
-            let avg;
-            if (count === 0) {
-               // if received no evals, avg is 0
-               avg = 0;
-            } else {
-               avg = sum / count;
-            }
-            // update submission avgScore
-            db.collection("submissions").doc(subId).update({ "avgScore": avg });
-         });
-         // identify top 3 winners
-         db.collection("submissions").where("promptId", "==", prompt.id).orderBy("avgScore", "desc").limit(3).get().then(function (w_qs) {
-            w_qs.forEach(function (winningSub) {
-               // update prompt winners array
-               db.collection("prompts").doc(prompt.id).update({ "winners": admin.firestore.FieldValue.arrayUnion(winningSub.id) });
+          // calculate mean across all evals for this submission
+          let avg;
+          if (count === 0) {
+            // if received no evals, avg is 0
+            avg = 0;
+          } else {
+            avg = sum / count;
+          }
+          // update submission avgScore
+          db.collection("submissions")
+            .doc(subId)
+            .update({ avgScore: avg });
+        });
+        // identify top 3 winners
+        db.collection("submissions")
+          .where("promptId", "==", prompt.id)
+          .orderBy("avgScore", "desc")
+          .limit(3)
+          .get()
+          .then(w_qs => {
+            w_qs.forEach(winningSub => {
+              // update prompt winners array
+              db.collection("prompts")
+                .doc(prompt.id)
+                .update({
+                  winners: admin.firestore.FieldValue.arrayUnion(winningSub.id)
+                });
             });
-         });
+          });
       });
-   });
+    });
 
-   // randomly select a page number from 1 to 20
-   let pageNum = Math.floor(Math.random() * 20) + 1;
+  // randomly select a page number from 1 to 20
+  let pageNum = Math.floor(Math.random() * 20) + 1;
 
-   // add new prompts from unsplash to db, set status to "thisweek"
-   request(
-      `https://api.unsplash.com/collections/featured?page=${pageNum}&per_page=3&client_id=a2e61cfb25649bf508835bb5dcded3701a65033ede47fd307f6adfc23acaaf8c`,
-      (error, response, body) => {
-         if (!error && response.statusCode === 200) {
-            JSON.parse(body).forEach(e => {
-               console.log(e["title"]);
-               console.log(e["cover_photo"]["urls"]["regular"]);
+  // add new prompts from unsplash to db, set status to "thisweek"
+  request(
+    `https://api.unsplash.com/collections/featured?page=${pageNum}&per_page=3&client_id=a2e61cfb25649bf508835bb5dcded3701a65033ede47fd307f6adfc23acaaf8c`,
+    (error, response, body) => {
+      if (!error && response.statusCode === 200) {
+        JSON.parse(body).forEach(e => {
+          console.log(e["title"]);
+          console.log(e["cover_photo"]["urls"]["regular"]);
 
-               db.collection("prompts")
-                  .add({
-                     title: e["title"],
-                     coverUrl: e["cover_photo"]["urls"]["regular"],
-                     entryDate: new Date().getTime(),
-                     deadline: new Date().getTime() + 7 * 24 * 60 * 60 * 1000,
-                     submissions: [],
-                     status: "thisweek",
-                     winners: []
-                  })
-                  .then(docRef => {
-                     console.log("Prompt \"" + e["title"] + "\" added! Document ID: " + docRef.id);
-                     return null;
-                  })
-                  .catch(error => {
-                     console.error("Error writing document: ", error);
-                  });
+          db.collection("prompts")
+            .add({
+              title: e["title"],
+              coverUrl: e["cover_photo"]["urls"]["regular"],
+              entryDate: new Date().getTime(),
+              deadline: new Date().getTime() + 7 * 24 * 60 * 60 * 1000,
+              submissions: [],
+              status: "thisweek",
+              winners: []
+            })
+            .then(docRef => {
+              console.log(
+                'Prompt "' + e["title"] + '" added! Document ID: ' + docRef.id
+              );
+              return null;
+            })
+            .catch(error => {
+              console.error("Error writing document: ", error);
             });
+        });
 
-            // res.json(JSON.parse(body));
-            res.redirect("/Admin.html");
-         } else {
-            res.send(error);
-         }
+        // res.json(JSON.parse(body));
+        res.redirect("/Admin.html");
+      } else {
+        res.send(error);
       }
-   );
+    }
+  );
 });
 
 // Handle passing uId from Search to OtherProfile
@@ -421,35 +453,56 @@ app.post("/submit-evaluation", (req, res) => {
   // Triggered once all uploaded files are processed by Busboy.
   // We still need to wait for the disk writes (saves) to complete.
   busboy.on("finish", () => {
-    let newDocRef = db.collection("evaluations").doc();
-    newDocRef
-      .set({
-        userId: fields["uid"],
-        submissionId: fields["subId"],
-        promptId: fields["promptId"],
-        overallScore: fields["overallScore"],
-        originality: fields["originalityScore"],
-        technique: fields["techniqueScore"],
-        theme: fields["themeScore"],
-        interpretation: fields["interpretation"],
-        entryDate: fields["date"]
-      })
-      .then(whatever => {
-        db.collection("submissions")
-          .doc(fields["subId"])
-          .update({
-            evaluations: admin.firestore.FieldValue.arrayUnion(newDocRef.id)
-          });
-        // redirect to prompts page
-        res.redirect(
-          url.format({
-            pathname: "/Prompt.html",
-            query: {
-              pid: fields["promptId"]
-            }
-          })
-        );
+    // Check for duplicate evaluation from same user
+    db.collection("submissions")
+      .doc(fields["subId"])
+      .get()
+      .then(doc => {
+        console.log(doc.data());
+        if (
+          typeof doc.data().evaluaters !== "undefined" &&
+          doc.data().evaluaters.includes(fields["uid"])
+        ) {
+          throw new Error("Duplicate evaluation submission!");
+        } else {
+          let newDocRef = db.collection("evaluations").doc();
+          newDocRef
+            .set({
+              userId: fields["uid"],
+              submissionId: fields["subId"],
+              promptId: fields["promptId"],
+              overallScore: fields["overallScore"],
+              originality: fields["originalityScore"],
+              technique: fields["techniqueScore"],
+              theme: fields["themeScore"],
+              interpretation: fields["interpretation"],
+              entryDate: fields["date"]
+            })
+            .then(re => {
+              db.collection("submissions")
+                .doc(fields["subId"])
+                .update({
+                  evaluations: admin.firestore.FieldValue.arrayUnion(
+                    newDocRef.id
+                  ),
+                  evaluaters: admin.firestore.FieldValue.arrayUnion(
+                    fields["uid"]
+                  )
+                });
+              // redirect to prompts page
+              res.redirect(
+                url.format({
+                  pathname: "/Prompt.html",
+                  query: {
+                    pid: fields["promptId"]
+                  }
+                })
+              );
 
+              return null;
+            })
+            .catch(error => console.log(error));
+        }
         return null;
       })
       .catch(error => console.log(error));
