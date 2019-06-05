@@ -36,6 +36,13 @@ body{
     letter-spacing: 0.1em;
   }
   
+  .none{
+    display: flex;
+    justify-content: center;
+    height: 70vh;
+    align-items: center;
+  }
+  
   a{
     color: white;
     text-decoration: none;

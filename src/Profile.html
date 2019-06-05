@@ -41,80 +41,79 @@
                 document.getElementById('span-email').innerHTML = `<text>Email Contact: </text>` + doc.data().email;
                 document.getElementById('span-portfolio').innerHTML = `<text>Portfolio: </text>` + doc.data().portfolio;
 
-                const sid = doc.data().submissions;              
-                const submissionArray = doc.data().submissions;
-                sid.forEach((sid)=> {
-                  db.collection("submissions").doc(sid).onSnapshot(doc =>{
-                    db.collection("submissions").get().then((querySnapshot) => {
-                      
-                      const imgsrc = doc.data().file;
-                      const pid = doc.data().promptId;
-                      const eid = doc.data().evaluations;
+                const sid = doc.data().submissions;
+                if (sid.length > 0){            
+                  sid.forEach((sid)=> {
+                    db.collection("submissions").doc(sid).onSnapshot(doc =>{
+                      db.collection("submissions").get().then((querySnapshot) => {
+                        
+                        const imgsrc = doc.data().file;
+                        const pid = doc.data().promptId;
+                        const eid = doc.data().evaluations;
 
-                      db.collection("prompts").doc(pid).onSnapshot(doc =>{
-                        const promptTitle = doc.data().title;                        
+                        db.collection("prompts").doc(pid).onSnapshot(doc =>{
+                          const promptTitle = doc.data().title;                        
 
-                        // firebase storage
-                        storageRef.child(imgsrc).getDownloadURL().then(function (url) {
-                          document.getElementById('work_container').innerHTML += `
-                          <div id="submission">
-                            <div id="title_container">
-                              <text class="header">${promptTitle}</text>
-                              <text class="wintxt"></text> 
-                            </div>
-                            <div class="image_container">                                              
-                              <img class="photo" alt="submission" src="${url}"></img>
-                              <div id="comments_container_${sid}" 
-                                style="display: flex;
-                                flex-direction: column;
-                                width: 50vw;
-                                justify-content: flex-start;
-                                overflow-y: auto;
-                                overflow-x: hidden;">
+                          // firebase storage
+                          storageRef.child(imgsrc).getDownloadURL().then(function (url) {
+                            document.getElementById('work_container').innerHTML += `
+                            <div id="submission">
+                              <div id="title_container">
+                                <text class="header">${promptTitle}</text>
+                                <text class="wintxt"></text> 
                               </div>
-                            </div>
-                          </div>`
-                          console.log(eid.length)
-                          if (eid.length > 0){
-                            console.log("TIMES LOOPED");
-                            eid.forEach((eid)=>{
-                              console.log(eid)
-                              db.collection("evaluations").doc(eid).onSnapshot(doc =>{
-                                db.collection("evaluations").get().then((querySnapshot) => {     
-                                  document.getElementById(`comments_container_${sid}`).innerHTML += `
-                                    <p class="comments">\"${doc.data().interpretation}\"</p>
-                                    <text class="txt">Technique: ${doc.data().technique}</text>
-                                    <text class="txt">Originality: ${doc.data().originality}</text>
-                                    <text class= "txt">Overall Score: ${doc.data().overallScore}</text>
-                                    <hr class="line"/>
-                                  `
+                              <div class="image_container">                                              
+                                <img class="photo" alt="submission" src="${url}"></img>
+                                <div id="comments_container_${sid}" 
+                                  style="display: flex;
+                                  flex-direction: column;
+                                  width: 50vw;
+                                  justify-content: flex-start;
+                                  overflow-y: auto;
+                                  overflow-x: hidden;">
+                                </div>
+                              </div>
+                            </div>`
+                            if (eid.length > 0){
+                              eid.forEach((eid)=>{
+                                console.log(eid)
+                                db.collection("evaluations").doc(eid).onSnapshot(doc =>{
+                                  db.collection("evaluations").get().then((querySnapshot) => {     
+                                    document.getElementById(`comments_container_${sid}`).innerHTML += `
+                                      <p class="comments">\"${doc.data().interpretation}\"</p>
+                                      <text class="txt">Technique: ${doc.data().technique}</text>
+                                      <text class="txt">Originality: ${doc.data().originality}</text>
+                                      <text class= "txt">Overall Score: ${doc.data().overallScore}</text>
+                                      <hr class="line"/>
+                                    `
+                                  });
                                 });
                               });
-                            });
-                          }
-                          else{
-                            document.getElementById(`comments_container_${sid}`).innerHTML += `
-                              <text class="txt">No evaluations</text>`
-                          }
+                            }
+                            else{
+                              document.getElementById(`comments_container_${sid}`).innerHTML += `
+                                <text class="txt">No evaluations</text>`
+                            }
+                          }).catch(function (error) {
+                            // Handle any errors
+                            console.error("Error getting download URL: ", error);
+                          });
 
-                            
-                          
-                        }).catch(function (error) {
-                          // Handle any errors
-                          console.error("Error getting download URL: ", error);
+
                         });
 
+                        
 
                       });
 
-                      
-
                     });
-
                   });
-                });
-              });
-
+                } // end of sid.length check
+                else{
+                  document.getElementById("work_container").innerHTML += `
+                    <text class="none">No Submissions to display</text>`
+                }
+            });
           }
         }).catch(function (error) {
           console.log("Request failed", error)
