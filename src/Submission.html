@@ -40,6 +40,9 @@
     console.log("pid: " + pid);
 
     window.onload = function () {
+      // back button href
+      document.getElementById('back-button').href = "Prompt.html?pid=" + pid;
+
       fetch("/profile")
         .then(res => res.json())
         .then(function (data) {
