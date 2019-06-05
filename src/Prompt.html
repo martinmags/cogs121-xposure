@@ -79,7 +79,8 @@ this page is what they see.-->
                     `
               }).catch(function (error) {
                 // Handle any errors
-                console.error("Error getting download URL: ", error);
+                // console.error("Error getting download URL: ", error);
+                window.location.reload(false); 
               });
             });
           });
