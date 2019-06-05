@@ -64,14 +64,12 @@
             return false;
         }
 
-        if (portfolio.value.indexOf("www.", 0) < 0){
-            window.alert("Please enter a valid portfolio link.");
-            portfolio.focus();
-            return false;
-        }
+        if (portfolio.value.indexOf("https://", 0) < 0 && portfolio.value.indexOf("http://", 0) < 0 && portfolio.value.indexOf("www.", 0) < 0){
+            console.log(portfolio.value.indexOf("https://", 0) < 0)
+            console.log(portfolio.value.indexOf("http://", 0) < 0)
+            console.log(portfolio.value.indexOf("www.", 0) < 0)
 
-        if (portfolio.value.indexOf(".com", 0) < 0){
-            window.alert("Please enter a valid portfolio link.");
+            window.alert("Please enter a valid portfolio link. fdf");
             portfolio.focus();
             return false;
         }
@@ -108,8 +106,8 @@
 
         <div class="info_container">
           <text id="subheader">CONTACT</text>
-          <input id="input-button" type="text" name="ig" placeholder="  Instagram">
-          <input id="input-button" type="text" name="portfolio" placeholder="  Portfolio">
+          <input id="input-button" type="text" name="ig" placeholder="  Instagram Handle">
+          <input id="input-button" type="text" name="portfolio" placeholder="  Portfolio Website URL">
         </div>
 
         <div class="info_container">
