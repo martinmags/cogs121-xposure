@@ -51,3 +51,15 @@
 [info] [hosting] Rewriting /select-user to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
 [info] [hosting] Rewriting /users/signup to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
 [info] [hosting] Rewriting /users/signup to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /users/login to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /profile to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /profile to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /profile to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /profile to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /update-profile to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /profile to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /profile to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /profile to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /profile to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /update-profile to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /profile to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app

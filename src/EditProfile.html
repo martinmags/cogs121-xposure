@@ -44,11 +44,56 @@
                   document.getElementById("portfolio-input").value = doc.data().portfolio;
               });
             }
-            
+
           }).catch(function (error) {
             console.log("Request failed", error);
           });
       };
+
+      function validateInput(){
+        var alias = document.forms["editProfile"]["alias"];
+        var name = document.forms["editProfile"]["name"];
+        var ig = document.forms["editProfile"]["ig"];
+        var portfolio = document.forms["editProfile"]["portfolio"];
+
+        if (alias.value == ""){
+            window.alert("Please enter a valid alias.");
+            alias.focus();
+            return false;
+        }
+
+        if (name.value == ""){
+            window.alert("Please enter a valid name.");
+            name.focus();
+            return false;
+        }
+
+        if (ig.value == ""){
+            window.alert("Please enter a valid instagram handle.");
+            ig.focus();
+            return false;
+        }
+
+        if (portfolio.value == ""){
+            window.alert("Please enter a valid portfolio link.");
+            portfolio.focus();
+            return false;
+        }
+
+        if (portfolio.value.indexOf("www.", 0) < 0){
+            window.alert("Please enter a valid portfolio link.");
+            portfolio.focus();
+            return false;
+        }
+
+        if (portfolio.value.indexOf(".com", 0) < 0){
+            window.alert("Please enter a valid portfolio link.");
+            portfolio.focus();
+            return false;
+        }
+
+        return true;
+      }
 
     </script>
   </head>
@@ -61,7 +106,7 @@
       </div>
 
       <div class="main_container">
-        <form action="/update-profile" method="POST">
+        <form name="editProfile" action="/update-profile" onsubmit="return validateInput()" method="POST">
           <input type="hidden" id="uid" name="uid" />
 
 
