@@ -38,6 +38,7 @@ body{
   flex-direction: row;
   justify-content: flex-start;
   margin-left: 10px;
+  height:10vh;
 }
 .sub_header_container{
   display:flex;
@@ -73,7 +74,7 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 50vh;
+  height: 45vh;
   max-width: 100vw;
   overflow-y: auto;
 
