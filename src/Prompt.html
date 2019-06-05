@@ -1,3 +1,6 @@
+<!-- This file dynamically displays submissions for each prompt that is
+selected. After a user clicks on a prompt from the discover screen,
+this page is what they see.-->
 <!DOCTYPE html>
 <html>
 
@@ -51,6 +54,7 @@
         tgtContainer.innerHTML = "Due by the end of " + deadlineFormatted + ".";
       });
 
+      //display submissions
       document.getElementById("pid").value = pid;
       db.collection("prompts").doc(pid).onSnapshot(doc => {
         const sid = doc.data().submissions;
@@ -60,8 +64,6 @@
               const imgsrc = doc.data().file;
               const candidateId = doc.data().candidateId;
               const file = doc.data().file;
-              // console.log(imgsrc);
-              // console.log(doc.data());
               console.log(doc.data().file);
               //
               let tgtContainer = document.querySelector(".submitted_container");

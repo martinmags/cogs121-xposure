@@ -1,3 +1,4 @@
+<!-- Users can edit their profile information with input validation in this page. -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -28,6 +29,7 @@
       var db = firebase.firestore();
       var storageRef = firebase.storage().ref();
 
+      //displays user profile information dynamically
       window.onload = function () {
         fetch('/profile')
           .then(res => res.json())
@@ -50,6 +52,7 @@
           });
       };
 
+      //validates inputs
       function validateInput(){
         var alias = document.forms["editProfile"]["alias"];
         var name = document.forms["editProfile"]["name"];

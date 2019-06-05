@@ -1,4 +1,6 @@
-<!-- user search stack -->
+<!-- This file allows a profile page to be dynamically display based on the
+user's selection. After a user clicks on another profile in the search page,
+ this is the page that shows up. -->
 <!DOCTYPE html>
 <html>
 
@@ -44,6 +46,7 @@
     window.onload = function () {
       db.collection("users").doc(uid).onSnapshot(doc => {
         console.log(doc.data());
+        //get user info
         document.getElementById('span-alias').innerHTML = `<text>Alias: </text>` + doc.data().alias;
         document.getElementById('span-name').innerHTML = `<text>Name: </text>` + doc.data().name;
         document.getElementById('span-ig').innerHTML = `<text>Instagram: </text><a id="ig-link" target="_blank" href="https://www.instagram.com/${doc.data().ig}">@${doc.data().ig}</a>`;
@@ -52,10 +55,11 @@
 
         const sid = doc.data().submissions;
 
-        if (sid.length > 0){            
+        if (sid.length > 0){
           sid.forEach((sid)=> {
             db.collection("submissions").doc(sid).onSnapshot(doc =>{
               db.collection("submissions").get().then((querySnapshot) => {
+                //get user info
                 const imgsrc = doc.data().file;
                 const pid = doc.data().promptId;
                 const eid = doc.data().evaluations;
@@ -68,6 +72,7 @@
 
                   // firebase storage
                   storageRef.child(imgsrc).getDownloadURL().then(function (url) {
+                    //display each submission
                       document.getElementById('work_container').innerHTML += `
                       <div id="submission">
                         <div class="title_container">
@@ -77,7 +82,7 @@
 
                         <div class="image_container">
                           <img class="photo" alt="submission" src="${url}"></img>
-                          <div id="comments_container_${sid}" 
+                          <div id="comments_container_${sid}"
                             style="display: flex;
                             flex-direction: column;
                             width: 50vw;
@@ -90,8 +95,9 @@
                       if (eid.length > 0){
                         eid.forEach((eid)=>{
                           console.log(eid)
+                          //dynamically display evaluations
                           db.collection("evaluations").doc(eid).onSnapshot(doc =>{
-                            db.collection("evaluations").get().then((querySnapshot) => {     
+                            db.collection("evaluations").get().then((querySnapshot) => {
                               document.getElementById(`comments_container_${sid}`).innerHTML += `
                                 <p class="comments">\"${doc.data().interpretation}\"</p>
                                 <text class="txt">Technique: ${doc.data().technique}</text>
@@ -119,6 +125,7 @@
           });
         }
         else{
+          //user has no submissions
           document.getElementById("work_container").innerHTML += `
             <text class="none">No Submissions to display</text>`
         }

@@ -1,3 +1,4 @@
+<!-- This file allows users to create a new account with input validation. -->
 <!DOCTYPE html>
 <html>
 
@@ -16,18 +17,19 @@
         var ig = document.forms["newAccount"]["ig"];
         var portfolio = document.forms["newAccount"]["portfolio"];
 
+        //validates alias input
         if (alias.value == ""){
             window.alert("Please enter a valid alias.");
             alias.focus();
             return false;
         }
-
+        //validates name input
         if (name.value == ""){
             window.alert("Please enter a valid name.");
             name.focus();
             return false;
         }
-
+        //validates email input
         if (email.value == ""){
             window.alert("Please enter a valid e-mail address.");
             email.focus();
@@ -45,19 +47,19 @@
             email.focus();
             return false;
         }
-
+        //validates password input
         if (password.value == ""){
             window.alert("Please enter a password.");
             password.focus();
             return false;
         }
-
+        //validates instagram input
         if (ig.value == ""){
             window.alert("Please enter a valid instagram handle.");
             ig.focus();
             return false;
         }
-
+        //validates portfolio input
         if (portfolio.value == ""){
             window.alert("Please enter a valid portfolio link.");
             portfolio.focus();

@@ -1,3 +1,4 @@
+<!-- Users are able to evaluate a selected submission. -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -33,21 +34,23 @@
         var parts = window.location.href.split("evalInfo=");
         return parts[1].split("%2Fsubmissions%2F");
       }
-      let userId = getUrlVars()[0];
+      let authorId = getUrlVars()[0];
       let pidImgIdSubId = getUrlVars()[1];
       let pid = pidImgIdSubId.split("%2F")[0];
       let imgIdSubId = pidImgIdSubId.split("%2F")[1];
       let imgId = imgIdSubId.split("&subId=")[0];
       let subId = imgIdSubId.split("&subId=")[1];
 
-      console.log("user id is:", userId);
+      console.log("current author is", authorId);
       console.log("pid is:", pid);
       console.log("img is:", imgId);
       console.log("sub id is:", subId);
       window.onload = function() {
+        let uid;
         fetch("/profile")
           .then(res => res.json())
           .then(function(data) {
+            console.log("data is", data);
             if (data) {
               uid = data;
             }
@@ -56,14 +59,15 @@
           .catch(function(error) {
             console.log("Request failed", error);
           });
+        //gets prompt title
         db.collection("prompts")
           .doc(pid)
           .onSnapshot(doc => {
-            console.log(doc.data());
             $("#prompt_title").html(doc.data().title);
           });
+        //gets submission info
         db.collection("users")
-          .doc(userId)
+          .doc(authorId)
           .onSnapshot(doc => {
             console.log(doc.data());
             $("#submitted_by").html("Submitted by @" + doc.data().alias);
@@ -73,12 +77,41 @@
               .then(url => $("#promtPic").attr("src", url));
           });
 
-        document.getElementById("uid").value = userId;
+        db.collection("submissions")
+          .doc(subId)
+          .onSnapshot(doc => {
+            console.log(doc.data());
+            if (
+              doc.data().evaluaters &&
+              doc.data().evaluaters.indexOf(uid) !== -1
+            ) {
+              var form = document.getElementById("myForm");
+              var elements = form.elements;
+              for (var i = 0, len = elements.length; i < len; ++i) {
+                elements[i].readOnly = true;
+              }
+              document.getElementById("submitButton").disabled = true;
+              document.getElementById("errormessage").innerHTML =
+                "You've already evaluated this submission!";
+            }
+
+            if (doc.data().candidateId === uid) {
+              var form = document.getElementById("myForm");
+              var elements = form.elements;
+              for (var i = 0, len = elements.length; i < len; ++i) {
+                elements[i].readOnly = true;
+              }
+              document.getElementById("submitButton").disabled = true;
+              document.getElementById("errormessage").innerHTML =
+                "You can't evaluate your own submission!";
+            }
+          });
+        document.getElementById("uid").value = uid;
         document.getElementById("subId").value = subId;
         document.getElementById("imgId").value = imgId;
         document.getElementById("pid").value = pid;
       };
-
+      //upload evaluation
       $(document).on("click", "#submitButton", function(e) {
         var date = new Date();
 
@@ -97,6 +130,10 @@
         ).val();
         document.getElementById("date").value = date.getTime();
         //document.getElementById("#themeScore").value = $("#theme").val();
+
+        // Prevent infinite loop
+        // $(this).unbind("click");
+        // e.currentTarget.click();
       });
     </script>
   </head>
@@ -118,6 +155,7 @@
           method="POST"
           action="/submit-evaluation"
           enctype="multipart/form-data"
+          id="myForm"
         >
           <input type="hidden" id="pid" name="promptId" />
           <input type="hidden" id="uid" name="uid" />
@@ -132,10 +170,11 @@
 
           <div class="text_container">
             <text class="subheader">Evaluation Criteria</text>
-            <text class="prompt_text"
+            <text class="prompt_text" id="criteria"
               >You must evaluate a randomly generated submission from another
               user in order to submit your own work!</text
             >
+            <p id="errormessage" style="color:red;"></p>
           </div>
           <div class="eval_container">
             <text class="subheader" id="prompt_title">Dancers</text>

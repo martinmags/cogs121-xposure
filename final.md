@@ -13,10 +13,10 @@
 
 **Members**:
 1. Kai-ling Peng<br>
-Front-end development, user interaction design, logistics.<br>
+Front-end development, user interaction design.<br>
 
 2. Martin Magsombol<br>
-Front-end development, user interaction design, ideation.<br>
+Front-end development, user interaction design, project manager.<br>
 
 3. Ryan Keng<br>
 Set up firebase, user authentication, back-end development<br>
@@ -31,8 +31,8 @@ Full-stack development<br>
 The following html files are required for the front-end of our app and handles interactions with passing the data from front-end to backend and vice versa.
 - **Admin.html:** This file shows up only for the user who logs in with the admin account. It allows admins to generate new prompts weekly.
 - **CreateAccount.html:** This file allows users to create a new account.
-- **Discover.html:** This file displays current prompts using Unsplash API and display the previous prompts winners (highest overallscore) by fetching data from firebase.
-- **EditProfile.html:** Users can edit their profile information with this page/
+- **Discover.html:** This file displays current prompts using Unsplash API and display the previous prompts winners (highest Overallscore) by fetching data from firebase.
+- **EditProfile.html:** Users can edit their profile information with this page.
 - **Evaluate.html:** Users are able to evaluate a selected submission.
 - **index.html** Users are able to log in or sign up.
 - **OtherProfile.html:** This file allows a profile page to be dynamically display based on the user's selection. After a user clicks on another profile in the search page, this is the page that shows up.
@@ -40,6 +40,7 @@ The following html files are required for the front-end of our app and handles i
 - **Prompt.html:** This file dynamically displays submissions for each prompt that is selected. After a user clicks on a prompt from the discover screen, this page is what they see.  
 - **Search.html:** Users are able to search for other profiles.
 - **Submission.html:** This file allows users to submit their own images for the selected prompt.  
+- **WinnerProfile.html:** This file displays profile page of the user behind the winning submission.
 
 The index.js file handles all the routing and functions within our app:<br>
 - **index.js**
@@ -57,6 +58,7 @@ The following css files contain the styling for each html page corresponding to 
 - **prompt.css**
 - **search.css**
 - **submission.css**
+- **winnerprofile.css**
 
 <a name="Slide"></a>
 
