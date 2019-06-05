@@ -41,18 +41,18 @@
                 document.getElementById('span-email').innerHTML = `<text>Email Contact: </text>` + doc.data().email;
                 document.getElementById('span-portfolio').innerHTML = `<text>Portfolio: </text>` + doc.data().portfolio;
 
-                const sid = doc.data().submissions;              
+                const sid = doc.data().submissions;
                 const submissionArray = doc.data().submissions;
                 sid.forEach((sid)=> {
                   db.collection("submissions").doc(sid).onSnapshot(doc =>{
                     db.collection("submissions").get().then((querySnapshot) => {
-                      
+
                       const imgsrc = doc.data().file;
                       const pid = doc.data().promptId;
                       const eid = doc.data().evaluations;
 
                       db.collection("prompts").doc(pid).onSnapshot(doc =>{
-                        const promptTitle = doc.data().title;                        
+                        const promptTitle = doc.data().title;
 
                         // firebase storage
                         storageRef.child(imgsrc).getDownloadURL().then(function (url) {
@@ -60,9 +60,9 @@
                           <div id="submission">
                             <div id="title_container">
                               <text class="header">${promptTitle}</text>
-                              <text class="wintxt"></text> 
+                              <text class="wintxt"></text>
                             </div>
-                            <div class="image_container">                                              
+                            <div class="image_container">
                               <img class="photo" alt="submission" src="${url}"></img>
                               <div id="comments_container_${eid}"></div>
                             </div>
@@ -73,7 +73,7 @@
                             eid.forEach((eid)=>{
                               console.log(eid)
                               db.collection("evaluations").doc(eid).onSnapshot(doc =>{
-                                db.collection("evaluations").get().then((querySnapshot) => {     
+                                db.collection("evaluations").get().then((querySnapshot) => {
                                   document.getElementById(`comments_container_${eid}`).innerHTML += `
                                     <p class="comments">\"${doc.data().interpretation}\"</p>
                                     <text class="txt">Technique: ${doc.data().technique}</text>
@@ -86,8 +86,8 @@
                             });
                           }
 
-                            
-                          
+
+
                         }).catch(function (error) {
                           // Handle any errors
                           console.error("Error getting download URL: ", error);
@@ -96,7 +96,7 @@
 
                       });
 
-                      
+
 
                     });
 
@@ -145,7 +145,7 @@
     <div id="work_container">
       <!-- n submissions -->
     </div>
-    
+
     <footer class="footer_container">
       <a class="footer_button" href="Search.html">SEARCH</a>
       <a class="footer_button" href="Discover.html">DISCOVER</a>
