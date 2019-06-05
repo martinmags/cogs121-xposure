@@ -1,116 +1,132 @@
-<!-- This file allows users to submit their own images for the selected prompt.  -->
+<!--
+  This file allows users to submit their own images for the selected prompt.
+-->
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Xposure</title>
+    <link rel="stylesheet" href="css/cssreset.css" />
+    <link rel="stylesheet" href="css/submission.css" />
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Xposure</title>
-  <link rel="stylesheet" href="css/cssreset.css" />
-  <link rel="stylesheet" href="css/submission.css" />
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
 
-  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+    <!-- GitHub Fetch API -->
+    <script src="./js/fetch.umd.js"></script>
 
-  <!-- GitHub Fetch API -->
-  <script src="./js/fetch.umd.js"></script>
+    <script>
+      // Initialize Cloud Firestore through Firebase
+      firebase.initializeApp({
+        apiKey: "AIzaSyC6FPXu3_bOHpHr7AelgBKAMbGiIUPZ2Vo",
+        authDomain: "pandaexpressjs.firebaseapp.com",
+        projectId: "pandaexpressjs"
+      });
 
-  <script>
-    // Initialize Cloud Firestore through Firebase
-    firebase.initializeApp({
-      apiKey: "AIzaSyC6FPXu3_bOHpHr7AelgBKAMbGiIUPZ2Vo",
-      authDomain: "pandaexpressjs.firebaseapp.com",
-      projectId: "pandaexpressjs"
-    });
+      var db = firebase.firestore();
 
-    var db = firebase.firestore();
-
-    // extract promptId from URL params
-    function getUrlVars() {
-      var vars = {};
-      var parts = window.location.href.replace(
-        /[?&]+([^=&]+)=([^&]*)/gi,
-        function (m, key, value) {
-          vars[key] = value;
-        }
-      );
-      return vars;
-    }
-
-    let pid = getUrlVars()["pid"];
-    console.log("pid: " + pid);
-
-    window.onload = function () {
-      // back button href
-      document.getElementById('back-button').href = "Prompt.html?pid=" + pid;
-
-      fetch("/profile")
-        .then(res => res.json())
-        .then(function (data) {
-          if (data) {
-            console.log("User logged in. UID: ", data);
-            document.getElementById("uid").value = data;
+      // extract promptId from URL params
+      function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(
+          /[?&]+([^=&]+)=([^&]*)/gi,
+          function(m, key, value) {
+            vars[key] = value;
           }
-        })
-        .catch(function (error) {
-          console.log("Request failed", error);
-        });
+        );
+        return vars;
+      }
 
-      document.getElementById("pid").value = pid;
+      let pid = getUrlVars()["pid"];
+      console.log("pid: " + pid);
 
-      // show due date
-      db.collection("prompts").where("status", "==", "thisweek").limit(1).get().then((querySnapshot) => {
-        let tgtContainer = document.querySelector("#prompt_text");
-        querySnapshot.forEach((doc) => {
-          let deadlineDate = new Date(doc.data().deadline);
-          let month = deadlineDate.getMonth() + 1;
-          let day = deadlineDate.getDate();
-          let year = deadlineDate.getFullYear();
-          let deadlineFormatted = year + "/" + month + "/" + day;
-          tgtContainer.innerHTML = "Due by the end of " + deadlineFormatted + ".";
-        })
-      })
-    };
-  </script>
-</head>
+      window.onload = function() {
+        // back button href
+        document.getElementById("back-button").href = "Prompt.html?pid=" + pid;
+        document.getElementById("subheader").innerHTML = pid;
+        fetch("/profile")
+          .then(res => res.json())
+          .then(function(data) {
+            if (data) {
+              console.log("User logged in. UID: ", data);
+              document.getElementById("uid").value = data;
+            }
+          })
+          .catch(function(error) {
+            console.log("Request failed", error);
+          });
 
-<body>
-  <div class="screen_container">
-    <div class="top_container">
-      <a id="back-button" href="Prompt.html">BACK</a>
-      <div class="header_container">
-        <div class="blur-box"></div>
-        <header id="header-title">SUBMISSION</header>
+        document.getElementById("pid").value = pid;
+
+        // show due date
+        db.collection("prompts")
+          .where("status", "==", "thisweek")
+          .limit(1)
+          .get()
+          .then(querySnapshot => {
+            let tgtContainer = document.querySelector("#prompt_text");
+            querySnapshot.forEach(doc => {
+              let deadlineDate = new Date(doc.data().deadline);
+              let month = deadlineDate.getMonth() + 1;
+              let day = deadlineDate.getDate();
+              let year = deadlineDate.getFullYear();
+              let deadlineFormatted = year + "/" + month + "/" + day;
+              tgtContainer.innerHTML =
+                "Due by the end of " + deadlineFormatted + ".";
+            });
+          });
+      };
+    </script>
+  </head>
+
+  <body>
+    <div class="screen_container">
+      <div class="top_container">
+        <a id="back-button" href="Prompt.html">BACK</a>
+        <div class="header_container">
+          <div class="blur-box"></div>
+          <header id="header-title">SUBMISSION</header>
+        </div>
+      </div>
+
+      <div class="main_container">
+        <div class="text_container">
+          <text id="subheader"></text> <text id="prompt_text"></text>
+        </div>
+
+        <form method="POST" action="/submit-form" enctype="multipart/form-data">
+          <div class="eval_container">
+            <input type="hidden" id="pid" name="promptId" />
+            <input type="hidden" id="uid" name="uid" />
+            <input
+              id="input-button"
+              type="text"
+              name="title"
+              placeholder="  Title"
+            />
+            <input class="button" type="file" name="document" />
+            <input
+              id="input-button-big"
+              type="text"
+              name="desc"
+              placeholder="  Description (Optional)"
+            />
+          </div>
+
+          <div class="spacer">
+            <text id="prompt_text"
+              >In order to successfully submit your work, you must also evaluate
+              another submission in the same prompt. After submitting, be sure
+              to evaluate another existing submission.</text
+            >
+          </div>
+
+          <div class="info_container">
+            <input class="button" type="submit" value="SUBMIT" />
+          </div>
+        </form>
       </div>
     </div>
-
-    <div class="main_container">
-      <div class="text_container">
-        <text id="subheader">Dancers</text>
-        <text id="prompt_text"></text>
-      </div>
-
-      <form method="POST" action="/submit-form" enctype="multipart/form-data">
-        <div class="eval_container">
-          <input type="hidden" id="pid" name="promptId" />
-          <input type="hidden" id="uid" name="uid" />
-          <input id="input-button" type="text" name="title" placeholder="  Title" />
-          <input class="button" type="file" name="document" />
-          <input id="input-button-big" type="text" name="desc" placeholder="  Description (Optional)" />
-        </div>
-
-        <div class="spacer">
-          <text id="prompt_text">In order to successfully submit your work, you must also evaluate
-            another submission in the same prompt. After submitting, be sure
-            to evaluate another existing submission.</text>
-        </div>
-
-        <div class="info_container">
-          <input class="button" type="submit" value="SUBMIT" />
-        </div>
-      </form>
-    </div>
-  </div>
-</body>
-
+  </body>
 </html>
