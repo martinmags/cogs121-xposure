@@ -120,16 +120,16 @@
           "#originality"
         ).val();
         //Not working super properly
-        // let num1 = parseInt($("#technique").val(), 10);
-        // let num2 = parseInt($("#originality").val(), 10);
-        // let num3 = parseInt($("#theme").val(), 10);
-        // let avg = (num1 + num2 + num3) / 3;
-        document.getElementById("overallScore").value = $("#overall").val();
+        let num1 = parseInt($("#technique").val(), 10);
+        let num2 = parseInt($("#originality").val(), 10);
+        let num3 = parseInt($("#theme").val(), 10);
+        let avg = (num1 + num2 + num3) / 3;
+        document.getElementById("overallScore").value = avg;
         document.getElementById("interpretationText").value = $(
           "#interpretation"
         ).val();
         document.getElementById("date").value = date.getTime();
-        //document.getElementById("#themeScore").value = $("#theme").val();
+        document.getElementById("themeScore").value = $("#theme").val();
 
         // Prevent infinite loop
         // $(this).unbind("click");
@@ -202,20 +202,20 @@
               placeholder="  Originality (out of 10)"
             />
             <input
+              class="input-button"
+              id="theme"
+              type="number"
+              name="portfolio"
+              min="1"
+              max="10"
+              placeholder="Expression of Theme (out of 10)"
+            />
+            <input
               class="input-button-big"
               id="interpretation"
               type="text"
               name="portfolio"
               placeholder="  Interpretation"
-            />
-            <input
-              class="input-button"
-              id="overall"
-              type="number"
-              name="portfolio"
-              min="1"
-              max="10"
-              placeholder="  Overall Score (out of 10)"
             />
           </div>
 
