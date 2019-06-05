@@ -31,21 +31,22 @@
       window.onload = function () {
         fetch('/profile')
           .then(res => res.json())
-          .then(function (data) {
-            if (data) {
-              console.log("User logged in. UID: ", data);
+          .then(function (uid) {
+            if (uid) {
+              db.collection("users").doc(uid)
+                .onSnapshot(function (doc) {
+                  console.log("User logged in. UID: ", uid);
+                  console.log("Data", doc.data())
+                  document.getElementById("uid").value = uid;
+                  document.getElementById("alias-input").value = doc.data().alias;
+                  document.getElementById("name-input").value = doc.data().name;
+                  document.getElementById("ig-input").value = doc.data().ig;
+                  document.getElementById("portfolio-input").value = doc.data().portfolio;
+              });
             }
-            document.getElementById("uid").value = data;
+            
           }).catch(function (error) {
             console.log("Request failed", error);
-          });
-
-          $(document).on("click", "#submitButton", function(e) {
-            document.getElementById("alias").value = $(".alias").val();
-            document.getElementById("name").value = $(".name").val();
-            document.getElementById("ig").value = $(".ig").val();
-            document.getElementById("email").value = $(".email").val();
-            document.getElementById("portfolio").value = $(".portfolio").val();
           });
       };
 
@@ -62,24 +63,30 @@
       <div class="main_container">
         <form action="/update-profile" method="POST">
           <input type="hidden" id="uid" name="uid" />
-          <input type="hidden" id="alias" name="alias" />
-          <input type="hidden" id="name" name="name" />
-          <input type="hidden" id="ig" name="ig" />
-          <input type="hidden" id="email" name="email" />
-          <input type="hidden" id="portfolio" name="portfolio" />
 
 
           <div class="info_container">
             <text id="subheader">INFO</text>
-            <input id="input-button" class="alias" type="text" placeholder="  Alias: Best_Photographer_SD">
-            <input id="input-button" class="name" type="text" placeholder="  Name: Bob Bobby">
+            <div class="row_container">
+              <text id="subheader">Alias:</text>
+              <input id="alias-input" type="text" name="alias">
+            </div>
+            <div class="row_container">
+              <text id="subheader">Name:</text>
+              <input id="name-input" type="text" name="name">
+            </div>
           </div>
 
           <div class="info_container">
             <text id="subheader">CONTACT</text>
-            <input id="input-button" class="ig" type="text" placeholder="  Instagram: re.mags">
-            <input id="input-button" class="email" type="text" placeholder="  Email: email@ucsd.edu">
-            <input id="input-button" class="portfolio" type="text" placeholder="  Portfolio: martinmags@github.io">
+            <div class="row_container">
+              <text id="subheader">Instagram: </text>
+              <input id="ig-input" type="text" name="ig">
+            </div>
+            <div class="row_container">
+              <text id="subheader">Portfolio: </text>
+              <input id="portfolio-input" type="text" name="portfolio">
+            </div>
           </div>
 
           <div class="info_container">

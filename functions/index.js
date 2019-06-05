@@ -496,7 +496,6 @@ app.post("/update-profile", (req, res) => {
         alias: fields["alias"],
         name: fields["name"],
         ig: fields["ig"],
-        email: fields["email"],
         portfolio: fields["portfolio"]
       })
       .then(docRef => {
