@@ -28,6 +28,19 @@
   var storageRef = firebase.storage().ref();
 
   window.onload = function () {
+    // show due date
+    db.collection("prompts").where("status", "==", "thisweek").limit(1).get().then((querySnapshot) => {
+      let tgtContainer = document.querySelector("#time-txt");
+      querySnapshot.forEach((doc) => {
+        let deadlineDate = new Date(doc.data().deadline);
+        let month = deadlineDate.getMonth() + 1;
+        let day = deadlineDate.getDate();
+        let year = deadlineDate.getFullYear();
+        let deadlineFormatted = year + "/" + month + "/" + day;
+        tgtContainer.innerHTML = "Due by the end of " + deadlineFormatted + ".";
+      })
+    })
+
     // populate current prompts container
     db.collection("prompts").where("status", "==", "thisweek").get().then((querySnapshot) => {
       let tgtContainer = document.querySelector(".prompts_container > .row_container");
@@ -75,15 +88,13 @@
                   <input type="image" id="winner1" src="${winnerArr[0] === undefined ? "https://dummyimage.com/400x400/000/000" : winnerArr[0].url}" alt="1st Place" />
                 </form>
                 <div class="col_container">
-                  ${winnerArr[1] === undefined ?
-                    `<img id="winner2" src="https://dummyimage.com/400x400/000/000" />` : 
+                  ${winnerArr[1] === undefined ? `<img id="winner2" src="https://dummyimage.com/400x400/000/000" />` :
                     `<form action="/select-winner" method="POST">
                       <input type="hidden" id="uid2" name="userId" value="${winnerArr[1].winnerId}"/>
                       <input type="image" id="winner2" src="${winnerArr[1].url}" alt="2nd Place" />
                     </form>`
                   }
-                  ${winnerArr[2] === undefined ?
-                    `<img id="winner3" src="https://dummyimage.com/400x400/000/000" />` : 
+                  ${winnerArr[2] === undefined ? `<img id="winner3" src="https://dummyimage.com/400x400/000/000" />` :
                     `<form action="/select-winner" method="POST">
                       <input type="hidden" id="uid3" name="userId" value="${winnerArr[2].winnerId}"/>
                       <input type="image" id="winner3" src="${winnerArr[2].url}" alt="3rd Place" />
@@ -108,7 +119,8 @@
     </div>
 
     <div class="prompts_header_container">
-      <text id="prompts-header">Current Prompts
+      <text id="prompts-header">
+        <span>Current Prompts</span><br>
         <span id="time-txt">x hours left</span>
       </text>
     </div>

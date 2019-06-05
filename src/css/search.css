@@ -40,6 +40,7 @@ body{
       text-align: center;
       height: 80vh;
       align-content: center;
+      overflow: scroll;
   }
 
   .txt{
@@ -53,8 +54,17 @@ body{
     height: 5vh;
     background-color: #292929;
     border-bottom-color: black;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    color: white;
+  }
+
+  .user_container input{
+    color: white;
+    text-align: left;
+    background-color: #292929;
+    border-color: #292929;
+    border-width: 0.0;
   }
 
   #title{
@@ -70,20 +80,22 @@ body{
     border: inherit;
     text-align: center;
   }
-  input{
+  #search-btn input{
     color: white;
     outline: none;
     width: 100vw;
   }
-  input.prompt {
+/*
+  input.txt{
+    color: white;
+  } */
+  /* input.prompt {
     width: 300px;
-  }
+  } */
 
   ::-webkit-input-placeholder { /* Webkit */
      color: white;
   }
-
-
 
   /*Footer*/
   .footer_container{

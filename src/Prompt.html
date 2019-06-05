@@ -40,6 +40,17 @@
     console.log("pid: " + pid);
 
     window.onload = function () {
+      // show due date
+      db.collection("prompts").doc(pid).get().then(function (prompt) {
+        let tgtContainer = document.querySelector("#time");
+        let deadlineDate = new Date(prompt.data().deadline);
+        let month = deadlineDate.getMonth() + 1;
+        let day = deadlineDate.getDate();
+        let year = deadlineDate.getFullYear();
+        let deadlineFormatted = year + "/" + month + "/" + day;
+        tgtContainer.innerHTML = "Due by the end of " + deadlineFormatted + ".";
+      });
+
       document.getElementById("pid").value = pid;
       db.collection("prompts").doc(pid).onSnapshot(doc => {
         const sid = doc.data().submissions;
@@ -90,7 +101,7 @@
     </div>
 
     <div class="time_remaining_container">
-      <text id="time">Time remaining: 2 days 3 hrs 20 secs</text>
+      <text id="time"></text>
     </div>
 
     <div class="button_container">

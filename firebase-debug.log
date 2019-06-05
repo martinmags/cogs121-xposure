@@ -1,37 +1,53 @@
-[debug] [2019-06-05T02:43:25.444Z] ----------------------------------------------------------------------
-[debug] [2019-06-05T02:43:25.446Z] Command:       /Users/kylee/.nvm/versions/node/v9.5.0/bin/node /Users/kylee/.nvm/versions/node/v9.5.0/bin/firebase serve
-[debug] [2019-06-05T02:43:25.446Z] CLI Version:   6.7.2
-[debug] [2019-06-05T02:43:25.446Z] Platform:      darwin
-[debug] [2019-06-05T02:43:25.446Z] Node Version:  v9.5.0
-[debug] [2019-06-05T02:43:25.447Z] Time:          Tue Jun 04 2019 19:43:25 GMT-0700 (PDT)
-[debug] [2019-06-05T02:43:25.447Z] ----------------------------------------------------------------------
+[debug] [2019-06-05T03:54:32.189Z] ----------------------------------------------------------------------
+[debug] [2019-06-05T03:54:32.191Z] Command:       /Users/kylee/.nvm/versions/node/v9.5.0/bin/node /Users/kylee/.nvm/versions/node/v9.5.0/bin/firebase serve
+[debug] [2019-06-05T03:54:32.191Z] CLI Version:   6.7.2
+[debug] [2019-06-05T03:54:32.191Z] Platform:      darwin
+[debug] [2019-06-05T03:54:32.191Z] Node Version:  v9.5.0
+[debug] [2019-06-05T03:54:32.191Z] Time:          Tue Jun 04 2019 20:54:32 GMT-0700 (PDT)
+[debug] [2019-06-05T03:54:32.191Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2019-06-05T02:43:25.467Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2019-06-05T02:43:25.467Z] > authorizing via signed-in user
-[debug] [2019-06-05T02:43:25.467Z] [iam] checking project pandaexpressjs for permissions ["firebase.projects.get"]
-[debug] [2019-06-05T02:43:25.469Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2019-06-05T02:43:25.469Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+[debug] [2019-06-05T03:54:32.210Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-06-05T03:54:32.210Z] > authorizing via signed-in user
+[debug] [2019-06-05T03:54:32.210Z] [iam] checking project pandaexpressjs for permissions ["firebase.projects.get"]
+[debug] [2019-06-05T03:54:32.212Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-06-05T03:54:32.212Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
  <request body omitted>
-[debug] [2019-06-05T02:43:25.671Z] <<< HTTP RESPONSE 200
-[debug] [2019-06-05T02:43:25.682Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/pandaexpressjs:testIamPermissions  
+[debug] [2019-06-05T03:54:32.397Z] <<< HTTP RESPONSE 200
+[debug] [2019-06-05T03:54:32.406Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/pandaexpressjs:testIamPermissions  
 
-[debug] [2019-06-05T02:43:25.977Z] <<< HTTP RESPONSE 200
-[debug] [2019-06-05T02:43:25.978Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/pandaexpressjs  
+[debug] [2019-06-05T03:54:32.669Z] <<< HTTP RESPONSE 200
+[debug] [2019-06-05T03:54:32.671Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/pandaexpressjs  
  
-[debug] [2019-06-05T02:43:26.322Z] <<< HTTP RESPONSE 200
+[debug] [2019-06-05T03:54:32.961Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from '/Users/kylee/Desktop/COGS121GUO/cogs121'...
 [info] 
 [info] i  functions: Preparing to emulate functions.
-[debug] [2019-06-05T02:43:33.932Z] Fetching environment
-[debug] [2019-06-05T02:43:33.937Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/718178135759:getServerAppConfig  
+[debug] [2019-06-05T03:54:39.882Z] Fetching environment
+[debug] [2019-06-05T03:54:39.911Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/718178135759:getServerAppConfig  
  
-[debug] [2019-06-05T02:43:33.938Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/718178135759/clients/_:getWebAppConfig  
+[debug] [2019-06-05T03:54:39.912Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/718178135759/clients/_:getWebAppConfig  
  
-[debug] [2019-06-05T02:43:34.390Z] <<< HTTP RESPONSE 200
-[debug] [2019-06-05T02:43:34.391Z] Starting @google-cloud/functions-emulator
-[debug] [2019-06-05T02:43:34.595Z] <<< HTTP RESPONSE 200
+[debug] [2019-06-05T03:54:40.138Z] <<< HTTP RESPONSE 200
+[debug] [2019-06-05T03:54:40.139Z] Starting @google-cloud/functions-emulator
+[debug] [2019-06-05T03:54:40.376Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: src
 [info] ✔  hosting: Local server: http://localhost:5000
-[debug] [2019-06-05T02:43:40.512Z] Parsing function triggers
+[debug] [2019-06-05T03:54:44.255Z] Parsing function triggers
+[info] [hosting] Rewriting /users/login to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
 [info] ✔  functions: app: http://localhost:5001/pandaexpressjs/us-central1/app
+[info] [hosting] Rewriting /undefined to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /undefined to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-user to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-user to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /undefined to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /undefined to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-user to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-user to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-user to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-user to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-user to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-user to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /select-user to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /users/signup to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app
+[info] [hosting] Rewriting /users/signup to http://localhost:5001/pandaexpressjs/us-central1/app for local Function app

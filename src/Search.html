@@ -29,28 +29,30 @@
     window.onload = function () {
       db.collection("users").get().then((querySnapshot) => {
         let container = document.querySelector("#list_container");
+
+        container.innerHTML = ``;
+
         querySnapshot.forEach((doc) => {
           console.log(doc.data());
           console.log(doc.id);
+          let length = doc.data().submissions.length;
           container.innerHTML += `
             <form class= "user_container" action="/select-user" method="POST">
               <input type="hidden" id="uid" name="userId" value="${doc.id}"/>
-              <input type="submit" class="txt" value="Alias: ${doc.data().alias}">
+              <input type="submit" class="text" name="txt" value="Alias: ${doc.data().alias}"/>
+              <input type="submit" class="text" name="count" value="Submissions: ${length}"/>
             </form>
           `
         });
       });
 
-      document.querySelector("#search-btn").addEventListener('keypress', function (e) {
-        // if (e.key === 'Enter') { //if enter pressed
-          console.log(document.querySelector("search-btn"));
-          handleSearch(); //call handle search method
-        // }
+      document.querySelector("#search-btn").addEventListener('keydown', function (e) {
+        console.log(document.querySelector("search-btn"));
+        handleSearch(); //call handle search method
       });
     };
 
     //search functionality searches through alias as user types
-    //entering wrong alias will not work
     function handleSearch(e) {
       db.collection("users").get().then((querySnapshot) => {
         let container = document.querySelector("#list_container");
@@ -62,25 +64,29 @@
         //reload contents only if searchQuery exists
         if(searchQuery){
           //delete current users
-          querySnapshot.forEach((doc)=>{
-            container.innerHTML = ``;
-          })
-
+          container.innerHTML = ``;
           //add matches
           querySnapshot.forEach((doc) => {
             // if(doc.data().alias == searchQuery){
-            if(doc.data().alias.includes(searchQuery)){
+            if(doc.data().alias.toLowerCase().includes(searchQuery.toLowerCase())){
               console.log(doc.data());
               console.log(doc.id);
+              let length = doc.data().submissions.length;
               container.innerHTML += `
                 <form class= "user_container" action="/select-user" method="POST">
                   <input type="hidden" id="uid" name="userId" value="${doc.id}"/>
-                  <input type="submit" class="txt" value="Alias: ${doc.data().alias}">
+                  <input type="submit" class="text" name="count" value="Alias: ${doc.data().alias}">
+                  <input type="submit" class="text" name="count" value="Submissions: ${length}"/>
                 </form>
                 `
             };
         });
-        }
+      }
+      else{
+        console.log("empty!");
+        container.innerHTML = ``;
+        window.onload();
+      }
     })};
 
 
@@ -93,12 +99,12 @@
   <div class="screen_container">
 
     <div class="header_container">
-      <header id="title">USER SEARCH</header>
+      <header id="title">PHOTOGRAPHERS</header>
     </div>
 
     <div class="search_container">
       <form>
-        <input id="search-btn" type="text" placeholder="Search Users">
+        <input id="search-btn" type="text" placeholder="Search Photographers">
       </form>
     </div>
 

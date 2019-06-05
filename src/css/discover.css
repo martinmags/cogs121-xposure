@@ -38,7 +38,6 @@ body{
   flex-direction: row;
   justify-content: flex-start;
   margin-left: 10px;
-  height: 5vh;
 }
 .sub_header_container{
   display:flex;
