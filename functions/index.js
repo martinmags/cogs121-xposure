@@ -366,8 +366,9 @@ app.post("/submit-form", (req, res) => {
   busboy.on("file", (fieldname, file, filename, encoding, mimetype) => {
     console.log(`Processed file ${filename}`);
     if (mimetype.includes("image") && filename) {
+      let timestamp = new Date();
       let fileExt = mimetype.replace("image/", "");
-      let imageName = fields["uid"] + "." + fileExt;
+      let imageName = fields["uid"] + "-" + timestamp.getTime() + "." + fileExt;
       let tempImgUrl = "submissions/" + fields["promptId"] + "/" + imageName;
       let bucketFile = bucket.file(tempImgUrl);
       file.pipe(
