@@ -1,0 +1,164 @@
+<!-- user search stack -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Profile</title>
+  <link rel="stylesheet" href="css/cssreset.css">
+  <link rel="stylesheet" href="css/winnerprofile.css">
+
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
+
+
+  <!-- GitHub Fetch API -->
+  <script src="./js/fetch.umd.js"></script>
+
+  <script>
+    // Initialize Cloud Firestore through Firebase
+    firebase.initializeApp({
+      apiKey: "AIzaSyC6FPXu3_bOHpHr7AelgBKAMbGiIUPZ2Vo",
+      authDomain: "pandaexpressjs.firebaseapp.com",
+      projectId: "pandaexpressjs",
+      storageBucket: "pandaexpressjs.appspot.com"
+    });
+
+    var db = firebase.firestore();
+    var storageRef = firebase.storage().ref();
+
+    // extract promptId from URL params
+    function getUrlVars() {
+      var vars = {};
+      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+        vars[key] = value;
+      });
+      return vars;
+    }
+
+    let uid = getUrlVars()["uid"];
+    console.log("uid: " + uid);
+
+    window.onload = function () {
+      db.collection("users").doc(uid).onSnapshot(doc => {
+        console.log(doc.data());
+        document.getElementById('span-alias').innerHTML = `<text>Alias: </text>` + doc.data().alias;
+        document.getElementById('span-name').innerHTML = `<text>Name: </text>` + doc.data().name;
+        document.getElementById('span-ig').innerHTML = `<text>Instagram: </text>` + doc.data().ig;
+        document.getElementById('span-email').innerHTML = `<text>Email Contact: </text>` + doc.data().email;
+        document.getElementById('span-portfolio').innerHTML = `<text>Portfolio: </text>` + doc.data().portfolio;
+
+        const sid = doc.data().submissions;
+
+        if (sid.length > 0){            
+          sid.forEach((sid)=> {
+            db.collection("submissions").doc(sid).onSnapshot(doc =>{
+              db.collection("submissions").get().then((querySnapshot) => {
+                const imgsrc = doc.data().file;
+                const pid = doc.data().promptId;
+                const eid = doc.data().evaluations;
+
+                console.log(imgsrc);
+
+                db.collection("prompts").doc(pid).onSnapshot(doc =>{
+                  const promptTitle = doc.data().title;
+
+
+                  // firebase storage
+                  storageRef.child(imgsrc).getDownloadURL().then(function (url) {
+                      document.getElementById('work_container').innerHTML += `
+                      <div id="submission">
+                        <div class="title_container">
+                          <text class="header">${promptTitle}</text>
+                          <text class="wintxt"></text>
+                        </div>
+
+                        <div class="image_container">
+                          <img class="photo" alt="submission" src="${url}"></img>
+                          <div id="comments_container_${sid}" 
+                            style="display: flex;
+                            flex-direction: column;
+                            width: 50vw;
+                            justify-content: flex-start;
+                            overflow-y: auto;
+                            overflow-x: hidden;">
+                          </div>
+                        </div>
+                      </div>`
+                      if (eid.length > 0){
+                        eid.forEach((eid)=>{
+                          console.log(eid)
+                          db.collection("evaluations").doc(eid).onSnapshot(doc =>{
+                            db.collection("evaluations").get().then((querySnapshot) => {     
+                              document.getElementById(`comments_container_${sid}`).innerHTML += `
+                                <p class="comments">\"${doc.data().interpretation}\"</p>
+                                <text class="txt">Technique: ${doc.data().technique}</text>
+                                <text class="txt">Originality: ${doc.data().originality}</text>
+                                <text class= "txt">Overall Score: ${doc.data().overallScore}</text>
+                                <hr class="line"/>
+                              `
+                            });
+                          });
+                        });
+                      }
+                      else{
+                        document.getElementById(`comments_container_${sid}`).innerHTML += `
+                          <text class="txt">No evaluations</text>`
+                      }
+                  }).catch(function (error) {
+                    // Handle any errors
+                    console.error("Error getting download URL: ", error);
+                  });
+
+                });
+
+              });
+            });
+          });
+        }
+        else{
+          document.getElementById("work_container").innerHTML += `
+            <text class="none">No Submissions to display</text>`
+        }
+
+
+
+      });
+    };
+  </script>
+</head>
+
+<body>
+  <div class="screen_container">
+
+    <div class="header_container">
+      <div id="back-btn_container">
+        <a id="back-btn" href="Discover.html">Back</a>
+      </div>
+      <div id="header-title">
+        <header>PROFILE</header>
+      </div>
+      <div id="invisible-spacer">
+          <h1>.</h1>
+      </div>
+    </div>
+
+    <div class="main_container">
+      <div class="text_container">
+          <text id="sub-header"><span id="span-name">NAME HERE</span></text>
+          <text id="info-text"><span id="span-alias">Alias here</span></text>
+          <text id="info-text"><span id="span-ig">@instagram</span></text>
+          <text id="info-text"><span id="span-email">email@ucsd.edu</span></text>
+          <text id="info-text"><span id="span-portfolio">portfolio.com</span></text>
+        </div>
+    </div>
+
+    <div id="work_container">
+      <!-- n submissions -->
+    </div>
+
+</html>
+
+</html>

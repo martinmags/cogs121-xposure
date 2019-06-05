@@ -83,25 +83,23 @@
           tgtContainer.innerHTML += `
             <div class="showcase">
               <div class="row_container">
-                <form action="/select-user" method="POST">
+                <form action="/select-winner" method="POST">
                   <input type="hidden" id="uid1" name="userId" value="${winnerArr[0] === undefined ? "" : winnerArr[0].winnerId}"/>
                   <input type="image" id="winner1" src="${winnerArr[0] === undefined ? "https://dummyimage.com/400x400/000/000" : winnerArr[0].url}" alt="1st Place" />
                 </form>
                 <div class="col_container">
-                  ${winnerArr[1] === undefined ?
-              `<img id="winner2" src="https://dummyimage.com/400x400/000/000" />` :
-              `<form action="/select-user" method="POST">
+                  ${winnerArr[1] === undefined ? `<img id="winner2" src="https://dummyimage.com/400x400/000/000" />` :
+                    `<form action="/select-winner" method="POST">
                       <input type="hidden" id="uid2" name="userId" value="${winnerArr[1].winnerId}"/>
                       <input type="image" id="winner2" src="${winnerArr[1].url}" alt="2nd Place" />
                     </form>`
-            }
-                  ${winnerArr[2] === undefined ?
-              `<img id="winner3" src="https://dummyimage.com/400x400/000/000" />` :
-              `<form action="/select-user" method="POST">
+                  }
+                  ${winnerArr[2] === undefined ? `<img id="winner3" src="https://dummyimage.com/400x400/000/000" />` :
+                    `<form action="/select-winner" method="POST">
                       <input type="hidden" id="uid3" name="userId" value="${winnerArr[2].winnerId}"/>
                       <input type="image" id="winner3" src="${winnerArr[2].url}" alt="3rd Place" />
                     </form>`
-            }
+                  }
                 </div>
               </div>
               <text class="txt">${prompt.data().title}</text>
