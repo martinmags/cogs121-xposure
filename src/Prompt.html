@@ -57,6 +57,7 @@ this page is what they see.-->
       //display submissions
       document.getElementById("pid").value = pid;
       db.collection("prompts").doc(pid).onSnapshot(doc => {
+        document.getElementById("header-title").innerHTML = doc.data().title;
         const sid = doc.data().submissions;
         sid.forEach((sid)=> {
           db.collection("submissions").doc(sid).onSnapshot(doc =>{
@@ -98,7 +99,7 @@ this page is what they see.-->
       <a id="back-button" href="Discover.html">BACK</a>
       <div class="header_container">
         <div class="blur-box"></div>
-        <header id="header-title">Dancers</header>
+        <header id="header-title"></header>
       </div>
     </div>
 
