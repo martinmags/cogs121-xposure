@@ -31,7 +31,7 @@ Full-stack development<br>
 The following html files are required for the front-end of our app and handles interactions with passing the data from front-end to backend and vice versa.
 - **Admin.html:** This file shows up only for the user who logs in with the admin account. It allows admins to generate new prompts weekly.
 - **CreateAccount.html:** This file allows users to create a new account.
-- **Discover.html:** This file displays current prompts using Unsplash API and previous prompts by fetching data from firebase.
+- **Discover.html:** This file displays current prompts using Unsplash API and display the previous prompts winners (highest overallscore) by fetching data from firebase.
 - **EditProfile.html:** Users can edit their profile information with this page/
 - **Evaluate.html:** Users are able to evaluate a selected submission.
 - **index.html** Users are able to log in or sign up.
