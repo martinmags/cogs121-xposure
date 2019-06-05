@@ -139,6 +139,13 @@ body{
   font-size: .8em;
 }
 
+.none{
+  display: flex;
+  justify-content: center;
+  height: 70vh;
+  align-items: center;
+}
+
 .header{
   margin-left: 5px;
   width: 250px;
