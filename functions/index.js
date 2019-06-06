@@ -139,6 +139,7 @@ app.post("/users/logout", (req, res) => {
     .then(() => {
       // Sign-out successful.
       res.redirect("/");
+      return true;
     })
     .catch(error => {
       // An error happened.
@@ -168,6 +169,10 @@ app.get("/gen-prompts", (req, res) => {
           .doc(doc.id)
           .update({ status: "archived" });
       });
+      return querySnapshot;
+    })
+    .catch((error) => {
+      console.log("Error getting document:", error);
     });
   console.log("archived lastweek prompts");
 
@@ -181,6 +186,10 @@ app.get("/gen-prompts", (req, res) => {
           .doc(doc.id)
           .update({ status: "lastweek" });
       });
+      return querySnapshot;
+    })
+    .catch((error) => {
+      console.log("Error getting document:", error);
     });
   console.log("this week prompts are now last week prompts");
 
@@ -204,13 +213,16 @@ app.get("/gen-prompts", (req, res) => {
                 db.collection("evaluations")
                   .doc(evalId)
                   .get()
-                  .then(eval => {
-                    sum += parseInt(eval.data().overallScore, 10);
+                  .then(evalulation => {
+                    sum += parseInt(evalulation.data().overallScore, 10);
                     count++;
 
                     if (count === sub.data().evaluations.length) {
-                      callback();
+                      return callback();
                     }
+                    return evalulation;
+                  }).catch((error) => {
+                    console.log("Error getting document:", error);
                   });
               });
 
@@ -228,7 +240,12 @@ app.get("/gen-prompts", (req, res) => {
                 db.collection("submissions")
                   .doc(subId)
                   .update({ avgScore: avg });
+
+                return;
               }
+              return sub;
+            }).catch((error) => {
+              console.log("Error getting document:", error);
             });
         });
         // identify top 3 winners
@@ -246,8 +263,14 @@ app.get("/gen-prompts", (req, res) => {
                   winners: admin.firestore.FieldValue.arrayUnion(winningSub.id)
                 });
             });
+            return w_qs;
+          }).catch((error) => {
+            console.log("Error getting document:", error);
           });
       });
+      return p_qs;
+    }).catch((error) => {
+      console.log("Error getting document:", error);
     });
 
   // randomly select a page number from 1 to 20
