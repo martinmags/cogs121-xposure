@@ -23,28 +23,28 @@
 For milestone4, we merged the ongoing prompts and finished prompts page to display both on the home page. We worked on the styling for each page in order for it to be consistent.
 
 User is able to sign-in or create an account if they don't have one yet.<br>
-![Initial Screen](./milestones/assets/milestone4/signin.png)<br>
+![Initial Screen](assets/milestone4/signin.png)<br>
 
 User is able to create an account if they don't have one yet.<br>
-![Create Account Screen](milestones/assets/milestone4/createaccount.png)<br>
+![Create Account Screen](assets/milestone4/createaccount.png)<br>
 
 Users are able to view different ongoing and finished prompts in the home page.<br>
-![Home Page: Discover](milestones/assets/milestone4/discover.png)<br>
+![Home Page: Discover](assets/milestone4/discover.png)<br>
 
 Users are able to view ongoing prompts and their submitted works.<br>
-![Prompts Screen](milestones/assets/milestone4/prompt.png)<br>
+![Prompts Screen](assets/milestone4/prompt.png)<br>
 
 Users are able to submit their works for each prompt.<br>
-![Submission Screen](milestones/assets/milestone4/submission.png)<br>
+![Submission Screen](assets/milestone4/submission.png)<br>
 
 Users are able to evaluate other people's works for each prompt.<br>
-![Evaluation Screen](milestones/assets/milestone4/evaluate.png)<br>
+![Evaluation Screen](assets/milestone4/evaluate.png)<br>
 
 Users are able to view their account information and submitted works in their profile.<br>
-![Profile Screen](milestones/assets/milestone4/profile.png)<br>
+![Profile Screen](assets/milestone4/profile.png)<br>
 
 Users are able to edit their account information.<br>
-![Edit Profile Screen](milestones/assets/milestone4/editprofile.png)<br>
+![Edit Profile Screen](assets/milestone4/editprofile.png)<br>
 
 
 <a name="UserActions"></a>
