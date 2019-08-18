@@ -25,9 +25,6 @@ For milestone4, we merged the ongoing prompts and finished prompts page to displ
 User is able to sign-in or create an account if they don't have one yet.<br>
 ![Initial Screen](assets/milestone4/signin.png)<br>
 
-User is able to create an account if they don't have one yet.<br>
-![Create Account Screen](assets/milestone4/createaccount.png)<br>
-
 Users are able to view different ongoing and finished prompts in the home page.<br>
 ![Home Page: Discover](assets/milestone4/discover.png)<br>
 
@@ -42,10 +39,6 @@ Users are able to evaluate other people's works for each prompt.<br>
 
 Users are able to view their account information and submitted works in their profile.<br>
 ![Profile Screen](assets/milestone4/profile.png)<br>
-
-Users are able to edit their account information.<br>
-![Edit Profile Screen](assets/milestone4/editprofile.png)<br>
-
 
 <a name="UserActions"></a>
 
