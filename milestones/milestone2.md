@@ -45,68 +45,68 @@ This idea is different from the ones we proposed in milestone one in that the ta
 
 ### Prototype Overview
 Creating an account or signing in: <br>
-![Initial Screen](milestones/assets/one_speaker/gettingstarted.png)<br>
+![Initial Screen](assets/one_speaker/gettingstarted.png)<br>
 Student account flow: <br>
-![Initial Screen](milestones/assets/one_speaker/studentflow.png)<br>
+![Initial Screen](assets/one_speaker/studentflow.png)<br>
 Teacher account flow: <br>
-![Initial Screen](milestones/assets/one_speaker/teacherflow.png)<br>
+![Initial Screen](assets/one_speaker/teacherflow.png)<br>
 
 ### Getting Started
 User is able to sign-in or create an account if they don't have one yet.<br>
-![Initial Screen](milestones/assets/one_speaker/InitialScreen.png)<br>
+![Initial Screen](assets/one_speaker/InitialScreen.png)<br>
 User is able to input their account information to access their account.<br>
-![Sign In Screen](milestones/assets/one_speaker/SignIn.png)<br>
+![Sign In Screen](assets/one_speaker/SignIn.png)<br>
 User can toggle between Teacher and Student when creating account.<br>
-![Teacher Create Account Screen](milestones/assets/one_speaker/TeacherCreateAccount.png)<br>
-![Student Create Account Screen](milestones/assets/one_speaker/StudentCreateAccount.png)<br>
+![Teacher Create Account Screen](assets/one_speaker/TeacherCreateAccount.png)<br>
+![Student Create Account Screen](assets/one_speaker/StudentCreateAccount.png)<br>
 If user creates a teacher account, a class key will be generated for students to register with.<br>
-![Teacher Create Account Class Key Screen](milestones/assets/one_speaker/TeacherCreateAccountClassKey.png)<br>
+![Teacher Create Account Class Key Screen](assets/one_speaker/TeacherCreateAccountClassKey.png)<br>
 
 #### Student View
 Students have access to current and previous classes through the dashboard.<br>
-![Student Dashboard Screen](milestones/assets/one_speaker/StudentDashboard.png)<br>
+![Student Dashboard Screen](assets/one_speaker/StudentDashboard.png)<br>
 Students can view their performance in each class and see how their peers are performing in class.<br>
-![Student Classes Screen](milestones/assets/one_speaker/StudentClasses.png)<br>
+![Student Classes Screen](assets/one_speaker/StudentClasses.png)<br>
 Students can receive live feedback of their performance through the session screen.<br>
-![Student Session Screen](milestones/assets/one_speaker/StudentSession.png)<br>
+![Student Session Screen](assets/one_speaker/StudentSession.png)<br>
 
 #### Teacher View
 Teachers have access to classes they are teaching or have taught through the dashboard.<br>
-![Teacher Dashboard Screen](milestones/assets/one_speaker/TeacherDashboard.png)<br>
+![Teacher Dashboard Screen](assets/one_speaker/TeacherDashboard.png)<br>
 Teachers can view their classes' performance.<br>
-![Teacher Classes Screen](milestones/assets/one_speaker/TeacherClasses.png)<br>
+![Teacher Classes Screen](assets/one_speaker/TeacherClasses.png)<br>
 Teachers have access to their session screen.<br>
-![Teacher Session Screen](milestones/assets/one_speaker/TeacherSession.png)<br>
+![Teacher Session Screen](assets/one_speaker/TeacherSession.png)<br>
 Taking away balloons in action.<br>
-![Teacher Delete Balloon Screen](milestones/assets/one_speaker/TeacherDeleteBalloon.png)<br>
+![Teacher Delete Balloon Screen](assets/one_speaker/TeacherDeleteBalloon.png)<br>
 
 <a name="Skeleton"></a>
 
 ### UI Skeleton Webpage Screenshots
 User is able to sign-in or create an account if they don't have one yet.<br>
-![Initial Screen](milestones/assets/one_speaker/skeleton/index.png)<br>
+![Initial Screen](assets/one_speaker/skeleton/index.png)<br>
 User is able to input their account information to access their account.<br>
-![Sign In Screen](milestones/assets/one_speaker/skeleton/signin.png)<br>
+![Sign In Screen](assets/one_speaker/skeleton/signin.png)<br>
 User is able to create a new account.
 Currently, the sign in page leads to the student flow and the create new account page leads to the teacher flow for better visualization. This will be fixed once we are able to determine whether users are teachers or students to display different things on the same html file. <br>
-![Create Account Screen](milestones/assets/one_speaker/skeleton/createaccount.png)<br>
+![Create Account Screen](assets/one_speaker/skeleton/createaccount.png)<br>
 If user creates a teacher account, a class key will be generated for students to register with.<br>
-![Teacher Class Key Screen](milestones/assets/one_speaker/skeleton/classkey.png)<br>
+![Teacher Class Key Screen](assets/one_speaker/skeleton/classkey.png)<br>
 
 ### Student View
 Students have access to current and previous classes through the dashboard.<br>
-![Student Dashboard Screen](milestones/assets/one_speaker/skeleton/studentdashboard.png)<br>
+![Student Dashboard Screen](assets/one_speaker/skeleton/studentdashboard.png)<br>
 Students can view their performance in each class and see how their peers are performing in class.<br>
-![Student Classes Screen](milestones/assets/one_speaker/skeleton/studentclass.png)<br>
+![Student Classes Screen](assets/one_speaker/skeleton/studentclass.png)<br>
 
 ### Teacher View
 Teachers have access to classes they are teaching or have taught through the dashboard.<br>
-![Teacher Dashboard Screen](milestones/assets/one_speaker/skeleton/teacherdashboard.png)<br>
+![Teacher Dashboard Screen](assets/one_speaker/skeleton/teacherdashboard.png)<br>
 Teachers can view their classes' performance.<br>
-![Teacher Classes Screen](milestones/assets/one_speaker/skeleton/teacherclasses.png)<br>
+![Teacher Classes Screen](assets/one_speaker/skeleton/teacherclass.png)<br>
 
 ### Shared
 Teachers and students both have access to the current session.<br>
-![Session Screen](milestones/assets/one_speaker/skeleton/session.png)<br>
+![Session Screen](assets/one_speaker/skeleton/session.png)<br>
 Temporary settings page.<br>
-![Settings](milestones/assets/one_speaker/skeleton/settings.png)<br>
+![Settings](assets/one_speaker/skeleton/settings.png)<br>
