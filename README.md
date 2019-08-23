@@ -1,7 +1,7 @@
 # Cogs 121 Course Project
 A mobile competitive platform that aims to provide entry-level photographers the exposure they deserve.
 
-**Status**: Milestone 2 - New Project Proposal and UI Skeleton<br>
+**Status**: MVP finished<br>
 
 **Team Name**: Panda Express.js<br>
 
